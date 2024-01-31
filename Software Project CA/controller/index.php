@@ -1,6 +1,10 @@
+
+
+
 <?php
 
-require 'model/databaseConnection.php';
+require '../model/databaseConnection.php';
+require "../view/nav.php";
 $pageTitle ="";
 $action =  filter_input(INPUT_POST, 'action');;
 if($action == Null) {
