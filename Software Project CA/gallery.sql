@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2024 at 01:21 PM
+-- Generation Time: Jan 31, 2024 at 07:57 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -30,10 +30,55 @@ SET time_zone = "+00:00";
 CREATE TABLE `art` (
                        `id` int(11) NOT NULL,
                        `title` int(50) NOT NULL,
-                       `price` int(11) NOT NULL,
+                       `price` double NOT NULL,
                        `artist` varchar(20) NOT NULL,
                        `desc` varchar(500) NOT NULL,
                        `countryOfOrigin` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+                        `id` int(11) NOT NULL,
+                        `art_id` int(11) NOT NULL,
+                        `quantity` double NOT NULL,
+                        `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+                         `id` int(11) NOT NULL,
+                         `user_id` int(11) NOT NULL,
+                         `art_id` int(11) NOT NULL,
+                         `title` varchar(50) NOT NULL,
+                         `venue` varchar(500) NOT NULL,
+                         `size` int(200) NOT NULL,
+                         `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+                         `id` int(11) NOT NULL,
+                         `cart_id` int(11) NOT NULL,
+                         `art_id` int(11) NOT NULL,
+                         `price` double NOT NULL,
+                         `user_id` int(11) NOT NULL,
+                         `quantity` int(10) NOT NULL,
+                         `order_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,7 +91,7 @@ CREATE TABLE `ticket` (
                           `id` varchar(10) NOT NULL,
                           `event` varchar(50) NOT NULL,
                           `date` varchar(10) NOT NULL,
-                          `price` int(5) NOT NULL,
+                          `price` double NOT NULL,
                           `fname` varchar(15) NOT NULL,
                           `lname` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -62,9 +107,10 @@ CREATE TABLE `user` (
                         `username` varchar(25) NOT NULL,
                         `firstname` varchar(25) NOT NULL,
                         `lastname` varchar(20) NOT NULL,
+                        `email` varchar(100) NOT NULL,
                         `password` varchar(15) NOT NULL,
-                        `admin` tinyint(1) NOT NULL,
-                        `D.O.B` varchar(10) NOT NULL
+                        `D.O.B` varchar(10) NOT NULL,
+                        `userType` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -76,6 +122,29 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `art`
     ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+    ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `art_id` (`art_id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+    ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `art_id` (`art_id`),
+    ADD UNIQUE KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+    ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `art_id` (`art_id`),
+    ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `user`
