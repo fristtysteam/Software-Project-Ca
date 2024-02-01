@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2024 at 07:57 PM
+-- Generation Time: Feb 01, 2024 at 02:01 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,9 +44,9 @@ CREATE TABLE `art` (
 
 CREATE TABLE `cart` (
                         `id` int(11) NOT NULL,
-                        `art_id` int(11) NOT NULL,
-                        `quantity` double NOT NULL,
-                        `price` int(11) NOT NULL
+                        `product_id` int(11) NOT NULL,
+                        `quantity` int(11) NOT NULL,
+                        `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,7 +62,8 @@ CREATE TABLE `event` (
                          `title` varchar(50) NOT NULL,
                          `venue` varchar(500) NOT NULL,
                          `size` int(200) NOT NULL,
-                         `Date` date NOT NULL
+                         `start_date` date NOT NULL,
+                         `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,11 +75,24 @@ CREATE TABLE `event` (
 CREATE TABLE `order` (
                          `id` int(11) NOT NULL,
                          `cart_id` int(11) NOT NULL,
-                         `art_id` int(11) NOT NULL,
+                         `product_id` int(11) NOT NULL,
                          `price` double NOT NULL,
                          `user_id` int(11) NOT NULL,
                          `quantity` int(10) NOT NULL,
                          `order_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+                           `id` int(11) NOT NULL,
+                           `item_id` int(11) NOT NULL,
+                           `product_title` varchar(100) NOT NULL,
+                           `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -89,11 +103,12 @@ CREATE TABLE `order` (
 
 CREATE TABLE `ticket` (
                           `id` varchar(10) NOT NULL,
-                          `event` varchar(50) NOT NULL,
-                          `date` varchar(10) NOT NULL,
+                          `event_id` int(11) NOT NULL,
+                          `event` varchar(100) NOT NULL,
+                          `start_date` date NOT NULL,
+                          `end_date` date NOT NULL,
                           `price` double NOT NULL,
-                          `fname` varchar(15) NOT NULL,
-                          `lname` varchar(15) NOT NULL
+                          `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -104,13 +119,12 @@ CREATE TABLE `ticket` (
 
 CREATE TABLE `user` (
                         `id` int(11) NOT NULL,
-                        `username` varchar(25) NOT NULL,
-                        `firstname` varchar(25) NOT NULL,
-                        `lastname` varchar(20) NOT NULL,
+                        `username` varchar(50) NOT NULL,
+                        `name` varchar(100) NOT NULL,
                         `email` varchar(100) NOT NULL,
                         `password` varchar(15) NOT NULL,
-                        `D.O.B` varchar(10) NOT NULL,
-                        `userType` varchar(15) NOT NULL
+                        `D.O.B` date NOT NULL,
+                        `userType` enum('admin','basic','artist','premium','guest') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -128,7 +142,7 @@ ALTER TABLE `art`
 --
 ALTER TABLE `cart`
     ADD PRIMARY KEY (`id`),
-    ADD UNIQUE KEY `art_id` (`art_id`);
+    ADD UNIQUE KEY `art_id` (`product_id`);
 
 --
 -- Indexes for table `event`
@@ -143,14 +157,65 @@ ALTER TABLE `event`
 --
 ALTER TABLE `order`
     ADD PRIMARY KEY (`id`),
-    ADD UNIQUE KEY `art_id` (`art_id`),
-    ADD UNIQUE KEY `user_id` (`user_id`);
+    ADD UNIQUE KEY `art_id` (`product_id`),
+    ADD UNIQUE KEY `user_id` (`user_id`),
+    ADD UNIQUE KEY `cart_id` (`cart_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+    ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `item_id` (`item_id`);
+
+--
+-- Indexes for table `ticket`
+--
+ALTER TABLE `ticket`
+    ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `event_id` (`event_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
     ADD PRIMARY KEY (`id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+    ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `event`
+--
+ALTER TABLE `event`
+    ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`art_id`) REFERENCES `art` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `order`
+--
+ALTER TABLE `order`
+    ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+    ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `art` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `ticket`
+--
+ALTER TABLE `ticket`
+    ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
