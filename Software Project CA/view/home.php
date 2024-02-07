@@ -217,6 +217,5 @@ $currentLanguage = getLanguage();
         });
     }
 </script>
-</html>
 <?php include'../view/footer.php' ?>
 

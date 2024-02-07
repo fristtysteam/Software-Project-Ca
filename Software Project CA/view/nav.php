@@ -5,41 +5,7 @@
 ?>
 
 
-<style>
-body {
-padding-top: 56px;
-}
 
-.navbar {
-background-color: #ffffff;
-border: 1px solid #000000;
-}
-
-.navbar-brand,
-.navbar-nav .nav-link {
-color: #000000;
-}
-
-.navbar-brand img {
-max-height: 40px;
-margin-right: 10px;
-}
-
-.navbar-brand:hover,
-.navbar-nav .nav-link:hover {
-color: #555555;
-}
-
-.navbar-custom {
-max-width: 50%;
-margin: 0 auto;
-}
-
-.navbar-small-links {
-font-size: 0.8rem;
-margin-right: 10px;
-}
-</style>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
     <div class="container-fluid">
@@ -53,16 +19,16 @@ margin-right: 10px;
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#home">Home</a>
+                    <a class="nav-link active" href="home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#membership">Membership</a>
+                    <a class="nav-link" href="membership.php">Membership</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#shop">Shop</a>
+                    <a class="nav-link" href="shop.php">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#galleries">Galleries</a>
+                    <a class="nav-link" href="galleries.php">Galleries</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -71,16 +37,16 @@ margin-right: 10px;
 
 
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="#" onclick="setLanguage('english')">English</a>
+                    <a class="nav-link"  href="#" onclick="setLanguage('english')">English</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="#" onclick="setLanguage('irish')">Irish</a>
+                    <a class="nav-link"   href="#" onclick="setLanguage('irish')">Irish</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="login.php">Login</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="register.php">Register</a>
                 </li>
             </ul>
         </div>

@@ -27,55 +27,25 @@
 
            }*/?>
 
-            <input type="hidden" value="show_login" name="action">
+            <input type="hidden" value="login" name="action">
 
-            <!-- <div class="input-group mb-3">
-                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                 <input class="form-control" id="" name="fname" type="text" placeholder="First Name">
-
-             </div>
-             <div class="input-group mb-3">
-                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                 <input class="form-control" id="" name="sname" type="text" placeholder="Last Name">
-
-             </div> -->
-
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="" name="name" type="text" placeholder="Name">
-            </div>
-
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="" name="username" type="text" placeholder="Username">
-            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                 <input class="form-control" id="" name="email" type="text" placeholder="Email Address">
-
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                <input class="form-control" id="password1" name="password" type="text" placeholder="Password">
-
-            </div>
-
-            <div class="input-group mb-3">
-
-                <label for="birthdate"><i class="fa fa-lock">Date of Birth:</i></label>
-                <input class="form-control" type="date" id="birthdate" name="birthdate" required>
-
-            </form>
+                <input class="form-control" id="password1" name="password" type="password" placeholder="Password">
             </div>
 
             <div class="input-group mt-5 ">
                 <button  class="form-control bg-dark fs-4 text-white"
                          id=""
                          type="submit"
-                         name="action"
-                         value="login"
+                         name="submit"
+                         value="Login"
                 >
-                    Submit
+                    Login
                 </button>
             </div>
             <div class="input-group mt-3 mb-5 ">
@@ -98,7 +68,3 @@
 
 
 <?php include'../view/footer.php' ?>
-
-
-
-
