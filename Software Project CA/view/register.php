@@ -16,10 +16,10 @@
     <div class="col-lg-4 m-auto">
         <div class=" row row-col-md-auto align-items-center text-center mt-5 mb-5 bg-light rounded">
             <h2 class="text-danger"> <?php //echo $pageTitle; ?></h2>
-            <p class=" text-muted mt-3">Enter login details below</p>
+            <p class=" text-muted mt-3">Enter Register details below</p>
         </div>
 
-        <form id="login_form" method="POST" action="../controller/index.php">
+        <form id="register" method="POST" action="../controller/index.php">
 
             <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
             <?php /*if( isset($_SESSION["error"])){
@@ -27,7 +27,7 @@
 
            }*/?>
 
-            <input type="hidden" value="show_login" name="action">
+            <input type="hidden" value="register" name="action">
 
             <!-- <div class="input-group mb-3">
                  <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -56,7 +56,7 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                <input class="form-control" id="password1" name="password" type="text" placeholder="Password">
+                <input class="form-control" id="password1" name="password" type="password" placeholder="Password">
 
             </div>
 
@@ -65,31 +65,31 @@
                 <label for="birthdate"><i class="fa fa-lock">Date of Birth:</i></label>
                 <input class="form-control" type="date" id="birthdate" name="birthdate" required>
 
+                <div class="input-group mt-5 ">
+                    <button  class="form-control bg-dark fs-4 text-white"
+                             id=""
+                             type="submit"
+                             name="action"
+                             value="register"
+                    >
+                        Submit
+                    </button>
+                </div>
+                <div class="input-group mt-3 mb-5 ">
+                    <button  class="form-control bg-dark fs-4 text-white"
+                             id=""
+                             type="submit"
+                             name="action"
+                             value="forgotpassword"
+                    >
+                        Forgot Password
+                    </button>
         </form>
     </div>
 
-    <div class="input-group mt-5 ">
-        <button  class="form-control bg-dark fs-4 text-white"
-                 id=""
-                 type="submit"
-                 name="action"
-                 value="login"
-        >
-            Submit
-        </button>
-    </div>
-    <div class="input-group mt-3 mb-5 ">
-        <button  class="form-control bg-dark fs-4 text-white"
-                 id=""
-                 type="submit"
-                 name="action"
-                 value="forgotpassword"
-        >
-            Forgot Password
-        </button>
-    </div>
-    </form>
-</div>
+
+
+
 
 </div>
 

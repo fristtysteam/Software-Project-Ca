@@ -19,39 +19,37 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="home.php">Home</a>
+                    <a class="nav-link active" href="../controller/index.php?action=show_home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="membership.php">Membership</a>
+                    <a class="nav-link" href="../controller/index.php?action=membership">Membership</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shop.php">Shop</a>
+                    <a class="nav-link" href="../controller/index.php?action=shop">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="galleries.php">Galleries</a>
+                    <a class="nav-link" href="../controller/index.php?action=galleries">Galleries</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
-
-
-
-
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link"  href="#" onclick="setLanguage('english')">English</a>
+                    <a class="nav-link" href="../controller/index.php?action=set_language_english">English</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link"   href="#" onclick="setLanguage('irish')">Irish</a>
+                    <a class="nav-link" href="../controller/index.php?action=set_language_irish">Irish</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="../controller/index.php?action=login">Login</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="register.php">Register</a>
+                    <a class="nav-link" href="../controller/index.php?action=register">Register</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iQFZK3d6PJKzutOz9w8a/+LXRvM5Ae0iYTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></script>
