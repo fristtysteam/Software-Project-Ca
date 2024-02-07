@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Prepare SQL statement to insert user data into database
-        $stmt = $db->prepare("INSERT INTO users (id, username, email, password) VALUES (:id, :username, :email, :password)");
+        $stmt = $db->prepare("INSERT INTO user (id, username, email, password) VALUES (:id, :username, :email, :password)");
 
         // Bind parameters to SQL statement
         $stmt->bindParam(':id', $id);
