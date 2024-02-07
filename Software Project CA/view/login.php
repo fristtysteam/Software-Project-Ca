@@ -8,6 +8,8 @@
     AUTHOR:  Julie Olamijuwon
 -------------------------------->
 <?php include'../view/header.php' ?>
+<?php include'../view/nav.php' ?>
+
 
 <!--<div class="container">-->
 <div class="row mt-2 bg-secondary">
