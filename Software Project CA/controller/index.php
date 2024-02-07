@@ -1,73 +1,74 @@
 <?php
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
-require "../view/nav.php";
 
 $currentLanguage = getLanguage();
-//$pageTitle =
-$action =  filter_input(INPUT_POST, 'action');;
-if($action == Null) {
-    $action = filter_input(INPUT_GET, 'action');
-    if ($action == NULL) {
 
-        $action = "show_home";
-        //$action = "login";
-        //$action = "register";
-    }
+$action = filter_input(INPUT_GET, 'action');
 
+if ($action == Null) {
+    $action = "show_home";
 }
 
 switch ($action) {
-    // Show Registration page
     case 'register':
-        $pageTitle ="Registration Page";
+        $pageTitle = "Registration Page";
         include "../view/register.php";
         break;
-    // Register New user
-    case 'do_register':
+    case 'register':
+
+        $name = filter_input(INPUT_POST, 'name');
+        $username = filter_input(INPUT_POST, 'username');
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password');
+
+        if (add_user($name,$username,$email, $password) == true){
+            header("Location:?action=login.php");
+        }
+
+
 
         break;
-    // Check Registration Details before saving New user to Database
     case 'check_register':
-
+        // Logic for checking registration details
         break;
-
     case 'show_home':
-        $pageTitle="Home Page";
+        $pageTitle = "Home Page";
         include "../view/home.php";
         break;
-
-    // Show Login Page
     case 'login':
-        $pageTitle ="Login Page";
+        $pageTitle = "Login Page";
         include "../view/login.php";
         break;
-    // Log user in
     case 'do_login':
-
+        // Logic for logging in user
         break;
-    // Check log details  before member login
     case 'check_login':
-
-
+        // Logic for checking login details
         break;
-    //  Member Forgot login Password
     case 'forgotpassword':
-
-
+        // Logic for handling forgotten password
         break;
-
-    // Log user out
     case 'logout':
-        /* session_destroy();
-         header('Location:?action=login');
-         exit();*/
+        // Logic for logging out user
+        break;
+    case 'membership':
+        // Logic for membership page
+        break;
+    case 'shop':
+        // Logic for shop page
+        break;
+    case 'galleries':
+        // Logic for galleries page
+        break;
+    case 'set_language_english':
+        // Logic for setting language to English
+        break;
+    case 'set_language_irish':
+        // Logic for setting language to Irish
         break;
     default:
         echo "Invalid Action";
         break;
 }
-
-
 ?>
-
