@@ -7,7 +7,7 @@
     CREATED: March 2023
     AUTHOR:  Julie Olamijuwon
 -------------------------------->
-<?php include'../view/header2.php' ?>
+<?php include'../view/header.php' ?>
 
 <!--<div class="container">-->
 <div class="row mt-2 bg-secondary">
