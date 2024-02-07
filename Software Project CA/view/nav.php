@@ -1,43 +1,44 @@
 <?php
-include "../model/language.php"; // Include language file
+
+ include "header.php";
+ include "../model/language.php";
 ?>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <style>
-    body {
-        padding-top: 56px;
-    }
+body {
+padding-top: 56px;
+}
 
-    .navbar {
-        background-color: #ffffff;
-        border: 1px solid #000000;
-    }
+.navbar {
+background-color: #ffffff;
+border: 1px solid #000000;
+}
 
-    .navbar-brand,
-    .navbar-nav .nav-link {
-        color: #000000;
-    }
+.navbar-brand,
+.navbar-nav .nav-link {
+color: #000000;
+}
 
-    .navbar-brand img {
-        max-height: 40px;
-        margin-right: 10px;
-    }
+.navbar-brand img {
+max-height: 40px;
+margin-right: 10px;
+}
 
-    .navbar-brand:hover,
-    .navbar-nav .nav-link:hover {
-        color: #555555;
-    }
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+color: #555555;
+}
 
-    .navbar-custom {
-        max-width: 50%;
-        margin: 0 auto;
-    }
+.navbar-custom {
+max-width: 50%;
+margin: 0 auto;
+}
 
-    .navbar-small-links {
-        font-size: 0.8rem;
-        margin-right: 10px;
-    }
+.navbar-small-links {
+font-size: 0.8rem;
+margin-right: 10px;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">

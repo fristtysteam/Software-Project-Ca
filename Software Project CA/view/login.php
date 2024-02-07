@@ -39,6 +39,16 @@
                  <input class="form-control" id="" name="sname" type="text" placeholder="Last Name">
 
              </div> -->
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input class="form-control" id="" name="name" type="text" placeholder="Name">
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input class="form-control" id="" name="username" type="text" placeholder="Username">
+            </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                 <input class="form-control" id="" name="email" type="text" placeholder="Email Address">
@@ -48,6 +58,14 @@
                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
                 <input class="form-control" id="password1" name="password" type="text" placeholder="Password">
 
+            </div>
+
+            <div class="input-group mb-3">
+
+                <label for="birthdate"><i class="fa fa-lock">Date of Birth:</i></label>
+                <input class="form-control" type="date" id="birthdate" name="birthdate" required>
+
+            </form>
             </div>
 
             <div class="input-group mt-5 ">
