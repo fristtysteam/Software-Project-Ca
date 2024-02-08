@@ -5,28 +5,26 @@
  * Author: Julie Olamijuwon
  */
 
-function add_user($name , $username , $email, $password)
+function add_user($name, $username, $email, $password)
 {
-    /****************************************************
-     *Function to add a user(The default is general user)
-     * Parameters email, password
-     * Returns true or false
-     ****************************************************/
+    // Check if name is empty, and set a default value if it is
+    if (empty($name)) {
+        $name = 'Unknown';
+    }
+
     global $db;
 
-    $query = "INSERT INTO users(name, username, email, password) VALUES ( :name, :username,  :email, :password)";
+    $query = "INSERT INTO user(name, username, email, password) VALUES (:name, :username, :email, :password)";
     $statement = $db->prepare($query);
     $statement->bindValue(":name", $name);
     $statement->bindValue(":username", $username);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
 
-
     try {
         $statement->execute();
     } catch (Exception $ex) {
-
-        // redirect to an error page passing the error message
+        // Redirect to an error page passing the error message
         header("Location:../View/error.php?msg=" . $ex->getMessage());
         exit();
     }
@@ -44,7 +42,7 @@ function check_user($email, $password)
 
     global $db;
 
-    $query = "SELECT * FROM users WHERE email = :email AND " . " password = :password";
+    $query = "SELECT * FROM user WHERE email = :email AND " . " password = :password";
     $statement = $db->prepare($query);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
@@ -87,7 +85,7 @@ function check_newUser($email, $password)
 //$fName,$sName,
     global $db;
 
-    $query = "SELECT * FROM users WHERE email = :email AND "." password = :password";
+    $query = "SELECT * FROM user WHERE email = :email AND "." password = :password";
     $statement = $db->prepare($query);
 //$statement->bindValue(":firstname", $fName);
 //$statement->bindValue(":surname", $sName);
@@ -121,7 +119,7 @@ function check_isRegistered_user($email, $password)
 
     global $db;
 
-    $query = "SELECT * FROM users WHERE email = :email AND " . " password = :password";
+    $query = "SELECT * FROM user WHERE email = :email AND " . " password = :password";
     $statement = $db->prepare($query);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
