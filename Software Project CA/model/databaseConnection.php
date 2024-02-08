@@ -2,7 +2,7 @@
 $host =  'localhost';
 $user = 'root';
 $password = '';
-$dbname = 'gallery';
+$dbname = 'artgallery';
 
 // Set DSN
 
