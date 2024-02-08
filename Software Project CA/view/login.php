@@ -27,7 +27,7 @@
 
            }*/?>
 
-            <input type="hidden" name="action" value="do_login" >
+                <input type="hidden" name="action" value="do_login" >
 
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
@@ -37,17 +37,9 @@
                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
                 <input class="form-control" id="password1" name="password" type="password" placeholder="Password">
             </div>
-
-            <div class="input-group mt-5 ">
-                <button  class="form-control bg-dark fs-4 text-white"
-                         id=""
-                         type="submit"
-                         name="action"
-                         value="do_login"
-                >
-                    Login
-                </button>
-            </div>
+             <div class="input-group mt-5 ">
+                <button class="form-control bg-dark fs-4 text-white" type="submit">login</button>
+             </div>
             <div class="input-group mt-3 mb-5 ">
                 <button  class="form-control bg-dark fs-4 text-white"
                          id=""

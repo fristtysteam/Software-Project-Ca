@@ -120,7 +120,7 @@ function check_isRegistered_user($email, $password)
 
     global $db;
 
-    $query = "SELECT * FROM users WHERE email = :email AND " . " password = :password";
+    $query = "SELECT * FROM users WHERE email = :email AND  password = :password";
     $statement = $db->prepare($query);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
@@ -138,6 +138,7 @@ function check_isRegistered_user($email, $password)
         // problem either no user or more than one
         return FALSE;
     }
+    return true;
 // IF USER DETAIL IS VALID
 // START THE SESSION !!
    /* session_start();

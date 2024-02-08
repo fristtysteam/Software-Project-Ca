@@ -5,7 +5,7 @@ require_once '../model/userDB.php';
 
 $currentLanguage = getLanguage();
 
-$action = filter_input(INPUT_GET, 'action');
+$action = filter_input(INPUT_POST, 'action');
 
 if ($action == Null) {
     $action = filter_input(INPUT_POST, 'action');
@@ -83,6 +83,8 @@ switch ($action) {
     case 'galleries':
         // Logic for galleries page
         $pageTitle = "Galleries Page";
+        //include "../view/galleries.php";
+        //header("Location:index.php?action=galleries");
         include "../view/galleries.php";
         break;
     case 'set_language_english':
