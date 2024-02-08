@@ -1,19 +1,28 @@
 <?php
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
+require_once '../model/userDB.php';
 
 $currentLanguage = getLanguage();
 
 $action = filter_input(INPUT_GET, 'action');
 
 if ($action == Null) {
-    $action = "show_home";
+    $action = filter_input(INPUT_POST, 'action');
+    if ($action == NULL) {
+        $action = filter_input(INPUT_GET, 'action');
+        if ($action == NULL) {
+
+           // $action = "show_home";
+             $action = "showRegister";
+        }
+    }
 }
 
 switch ($action) {
-    case 'register':
+    case 'showRegister':
         $pageTitle = "Registration Page";
-        include "../view/register.php";
+        include "../view/showRegister.php";
         break;
     case 'register':
 
@@ -21,10 +30,11 @@ switch ($action) {
         $username = filter_input(INPUT_POST, 'username');
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
-
         if (add_user($name,$username,$email, $password) == true){
             header("Location:?action=login.php");
         }
+        header("Location:?action=showRegister.php");
+
 
 
 
