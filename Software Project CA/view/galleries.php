@@ -1,5 +1,5 @@
 <?php
-include '../view/header.php' ;
+//include '../view/header.php' ;
 
 
-include '../view/footer.php' ;
+//include '../view/footer.php' ;
