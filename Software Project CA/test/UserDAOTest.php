@@ -21,7 +21,7 @@ class UserDAOTest extends TestCase
                 email VARCHAR(100) NOT NULL,
                 password VARCHAR(15) NOT NULL,
                 `D.O.B` DATE NOT NULL,
-                userType ENUM('admin','basic','artist','premium','guest') NOT NULL
+                userType ENUM('admin') NOT NULL
             )
         ");
 
