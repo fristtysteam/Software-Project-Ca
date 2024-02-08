@@ -5,7 +5,7 @@
  * Author: Julie Olamijuwon
  */
 
-function add_user($name, $username, $email, $password)
+function add_user( $username,$name, $email, $password)
 {
     // Check if name is empty, and set a default value if it is
     if (empty($name)) {
@@ -14,10 +14,11 @@ function add_user($name, $username, $email, $password)
 
     global $db;
 
-    $query = "INSERT INTO user(name, username, email, password) VALUES (:name, :username, :email, :password)";
+    $query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
     $statement = $db->prepare($query);
-    $statement->bindValue(":name", $name);
+
     $statement->bindValue(":username", $username);
+    $statement->bindValue(":name", $name);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
 
@@ -42,7 +43,7 @@ function check_user($email, $password)
 
     global $db;
 
-    $query = "SELECT * FROM user WHERE email = :email AND " . " password = :password";
+    $query = "SELECT * FROM users WHERE email = :email AND " . " password = :password";
     $statement = $db->prepare($query);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
@@ -85,7 +86,7 @@ function check_newUser($email, $password)
 //$fName,$sName,
     global $db;
 
-    $query = "SELECT * FROM user WHERE email = :email AND "." password = :password";
+    $query = "SELECT * FROM users WHERE email = :email AND "." password = :password";
     $statement = $db->prepare($query);
 //$statement->bindValue(":firstname", $fName);
 //$statement->bindValue(":surname", $sName);
@@ -119,7 +120,7 @@ function check_isRegistered_user($email, $password)
 
     global $db;
 
-    $query = "SELECT * FROM user WHERE email = :email AND " . " password = :password";
+    $query = "SELECT * FROM users WHERE email = :email AND " . " password = :password";
     $statement = $db->prepare($query);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
@@ -139,7 +140,7 @@ function check_isRegistered_user($email, $password)
     }
 // IF USER DETAIL IS VALID
 // START THE SESSION !!
-    session_start();
+   /* session_start();
 
     $user = $statement->fetch();
     $statement->closeCursor();
@@ -148,6 +149,6 @@ function check_isRegistered_user($email, $password)
     $_SESSION['userId'] = $user['id'];
     $_SESSION['userType'] = $user['userType'];
 
-    return $user['userType'];
+    return $user['userType'];*/
 }
 

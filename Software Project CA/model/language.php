@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 if (!function_exists('setLanguage')) {
     function setLanguage($lang)

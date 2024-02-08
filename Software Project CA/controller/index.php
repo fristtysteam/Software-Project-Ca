@@ -13,8 +13,8 @@ if ($action == Null) {
         $action = filter_input(INPUT_GET, 'action');
         if ($action == NULL) {
 
-           // $action = "show_home";
-             $action = "showRegister";
+            $action = "show_home";
+             //$action = "showRegister";
         }
     }
 }
@@ -24,18 +24,20 @@ switch ($action) {
         $pageTitle = "Registration Page";
         include "../view/showRegister.php";
         break;
-    case 'register':
 
-        $name = filter_input(INPUT_POST, 'name');
+    case 'register':
         $username = filter_input(INPUT_POST, 'username');
+        $name = filter_input(INPUT_POST, 'name');
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
         if (add_user($name,$username,$email, $password) == true){
-            header("Location:?action=login.php");
+            //header("Location:?action=login.php");
+            header("Location:index.php?action=login");
+            exit();
         }
-        header("Location:?action=showRegister.php");
-
-
+        //header("Location:?action=showRegister.php");
+        header("Location:index.php?action=showRegister");
+        exit();
 
 
         break;
@@ -52,6 +54,16 @@ switch ($action) {
         break;
     case 'do_login':
         // Logic for logging in user
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password');
+
+        if(check_isRegistered_user($email, $password) ===true){
+            // user is a member, direct appropriate web page
+            header("Location:index.php?action=galleries");
+            exit();
+        }
+            header("Location:index.php?action=showRegister");
+            //exit();
         break;
     case 'check_login':
         // Logic for checking login details
@@ -70,6 +82,8 @@ switch ($action) {
         break;
     case 'galleries':
         // Logic for galleries page
+        $pageTitle = "Galleries Page";
+        include "../view/galleries.php";
         break;
     case 'set_language_english':
         // Logic for setting language to English
@@ -78,7 +92,10 @@ switch ($action) {
         // Logic for setting language to Irish
         break;
     default:
-        echo "Invalid Action";
+       // echo "Invalid Action";
+        $error = "Unknown action value:" . $action;
+        include '../view/error.php';
+
         break;
 }
 ?>

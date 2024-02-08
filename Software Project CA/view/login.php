@@ -27,7 +27,7 @@
 
            }*/?>
 
-            <input type="hidden" value="login" name="action">
+            <input type="hidden" name="action" value="do_login" >
 
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
@@ -42,8 +42,8 @@
                 <button  class="form-control bg-dark fs-4 text-white"
                          id=""
                          type="submit"
-                         name="submit"
-                         value="Login"
+                         name="action"
+                         value="do_login"
                 >
                     Login
                 </button>

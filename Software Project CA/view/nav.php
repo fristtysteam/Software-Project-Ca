@@ -42,7 +42,8 @@
                     <a class="nav-link" href="../controller/index.php?action=login">Login</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=register">Register</a>
+                    <!--<a class="nav-link" href="../controller/index.php?action=register">Register</a>-->
+                    <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
                 </li>
             </ul>
         </div>
