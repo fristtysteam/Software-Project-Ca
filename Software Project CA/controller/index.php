@@ -75,10 +75,12 @@ switch ($action) {
         // Logic for logging out user
         break;
     case 'membership':
-        // Logic for membership page
+        $pageTitle = "Membership Page";
+        include "../view/membership.php";
         break;
     case 'shop':
-        // Logic for shop page
+        $pageTitle = "Shop Page";
+        include "../view/shop.php";
         break;
     case 'galleries':
         // Logic for galleries page

@@ -3,7 +3,7 @@ require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 include "../view/nav.php";
 include "../styles/homeStyles.php";
-
+include'../view/header.php';
 $currentLanguage = getLanguage();
 ?>
 <!DOCTYPE html>
