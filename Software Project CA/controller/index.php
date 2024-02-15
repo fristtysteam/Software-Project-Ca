@@ -3,6 +3,7 @@ require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
 
+
 $currentLanguage = getLanguage();
 
 $action = filter_input(INPUT_POST, 'action');
@@ -66,13 +67,10 @@ switch ($action) {
             //exit();
         break;
     case 'check_login':
-        // Logic for checking login details
         break;
     case 'forgotpassword':
-        // Logic for handling forgotten password
         break;
     case 'logout':
-        // Logic for logging out user
         break;
     case 'membership':
         $pageTitle = "Membership Page";

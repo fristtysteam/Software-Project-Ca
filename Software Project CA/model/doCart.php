@@ -5,34 +5,21 @@ function getCartItems() {
     // Initialize an empty array to store cart items
     $cartItems = array();
 
-    $connection = connectToDatabase();
 
-    if ($connection) {
-        // SQL query to select cart items from the database
         $query = "SELECT * FROM cart";
 
-        // Execute the query
-        $result = mysqli_query($connection, $query);
+        $result = mysqli_query( query);
 
-        // Check if the query was successful
         if ($result) {
-            // Fetch each row from the result set and add it to the cartItems array
             while ($row = mysqli_fetch_assoc($result)) {
                 $cartItems[] = $row;
             }
-        } else {
-            // If the query fails, display an error message
-            echo "Error: " . mysqli_error($connection);
         }
 
-        // Close the database connection
-        mysqli_close($connection);
-    } else {
-        // If the connection fails, display an error message
-        echo "Error: Unable to connect to the database.";
-    }
 
-    // Return the array of cart items
+   ;
+
+
     return $cartItems;
 }
 
