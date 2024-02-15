@@ -1,5 +1,5 @@
 <?php
-
+require_once '../model/getArt.php';
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 include "../view/nav.php";
@@ -42,7 +42,7 @@ $currentLanguage = getLanguage();
                         <div class="card-body">
                             <h5 class="card-title">Product Title</h5>
                             <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                            <a href="#" class="btn btn-primary">View Details</a>
+                            <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ $currentLanguage = getLanguage();
                         <div class="card-body">
                             <h5 class="card-title">Product Title</h5>
                             <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss.</p>
-                            <a href="#" class="btn btn-primary">View Details</a>
+                            <a href="../model/doCart.php"" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ $currentLanguage = getLanguage();
                         <div class="card-body">
                             <h5 class="card-title">Product Title</h5>
                             <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                            <a href="#" class="btn btn-primary">View Details</a>
+                            <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss.</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
@@ -153,19 +153,23 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h5 class="card-title">Product Title</h5>
                         <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="#" class="btn btn-primary">View Details</a>
+                <?php foreach ($artworks as $artwork): ?>
+                    <div class="card">
+                        <img src="../1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $artwork['title']; ?></h5>
+                            <p class="card-text"><?php echo $artwork['desc']; ?></p>
+                            <p class="card-text"><?php echo $artwork['artist']; ?></p>
+                            <p class="card-text"><?php echo $artwork['countryOfOrigin']; ?></p>
+                            <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
