@@ -89,6 +89,10 @@ switch ($action) {
         //header("Location:index.php?action=galleries");
         include "../view/galleries.php";
         break;
+    case 'cart':
+        $pageTitle = "Cart Page";
+        include "../view/cart.php";
+        break;
     case 'set_language_english':
         // Logic for setting language to English
         break;

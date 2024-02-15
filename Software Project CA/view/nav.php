@@ -45,6 +45,11 @@
                     <!--<a class="nav-link" href="../controller/index.php?action=register">Register</a>-->
                     <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../controller/index.php?action=cart">
+                        <img src="../2.jpg" alt="Cart" style="width: 30px; height: 30px;">
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
