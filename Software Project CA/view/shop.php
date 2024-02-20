@@ -2,6 +2,8 @@
 require_once '../model/getArt.php';
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
+require_once '../model/getArt.php';
+
 include "../view/nav.php";
 include "../styles/homeStyles.php";
 include '../view/header.php';
@@ -34,145 +36,29 @@ $currentLanguage = getLanguage();
         </div>
 
         <div class="col-md-8">
-            <h2>Featured Products</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="../1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                            <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
+
+                <?php
+                $artworks = getArtworks();
+                if (!empty($artworks)) {
+                    foreach ($artworks as $artwork): ?>
+                        <div class="card">
+                            <img src="../1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $artwork['title']; ?></h5>
+                                <p class="card-text"><?php echo $artwork['desc']; ?></p>
+                                <p class="card-text"><?php echo $artwork['artist']; ?></p>
+                                <p class="card-text"><?php echo $artwork['countryOfOrigin']; ?></p>
+                                <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="../1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss.</p>
-                            <a href="../model/doCart.php"" class="btn btn-primary">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="../1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Product Title</h5>
-                            <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                            <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                    endforeach;
+                } else {
+                    echo "No artworks found.";
+                }
+                ?>
             </div>
         </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Whats the Topic?</h2>
-            <p>sssssssssssssssssssssssssssssssssssssssssssssssametsssssssssssssssssssssssssssssssssssssssssssssss nusssssssssssssssssssssssssssssssssssssssssssssss .</p>
-            <p>sssssssssssssssssssssssssssssssssssssssssssssss</p>
-            <p>sssssssssssssssssssssssssssssssssssssssssssssss</p>
-        </div>
-    </div>
-
-
-
-
-
-    <div class="col-md-18">
-        <h2>Popular</h2>
-        <div class="row">
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss.</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <img src="../1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Title</h5>
-                        <p class="card-text">sssssssssssssssssssssssssssssssssssssssssssssss</p>
-                        <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-4">
-                <?php foreach ($artworks as $artwork): ?>
-                    <div class="card">
-                        <img src="../1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $artwork['title']; ?></h5>
-                            <p class="card-text"><?php echo $artwork['desc']; ?></p>
-                            <p class="card-text"><?php echo $artwork['artist']; ?></p>
-                            <p class="card-text"><?php echo $artwork['countryOfOrigin']; ?></p>
-                            <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
 
 
     <div class="row mb-5">
@@ -187,6 +73,7 @@ $currentLanguage = getLanguage();
             </ul>
         </div>
         </div>
+</div>
 
 
 

@@ -1,29 +1,27 @@
 <?php
+session_start();
 require_once 'databaseConnection.php';
 
-function getCartItems() {
-    // Initialize an empty array to store cart items
-    $cartItems = array();
+if (isset($_GET['product_id'])) {
+    $productId = $_GET['product_id'];
 
+    // Add the product to the cart
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
 
-        $query = "SELECT * FROM cart";
+    if (isset($_SESSION['cart'][$productId])) {
+        $_SESSION['cart'][$productId]['quantity']++;
+    } else {
+        $_SESSION['cart'][$productId] = array(
+            'quantity' => 1
+        );
+    }
 
-        $result = mysqli_query( query);
-
-        if ($result) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $cartItems[] = $row;
-            }
-        }
-
-
-   ;
-
-
-    return $cartItems;
+    header('Location: ../view/cart.php');
+    exit;
+} else {
+    header('Location: error.php');
+    exit;
 }
-
-// Example usage:
-$cartItems = getCartItems();
-print_r($cartItems); // You can use this to check if the function works as expected
 ?>

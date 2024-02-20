@@ -1,7 +1,7 @@
 <?php
-require_once '../model/databaseConnection.php';
+require_once 'databaseConnection.php';
 
-function getArtworks($artworks) {
+function getArtworks() {
     $artworks = array();
 
     global $db;
