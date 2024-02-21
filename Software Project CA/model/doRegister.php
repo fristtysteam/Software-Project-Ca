@@ -1,19 +1,14 @@
-
 <?php
 session_start();
 
-// Include database configuration
 require_once 'databaseConnection.php';
 
-// Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // Retrieve form data
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    // Generate unique ID for user
     $id = uniqid();
 
     // Hash password using bcrypt
@@ -21,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         // Prepare SQL statement to insert user data into database
-        $stmt = $db->prepare("INSERT INTO user (id, username, email, password) VALUES (:id, :username, :email, :password)");
+        $stmt = $db->prepare("INSERT INTO users (id, username, email, password) VALUES (:id, :username, :email, :password)");
 
         // Bind parameters to SQL statement
         $stmt->bindParam(':id', $id);
@@ -45,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
+?>
+
+?>
 ?>
 <!DOCTYPE html>
 <html lang="en">

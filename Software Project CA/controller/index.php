@@ -59,7 +59,6 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password');
 
         if(check_isRegistered_user($email, $password) ===true){
-            // user is a member, direct appropriate web page
             header("Location:index.php?action=galleries");
             exit();
         }

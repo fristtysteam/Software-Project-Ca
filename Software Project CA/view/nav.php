@@ -1,4 +1,5 @@
 <?php
+session_start();
 
  include "header.php";
  include "../model/language.php";
@@ -38,13 +39,23 @@
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=set_language_irish">Irish</a>
                 </li>
-                <li class="nav-item navbar-small-links">
+                <?php
+
+                // Check if the user is logged in
+                if(isset($_SESSION['userid'])) {
+                $username = $_SESSION['username'];
+                echo '<li class="nav-item navbar-small-links">
+                    <a class="nav-link" href="#">Welcome, '.$username.'</a>
+                </li>';
+                } else {
+                echo '<li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=login">Login</a>
                 </li>
                 <li class="nav-item navbar-small-links">
-                    <!--<a class="nav-link" href="../controller/index.php?action=register">Register</a>-->
                     <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
-                </li>
+                </li>';
+                }
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=cart">
                         <img src="../2.jpg" alt="Cart" style="width: 30px; height: 30px;">
