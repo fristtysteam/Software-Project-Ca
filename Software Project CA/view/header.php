@@ -27,6 +27,6 @@
 <?php
 // put your code here
 ?>
-<div class="container bg-success">
+
 <?php
 

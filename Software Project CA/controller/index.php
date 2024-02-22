@@ -3,6 +3,7 @@ require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
 
+
 $currentLanguage = getLanguage();
 
 $action = filter_input(INPUT_POST, 'action');
@@ -58,7 +59,6 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password');
 
         if(check_isRegistered_user($email, $password) ===true){
-            // user is a member, direct appropriate web page
             header("Location:index.php?action=galleries");
             exit();
         }
@@ -66,19 +66,18 @@ switch ($action) {
             //exit();
         break;
     case 'check_login':
-        // Logic for checking login details
         break;
     case 'forgotpassword':
-        // Logic for handling forgotten password
         break;
     case 'logout':
-        // Logic for logging out user
         break;
     case 'membership':
-        // Logic for membership page
+        $pageTitle = "Membership Page";
+        include "../view/membership.php";
         break;
     case 'shop':
-        // Logic for shop page
+        $pageTitle = "Shop Page";
+        include "../view/shop.php";
         break;
     case 'galleries':
         // Logic for galleries page
@@ -86,6 +85,10 @@ switch ($action) {
         //include "../view/galleries.php";
         //header("Location:index.php?action=galleries");
         include "../view/galleries.php";
+        break;
+    case 'cart':
+        $pageTitle = "Cart Page";
+        include "../view/cart.php";
         break;
     case 'set_language_english':
         // Logic for setting language to English

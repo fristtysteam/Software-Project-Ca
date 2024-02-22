@@ -1,32 +1,21 @@
-<?php
+<link rel="stylesheet" href="../css/footer.css">
 
-/**
-
-APP FOOTER CODES  ***/
-?>
-<!--</main>-->
-<footer >
-    <div class="row fixed-bottom align-items-center bg-dark  text-light mt-5 ">
-        <div class="col-md-7 col-lg-8">
-            <P>&COPY; <?php echo "Copyright  ". date("Y "); ?> by  :   TimesheetApp, Inc.</p>
+<footer class="footer fixed-bottom bg-dark text-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5 class="mb-0">Connect with Us</h5>
+                <p class="text-muted">Stay updated on social media</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-light"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-light"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="text-light"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <p class="mb-0">&COPY; <?php echo date("Y "); ?> TimesheetApp, Inc.</p>
+            </div>
         </div>
     </div>
 </footer>
-<!--</<div>-->
-
-<!-- BOOTSTRAP LINK -->
-<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous">-->
-<!-- LOCAL LINK -->
-
-<!--FONT AWESOME CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--JS CDN -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>-->
-<!--<script src="jquery-min.3.4.1"></script>-->
-</body>
-</html>

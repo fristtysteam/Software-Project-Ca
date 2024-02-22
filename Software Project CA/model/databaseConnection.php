@@ -2,10 +2,11 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$dbname = 'gallery';
+$dbname = 'artgallery';
 
 // Set DSN
 $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
+
 try {
     // Create a PDO instance
     $db = new PDO($dsn, $user, $password);
