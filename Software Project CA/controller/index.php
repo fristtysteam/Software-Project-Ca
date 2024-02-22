@@ -59,13 +59,14 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password');
 
         if(check_isRegistered_user($email, $password) ===true){
-            header("Location:index.php?action=galleries");
+            header("Location:index.php?action=shop");
             exit();
         }
             header("Location:index.php?action=showRegister");
             //exit();
         break;
     case 'check_login':
+
         break;
     case 'forgotpassword':
         break;
