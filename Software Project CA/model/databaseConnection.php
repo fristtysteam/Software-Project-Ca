@@ -2,8 +2,8 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$dbname = 'artgallery';
-
+//$dbname = 'artgallery';
+$dbname = 'gallery';
 // Set DSN
 $dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
 

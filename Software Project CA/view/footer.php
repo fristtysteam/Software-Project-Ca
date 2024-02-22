@@ -14,7 +14,7 @@
                 </ul>
             </div>
             <div class="col-md-6 text-md-right">
-                <p class="mb-0">&COPY; <?php echo date("Y "); ?> TimesheetApp, Inc.</p>
+                <p class="mb-0">&COPY; <?php echo date("Y "); ?> DKIT Art Gallery, Inc.</p>
             </div>
         </div>
     </div>

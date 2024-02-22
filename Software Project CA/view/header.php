@@ -21,7 +21,17 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iQFZK3d6PJKzutOz9w8a/+LXRvM5Ae0iYTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></script>
-
+    <!-- below we are including the jQuery
+         and jQuery plugin .js files -->
+    <script src=
+            "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script src=
+            "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js">
+    </script>
+    <script src=
+            "https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js">
+    </script>
 </head>
 <body>
 <?php

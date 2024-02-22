@@ -9,7 +9,7 @@
 -------------------------------->
 <?php include'../view/header.php' ?>
 <?php include'../view/nav.php' ?>
-
+<?php require_once '../scripts/validateRegistrationData.js' ?>
 
 <!--<div class="container">-->
 <div class="row mt-2 bg-secondary">
@@ -19,7 +19,7 @@
             <p class=" text-muted mt-3">Enter Register details below</p>
         </div>
 
-        <form id="register" method="POST" action="../controller/index.php">
+        <form id="registerForm" method="POST" action="../controller/index.php">
 
             <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
             <?php /*if( isset($_SESSION["error"])){
@@ -42,21 +42,30 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="" name="name" type="text" placeholder="Name">
+                <input class="form-control" id="firstname" name="name" type="text" placeholder="FirstName">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input class="form-control" id="lastname" name="name" type="text" placeholder="LastName">
             </div>
 
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="" name="username" type="text" placeholder="Username">
+                <input class="form-control" id="username" name="username" type="text" placeholder="Username">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                <input class="form-control" id="" name="email" type="text" placeholder="Email Address">
+                <input class="form-control" id="email" name="email" type="text" placeholder="Email Address">
 
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                <input class="form-control" id="password1" name="password" type="password" placeholder="Password">
+                <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password">
 
             </div>
 
