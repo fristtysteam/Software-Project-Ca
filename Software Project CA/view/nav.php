@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
  include "header.php";
  include "../model/language.php";
@@ -53,6 +53,9 @@ session_start();
                 </li>
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
+                </li>
+                    <li class="nav-item navbar-small-links">
+                    <a class="nav-link" href="../controller/index.php?action=login">Logout</a>
                 </li>';
                 }
                 ?>

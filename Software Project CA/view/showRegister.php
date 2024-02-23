@@ -9,7 +9,7 @@
 -------------------------------->
 <?php include'../view/header.php' ?>
 <?php include'../view/nav.php' ?>
-<?php require_once '../scripts/validateRegistrationData.js' ?>
+<?php //require_once '../scripts/validateRegistrationData.js' ?>
 
 <!--<div class="container">-->
 <div class="row mt-2 bg-secondary">
@@ -71,7 +71,7 @@
 
             <div class="input-group mb-3">
 
-                <label for="birthdate"><i class="fa fa-lock">Date of Birth:</i></label>
+                <label for="birthdate"><i class="fa fa-birthday">Date of Birth:</i></label>
                 <input class="form-control" type="date" id="birthdate" name="birthdate" required>
 
                 <div class="input-group mt-5 ">

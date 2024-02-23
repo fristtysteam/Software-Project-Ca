@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login</title>-->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
+<body> -->
 
 <?php include '../view/header.php'; ?>
 <?php include '../view/nav.php'; ?>
 
-<div class="container">
+<!--<div class="container">-->
     <div class="row mt-2 bg-secondary">
         <div class="col-lg-4 m-auto">
             <div class="row row-col-md-auto align-items-center text-center mt-5 mb-5 bg-light rounded">
@@ -52,9 +52,9 @@
             </form>
         </div>
     </div>
-</div>
+<!--</div>-->
 
 <?php include '../view/footer.php'; ?>
 
-</body>
-</html>
+<!--</body>
+</html>-->

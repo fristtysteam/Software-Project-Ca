@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/footer.css">
+<!--<link rel="stylesheet" href="../css/footer.css">-->
 
 <footer class="footer fixed-bottom bg-dark text-light">
     <div class="container">
@@ -19,3 +19,17 @@
         </div>
     </div>
 </footer>
+</div>
+</body>
+<!-- below we are including the jQuery
+         and jQuery plugin .js files -->
+<script src=
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script src=
+        "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js">
+</script>
+<script src=
+        "https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js">
+</script>
+</html>

@@ -2,6 +2,30 @@
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
+// Variables
+$userId = "";
+$usersEmail = "";
+$userType = "";
+$userName = "";
+$loggedinAt = "";
+$loggedOutAt = "";
+
+// need to check if a session is active
+session_start();
+
+if( isset($_SESSION['userId']) != Null) {
+    // ok there is a session active.
+    $userId = $_SESSION['userId'];
+    $usersEmail = $_SESSION['email'];
+    $userType = $_SESSION['userType'];
+    $userName = $_SESSION['userName'];
+    $now = new DateTime();
+    $loggedinAt = date("Y-m-d h:i:s");
+
+    // Session cookies to db
+    saveSessionData($userId,$userName,$userType,$loggedinAt);
+
+}
 
 
 $currentLanguage = getLanguage();
@@ -14,7 +38,8 @@ if ($action == Null) {
         $action = filter_input(INPUT_GET, 'action');
         if ($action == NULL) {
 
-            $action = "show_home";
+            $action = "login";
+            //$action = "show_home";
              //$action = "showRegister";
         }
     }
@@ -71,6 +96,12 @@ switch ($action) {
     case 'forgotpassword':
         break;
     case 'logout':
+        $now = new DateTime();
+        echo $now->format('Y-m-d H:i:s');    // MySQL datetime format
+        echo $now->getTimestamp();
+        Session_unset();
+        Session_destroy();
+        header("Location:index.php?action=login");
         break;
     case 'membership':
         $pageTitle = "Membership Page";
