@@ -111,13 +111,6 @@ function check_newUser($email, $password)
 }
 function check_isRegistered_user($email, $password)
 {
-    /**
-     *
-     * Function to check the user email and password & start session        *
-     * Parameter email, password                                            *
-     *
-     * Return True if ok, False otherwise                                   ***/
-
     global $db;
 
     $query = "SELECT * FROM users WHERE email = :email AND  password = :password";
@@ -132,13 +125,21 @@ function check_isRegistered_user($email, $password)
         header("Location:../View/error.php?msg=" . $ex->getMessage());
         exit();
     }
-// To check/count numbers of rows returned
+
+    // Fetch user details
+    $user = $statement->fetch();
+    $statement->closeCursor();
+
+    // To check/count numbers of rows returned
     $count = $statement->rowCount();
     if ($count != 1) {
         // problem either no user or more than one
         return FALSE;
     }
-    return true;
+
+    // If user exists, return the user details
+    return $user;
+
 // IF USER DETAIL IS VALID
 // START THE SESSION !!
    /* session_start();
@@ -152,4 +153,5 @@ function check_isRegistered_user($email, $password)
 
     return $user['userType'];*/
 }
+?>
 

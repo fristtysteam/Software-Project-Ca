@@ -79,16 +79,16 @@ switch ($action) {
         include "../view/login.php";
         break;
     case 'do_login':
-        // Logic for logging in user
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
 
-        if(check_isRegistered_user($email, $password) ===true){
+        $userDetails = check_isRegistered_user($email, $password);
+        if($userDetails !== FALSE) {
+            // Set the username in the session
+            $_SESSION['username'] = $userDetails->username; // Accessing property as an object
             header("Location:index.php?action=shop");
             exit();
         }
-            header("Location:index.php?action=showRegister");
-            //exit();
         break;
     case 'check_login':
 

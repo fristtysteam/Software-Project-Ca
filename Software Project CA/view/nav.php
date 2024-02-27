@@ -1,5 +1,6 @@
 <?php
 //session_start();
+require_once '../model/databaseConnection.php';
 
  include "header.php";
  include "../model/language.php";
@@ -40,23 +41,24 @@
                     <a class="nav-link" href="../controller/index.php?action=set_language_irish">Irish</a>
                 </li>
                 <?php
-
                 // Check if the user is logged in
-                if(isset($_SESSION['userid'])) {
-                $username = $_SESSION['username'];
-                echo '<li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="#">Welcome, '.$username.'</a>
-                </li>';
+                if(isset($_SESSION['username'])) {
+                    $username = $_SESSION['username'];
+                    echo '<li class="nav-item navbar-small-links">
+        <a class="nav-link" href="#">Welcome, '.$username.'</a>
+    </li>';
+                    // Display the logout link
+                    echo '<li class="nav-item navbar-small-links">
+        <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+    </li>';
                 } else {
-                echo '<li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=login">Login</a>
-                </li>
-                <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
-                </li>
-                    <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=login">Logout</a>
-                </li>';
+                    // If not logged in, display login and register links
+                    echo '<li class="nav-item navbar-small-links">
+        <a class="nav-link" href="../controller/index.php?action=login">Login</a>
+    </li>
+    <li class="nav-item navbar-small-links">
+        <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
+    </li>';
                 }
                 ?>
                 <li class="nav-item">
