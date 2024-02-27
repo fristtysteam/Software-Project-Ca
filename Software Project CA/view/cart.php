@@ -7,7 +7,6 @@ include'../view/header.php';
 $currentLanguage = getLanguage();
 ?>
 <?php
-session_start();
 
 function getCartItems() {
 

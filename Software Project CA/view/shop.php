@@ -48,7 +48,7 @@ $currentLanguage = getLanguage();
                                 <p class="card-text"><?php echo $artwork['desc']; ?></p>
                                 <p class="card-text"><?php echo $artwork['artist']; ?></p>
                                 <p class="card-text"><?php echo $artwork['countryOfOrigin']; ?></p>
-                                <a href="../model/doCart.php" class="btn btn-primary">Add to Cart</a>
+                                <a href="../model/doCart.php?product_id=<?php echo $artwork['product_id']; ?>" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     <?php
