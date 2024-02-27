@@ -84,8 +84,7 @@ switch ($action) {
 
         $userDetails = check_isRegistered_user($email, $password);
         if($userDetails !== FALSE) {
-            // Set the username in the session
-            $_SESSION['username'] = $userDetails->username; // Accessing property as an object
+            $_SESSION['username'] = $userDetails->username;
             header("Location:index.php?action=shop");
             exit();
         }

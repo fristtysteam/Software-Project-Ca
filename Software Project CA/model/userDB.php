@@ -121,23 +121,18 @@ function check_isRegistered_user($email, $password)
     try {
         $statement->execute();
     } catch (Exception $ex) {
-        // redirect to an error page passing the error message
         header("Location:../View/error.php?msg=" . $ex->getMessage());
         exit();
     }
 
-    // Fetch user details
     $user = $statement->fetch();
     $statement->closeCursor();
 
-    // To check/count numbers of rows returned
     $count = $statement->rowCount();
     if ($count != 1) {
-        // problem either no user or more than one
         return FALSE;
     }
 
-    // If user exists, return the user details
     return $user;
 
 // IF USER DETAIL IS VALID
