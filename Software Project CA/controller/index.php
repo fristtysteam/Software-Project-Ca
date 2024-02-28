@@ -19,12 +19,17 @@ if( isset($_SESSION['userId']) != Null) {
     $usersEmail = $_SESSION['email'];
     $userType = $_SESSION['userType'];
     $userName = $_SESSION['userName'];
-    $now = new DateTime();
+    $nowDate = new DateTime();
     $loggedinAt = date("Y-m-d h:i:s");
-
+//echo $userName + $nowDate ;
     // Session cookies to db
     saveSessionData($userId,$userName,$userType,$loggedinAt);
 
+}else {
+    $userId = "";
+    $usersEmail = "";
+    $userName = "";
+    $userType = 0;
 }
 
 
@@ -51,21 +56,42 @@ switch ($action) {
         include "../view/showRegister.php";
         break;
 
+        //  CHECK NEW MEMBER ENTER REQUIRED DETAILS BEFORE SUBMIT
+    case 'check_signupData';
+        $pageTitle = "Signup Page";
+        $newUser =
+            //include '../view/show_signup.php';
+            include '../view/showRegister.php';
+        break;
+
     case 'register':
-        $username = filter_input(INPUT_POST, 'username');
-        $name = filter_input(INPUT_POST, 'name');
+        //$username = filter_input(INPUT_POST, 'username');
+        //$name = filter_input(INPUT_POST, 'name');
+        $fName = filter_input(INPUT_POST, 'fname');
+        $sName = filter_input(INPUT_POST, 'sname');
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
-        if (add_user($name,$username,$email, $password) == true){
-            //header("Location:?action=login.php");
-            header("Location:index.php?action=login");
-            exit();
+        $password2 = filter_input(INPUT_POST, 'confirm_password');
+        $dob = filter_input(INPUT_POST,'birthdate');
+        //Validate Registration data
+
+        //$error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
+        $error = pre_registration_check( $fName, $sName, $email, $password,$password2);
+        if($error < 1){
+            if (add_user($fName, $sName, $email, $password,$dob) == true){
+            //if (add_user($username,$email, $password) == true){
+                //header("Location:?action=login.php");
+                header("Location:index.php?action=login");
+                exit();
+            }else {
+                //header("Location:?action=showRegister.php");
+                header("Location:index.php?action=showRegister");
+                exit();
+                //User name equals FirstName and LastName
+                //$username = ($fName . " " . $sName) ;
+                //printf($username);
+            }
         }
-        //header("Location:?action=showRegister.php");
-        header("Location:index.php?action=showRegister");
-        exit();
-
-
         break;
     case 'check_register':
         // Logic for checking registration details
@@ -85,6 +111,8 @@ switch ($action) {
         $userDetails = check_isRegistered_user($email, $password);
         if($userDetails !== FALSE) {
             $_SESSION['username'] = $userDetails->username;
+
+            //print_r($userDetails);
             header("Location:index.php?action=shop");
             exit();
         }

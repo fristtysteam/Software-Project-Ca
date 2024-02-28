@@ -10,6 +10,7 @@
 <?php include'../view/header.php' ?>
 <?php include'../view/nav.php' ?>
 <?php //require_once '../scripts/validateRegistrationData.js' ?>
+<script src="../scripts/validateSignup.js"></script>
 
 <!--<div class="container">-->
 <div class="row mt-2 bg-secondary">
@@ -19,8 +20,12 @@
             <p class=" text-muted mt-3">Enter Register details below</p>
         </div>
 
+       <!-- <form id="registerForm"
+              name="sign_up_form"
+              method="POST"
+              action="../controller/index.php"
+              onsubmit="return validateSignUp()">-->
         <form id="registerForm" method="POST" action="../controller/index.php">
-
             <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
             <?php /*if( isset($_SESSION["error"])){
              echo '<div class=" lead text-center text-danger py-1">'.$_SESSION["error"].'</div>';
@@ -28,7 +33,7 @@
            }*/?>
 
             <input type="hidden" value="register" name="action">
-
+            <input type="hidden" value="check_registrationData"  id="checkdata" name="action">
             <!-- <div class="input-group mb-3">
                  <span class="input-group-text"><i class="fa fa-user"></i></span>
                  <input class="form-control" id="" name="fname" type="text" placeholder="First Name">
@@ -42,11 +47,11 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="firstname" name="name" type="text" placeholder="FirstName">
+                <input class="form-control" id="firstname" name="fname" type="text" placeholder="FirstName">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="lastname" name="name" type="text" placeholder="LastName">
+                <input class="form-control" id="lastname" name="sname" type="text" placeholder="LastName">
             </div>
 
             <div class="input-group mb-3">
@@ -93,12 +98,13 @@
                     >
                         Forgot Password
                     </button>
+                </div>
         </form>
+
     </div>
 
 
-
-
+    </div>
 
 </div>
 

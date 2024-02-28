@@ -4,23 +4,46 @@
  * Created on 7/12/2021
  * Author: Julie Olamijuwon
  */
+$error = 0;
+$error_message = "";
+//function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
+function pre_registration_check( $fName, $sName, $email, $password,$password2)
+{
+    //if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) || empty($dob))
+    if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) )
+    {
 
-function add_user( $username,$name, $email, $password)
+        $error = 1;
+        echo "Please ensure enter all detail ";
+        return $error;
+    }
+    if ($password !== $password2){
+        echo "Password Must be the same";
+        $error = 1;
+        return $error;
+    }
+
+}
+function add_user( $fName, $sName, $email, $password, $dob)
+//function add_user( $username, $email, $password)
 {
     // Check if name is empty, and set a default value if it is
     if (empty($name)) {
-        $name = 'Unknown';
+        $err = 'Unknown';
     }
-
+    //$username = ($fName . " " . $sName) ;
     global $db;
+$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
+   //$query = "INSERT INTO users( username, name, email, password, DOB) VALUES ( :username, :name, :email, :password, :birthday)";
+    //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
 
-    $query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
     $statement = $db->prepare($query);
 
-    $statement->bindValue(":username", $username);
-    $statement->bindValue(":name", $name);
+    $statement->bindValue(":username", $fName);
+    $statement->bindValue(":name", $sName);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
+    //$statement->bindValue(":birthday",$dob);
 
     try {
         $statement->execute();
@@ -148,5 +171,46 @@ function check_isRegistered_user($email, $password)
 
     return $user['userType'];*/
 }
-?>
+function pre_login_check($email, $password)
+{
+    /************************************************************************
+     * Function to check the user email and password before login & start session        *
+     * Parameter email, password                                            *
+     * Return True if ok, False otherwise                                   *
+     ************************************************************************/
+
+    global $db;
+
+    $query = "SELECT * FROM users WHERE email = :email AND " . " password = :password";
+    $statement = $db->prepare($query);
+    $statement->bindValue(":email", $email);
+    $statement->bindValue(":password", $password);
+
+    try {
+        $statement->execute();
+    } catch (Exception $ex) {
+        // redirect to an error page passing the error message
+        header("Location:../View/error.php?msg=" . $ex->getMessage());
+        exit();
+    }
+// To check/count numbers of rows returned
+    $count = $statement->rowCount();
+    if ($count != 1) {
+        // problem either no user or more than one
+        return FALSE;
+    }
+// IF USER DETAIL IS VALID
+// START THE SESSION !!
+    session_start();
+
+    $user = $statement->fetch();
+    $statement->closeCursor();
+
+//Save session variables
+    $_SESSION['userId'] = $user['id'];
+    $_SESSION['userType'] = $user['userType'];
+
+    return $user['userType'];
+}
+
 
