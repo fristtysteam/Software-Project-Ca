@@ -1,10 +1,4 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f2f2f2; /* Light gray background color */
-}
+
 
 .hero {
     background-color: #00549f; /* DKIT blue color */
@@ -80,4 +74,13 @@ body {
 
 .newsletter-submit:hover {
     background-color: #003366; /* Darker blue on hover */
+}
+.image {
+
+    display: block;
+    max-width: 50%;
+    margin: 0 auto;
+    max-height: 50%;
+
+
 }

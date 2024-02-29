@@ -34,7 +34,7 @@ function add_user( $fName, $sName, $email, $password, $dob)
     //$username = ($fName . " " . $sName) ;
     global $db;
 //$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
-   $query = "INSERT INTO users( username, name, email, password, 'D.O.B') VALUES ( :username, :name, :email, :password, :birthday)";
+   $query = "INSERT INTO users( username, name, email, password, 'DateOfBirth') VALUES ( :username, :name, :email, :password, :birthday)";
     //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
 
     $statement = $db->prepare($query);
