@@ -2,7 +2,6 @@
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 include "../view/nav.php";
-include "../css/homeStyles.css";
 include'../view/header.php';
 $currentLanguage = getLanguage();
 

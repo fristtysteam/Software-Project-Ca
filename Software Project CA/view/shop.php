@@ -5,7 +5,6 @@ require_once '../model/language.php';
 require_once '../model/getArt.php';
 
 include "../view/nav.php";
-include "../styles/homeStyles.php";
 include '../view/header.php';
 $currentLanguage = getLanguage();
 ?>
