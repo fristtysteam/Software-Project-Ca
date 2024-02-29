@@ -6,35 +6,38 @@
  */
 $error = 0;
 $error_message = "";
-//function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
-function pre_registration_check( $fName, $sName, $email, $password,$password2)
+function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
+//function pre_registration_check( $fName, $sName, $email, $password,$password2)
 {
-    //if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) || empty($dob))
-    if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) )
+    if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) || empty($dob))
+    //if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) )
     {
-
-        $error = 1;
+        /*
+         * $error = 1;
         echo "Please ensure enter all detail ";
         return $error;
+        */
+        $error_message = "Please ensure enter all detail ";
     }
     if ($password !== $password2){
-        echo "Password Must be the same";
+        /*echo "Password Must be the same";
         $error = 1;
-        return $error;
+        return $error; */
+        $error_message =  "Password Must be the same";
     }
-
+    return $error_message ;
 }
 function add_user( $fName, $sName, $email, $password, $dob)
 //function add_user( $username, $email, $password)
 {
     // Check if name is empty, and set a default value if it is
-    if (empty($name)) {
+    /*if (empty($name)) {
         $err = 'Unknown';
-    }
+    }*/
     //$username = ($fName . " " . $sName) ;
     global $db;
-$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
-   //$query = "INSERT INTO users( username, name, email, password, DOB) VALUES ( :username, :name, :email, :password, :birthday)";
+//$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
+   $query = "INSERT INTO users( username, name, email, password,'D.O.B') VALUES ( :username, :name, :email, :password, :birthday)";
     //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
 
     $statement = $db->prepare($query);
@@ -43,7 +46,7 @@ $query = "INSERT INTO users( username, name, email, password) VALUES ( :username
     $statement->bindValue(":name", $sName);
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
-    //$statement->bindValue(":birthday",$dob);
+    $statement->bindValue(":birthday",$dob);
 
     try {
         $statement->execute();

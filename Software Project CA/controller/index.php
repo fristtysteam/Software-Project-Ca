@@ -3,11 +3,12 @@ require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
 // Variables
+$error = "";
 $userId = "";
 $usersEmail = "";
 $userType = "";
 $userName = "";
-$loggedinAt = "";
+$loggedInAt = "";
 $loggedOutAt = "";
 
 // need to check if a session is active
@@ -19,11 +20,11 @@ if( isset($_SESSION['userId']) != Null) {
     $usersEmail = $_SESSION['email'];
     $userType = $_SESSION['userType'];
     $userName = $_SESSION['userName'];
-    $nowDate = new DateTime();
-    $loggedinAt = date("Y-m-d h:i:s");
-//echo $userName + $nowDate ;
+    $loggedInAt = date("Y-m-d h:i:s");
+//echo $userName ."" , $loggedInAt ;
+    //printf($userName ."" , $loggedInAt );
     // Session cookies to db
-    saveSessionData($userId,$userName,$userType,$loggedinAt);
+    //saveSessionData($userId,$userName,$userType,$loggedInAt);
 
 }else {
     $userId = "";
@@ -75,9 +76,10 @@ switch ($action) {
         $dob = filter_input(INPUT_POST,'birthdate');
         //Validate Registration data
 
-        //$error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
-        $error = pre_registration_check( $fName, $sName, $email, $password,$password2);
-        if($error < 1){
+        $error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
+        //$error = pre_registration_check( $fName, $sName, $email, $password,$password2);
+        //if($error < 1){
+        if($error === null){
             if (add_user($fName, $sName, $email, $password,$dob) == true){
             //if (add_user($username,$email, $password) == true){
                 //header("Location:?action=login.php");
@@ -110,11 +112,18 @@ switch ($action) {
 
         $userDetails = check_isRegistered_user($email, $password);
         if($userDetails !== FALSE) {
-            $_SESSION['username'] = $userDetails->username;
+            $_SESSION['userType'] = $userType->userType;
+            if( $userType === "admin"){
+                include "../view/admin.php";
+                //header("Location:index.php?action=shop");
+                exit();
+            }else {
+                //$_SESSION['username'] = $userDetails->username;
 
-            //print_r($userDetails);
-            header("Location:index.php?action=shop");
-            exit();
+                //print_r($userDetails);
+                header("Location:index.php?action=shop");
+                exit();
+            }
         }
         break;
     case 'check_login':
