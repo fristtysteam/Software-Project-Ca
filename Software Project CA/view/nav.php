@@ -45,13 +45,17 @@ require_once '../model/databaseConnection.php';
                 if(isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
                     echo '<li class="nav-item navbar-small-links">
-        <a class="nav-link" href="#">Welcome, '.$username.'</a>
-    </li>';
+                                <a class="nav-link" href="#">Welcome, ' . $username . '</a>
+                          </li>';
+                    // Display the logout link
+                    /*echo '<li class="nav-item navbar-small-links">
+                                <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+                          </li>';*/
+                } else {
                     // Display the logout link
                     echo '<li class="nav-item navbar-small-links">
-        <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
-    </li>';
-                } else {
+                                <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+                          </li>';
                     // If not logged in, display login and register links
                     echo '<li class="nav-item navbar-small-links">
         <a class="nav-link" href="../controller/index.php?action=login">Login</a>

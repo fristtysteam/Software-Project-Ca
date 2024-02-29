@@ -76,11 +76,12 @@ switch ($action) {
         $dob = filter_input(INPUT_POST,'birthdate');
         //Validate Registration data
 
-        $error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
-        //$error = pre_registration_check( $fName, $sName, $email, $password,$password2);
+       // $error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
+        $error = pre_registration_check( $fName, $sName, $email, $password,$password2);
         //if($error < 1){
         if($error === null){
-            if (add_user($fName, $sName, $email, $password,$dob) == true){
+            if (add_user($fName, $sName, $email, $password) == true){
+            //if (add_user($fName, $sName, $email, $password,$dob) == true){
             //if (add_user($username,$email, $password) == true){
                 //header("Location:?action=login.php");
                 header("Location:index.php?action=login");

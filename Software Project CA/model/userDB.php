@@ -24,8 +24,9 @@ function pre_registration_check( $fName, $sName, $email, $password,$password2)
     }
 
 }
-function add_user( $fName, $sName, $email, $password, $dob)
+//function add_user( $fName, $sName, $email, $password, $dob)
 //function add_user( $username, $email, $password)
+function add_user( $fName, $sName, $email, $password)
 {
     // Check if name is empty, and set a default value if it is
     if (empty($name)) {
