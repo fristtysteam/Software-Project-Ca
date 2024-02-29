@@ -5,8 +5,7 @@ include "../view/nav.php";
 include "../styles/homeStyles.php";
 include'../view/header.php';
 $currentLanguage = getLanguage();
-?>
-<?php
+
 
 function getCartItems() {
 
