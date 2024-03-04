@@ -24,34 +24,33 @@ function pre_registration_check( $fName, $sName, $email, $password,$password2)
     }
 
 }
-function add_user( $fName, $sName, $email, $password, $dob)
-//function add_user( $username, $email, $password)
+function add_user($fName, $sName, $email, $password, $dob)
 {
-    // Check if name is empty, and set a default value if it is
-    if (empty($name)) {
-        $err = 'Unknown';
-    }
-    //$username = ($fName . " " . $sName) ;
     global $db;
-//$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
-   $query = "INSERT INTO users( username, name, email, password, 'DateOfBirth') VALUES ( :username, :name, :email, :password, :birthday)";
-    //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
 
+    // Concatenate first name and last name to form the username
+    $username = $fName . ' ' . $sName;
+
+    // Hash the password before storing it in the database
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (username, name, email, password, DateOfBirth) VALUES (:username, :name, :email, :password, :birthday)";
     $statement = $db->prepare($query);
 
-    $statement->bindValue(":username", $fName);
-    $statement->bindValue(":name", $sName);
+    $statement->bindValue(":username", $username);
+    $statement->bindValue(":name", $sName); // Assuming `name` should be the last name
     $statement->bindValue(":email", $email);
-    $statement->bindValue(":password", $password);
-    //$statement->bindValue(":birthday",$dob);
+    $statement->bindValue(":password", $hashedPassword);
+    $statement->bindValue(":birthday", $dob);
 
     try {
         $statement->execute();
     } catch (Exception $ex) {
         // Redirect to an error page passing the error message
-        header("Location:../View/error.php?msg=" . $ex->getMessage());
+        header("Location: ../View/error.php?msg=" . $ex->getMessage());
         exit();
     }
+
     $statement->closeCursor();
     return true;
 }
