@@ -80,9 +80,10 @@ switch ($action) {
         $error = pre_registration_check( $fName, $sName, $email, $password,$password2);
         //if($error < 1){
         if($error === null){
+            $username = $fName." ".$sName;
             if (add_user($fName, $sName, $email, $password) == true){
             //if (add_user($fName, $sName, $email, $password,$dob) == true){
-            //if (add_user($username,$email, $password) == true){
+            //if (add_user($username,$email, $password, dob$) == true){
                 //header("Location:?action=login.php");
                 header("Location:index.php?action=login");
                 exit();
@@ -159,6 +160,8 @@ switch ($action) {
         $pageTitle = "Cart Page";
         include "../view/cart.php";
         break;
+    /*case 'add_item_toCart':
+        break;*/
     case 'set_language_english':
         // Logic for setting language to English
         break;
