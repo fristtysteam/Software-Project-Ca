@@ -24,9 +24,8 @@ function pre_registration_check( $fName, $sName, $email, $password,$password2)
     }
 
 }
-//function add_user( $fName, $sName, $email, $password, $dob)
+function add_user( $fName, $sName, $email, $password, $dob)
 //function add_user( $username, $email, $password)
-function add_user( $fName, $sName, $email, $password)
 {
     // Check if name is empty, and set a default value if it is
     if (empty($name)) {
@@ -34,8 +33,8 @@ function add_user( $fName, $sName, $email, $password)
     }
     //$username = ($fName . " " . $sName) ;
     global $db;
-$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
-   //$query = "INSERT INTO users( username, name, email, password, DOB) VALUES ( :username, :name, :email, :password, :birthday)";
+//$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
+   $query = "INSERT INTO users( username, name, email, password, 'DateOfBirth') VALUES ( :username, :name, :email, :password, :birthday)";
     //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
 
     $statement = $db->prepare($query);

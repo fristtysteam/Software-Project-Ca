@@ -152,7 +152,7 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `D.O.B` date NOT NULL,
+  `DateOfBirth` date NOT NULL,
   `userType` enum('admin','basic','artist','premium','guest') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -160,7 +160,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `D.O.B`, `userType`) VALUES
+INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth`, `userType`) VALUES
                                                                                              (1, 'Marco ', 'sa', 'sa@gmail', 'sa', '0000-00-00', 'admin'),
                                                                                              (3, 'Marco2', 'sasa', 'sasa', '', '0000-00-00', 'admin'),
                                                                                              (5, 'Duck', 'gooseduck1', 'goose@Duck.com', '20000', '0000-00-00', 'admin');
