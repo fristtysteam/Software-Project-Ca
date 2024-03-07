@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 08:36 PM
+-- Generation Time: Mar 07, 2024 at 09:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -74,10 +74,18 @@ CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `venue` varchar(500) NOT NULL,
-  `size` int(200) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `title`, `venue`, `start_date`, `end_date`) VALUES
+(1, 'Event 1', 'Venue 1', '2024-03-05', '2024-03-05'),
+(2, 'Event 2', 'Venue 2', '2024-03-15', '2024-03-16'),
+(3, 'Event 3', 'Venue 3', '2024-03-25', '2024-03-27');
 
 -- --------------------------------------------------------
 
