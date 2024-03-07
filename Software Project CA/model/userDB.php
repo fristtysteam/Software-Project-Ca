@@ -33,7 +33,9 @@ function add_user( $fName, $sName, $email, $password, $dob)
     }
     //$username = ($fName . " " . $sName) ;
     global $db;
-$query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
   // $query = "INSERT INTO users( username, name, email, password, 'DateOfBirth') VALUES ( :username, :name, :email, :password, :birthday)";
     //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
 
@@ -136,8 +138,9 @@ function check_isRegistered_user($email, $password)
 {
     global $db;
 
-    $query = "SELECT * FROM users WHERE email = :email AND  password = :password";
+    $query = "SELECT * FROM users WHERE email = :email AND password = :password";
     $statement = $db->prepare($query);
+
     $statement->bindValue(":email", $email);
     $statement->bindValue(":password", $password);
 
@@ -157,20 +160,23 @@ function check_isRegistered_user($email, $password)
     }
 
     return $user;
-
-// IF USER DETAIL IS VALID
-// START THE SESSION !!
-   /* session_start();
-
-    $user = $statement->fetch();
-    $statement->closeCursor();
-
-//Save session variables
-    $_SESSION['userId'] = $user['id'];
-    $_SESSION['userType'] = $user['userType'];
-
-    return $user['userType'];*/
 }
+
+//function check_isRegistered_user($email, $password)
+//{
+ //   global $db;
+
+   // $query = "SELECT * FROM users WHERE email = :email";
+   // $statement = $db->prepare($query);
+   // $statement->execute(array(':email' => $email));
+   // $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+   // if ($user && password_verify($password, $user['password'])) {
+   //     return $user;
+   // } else {
+      //  return false;
+
+
 function pre_login_check($email, $password)
 {
     /************************************************************************

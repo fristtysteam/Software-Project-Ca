@@ -81,8 +81,8 @@ switch ($action) {
         //if($error < 1){
         if($error === null){
             $username = $fName." ".$sName;
-            if (add_user($fName, $sName, $email, $password) == true){
-            //if (add_user($fName, $sName, $email, $password,$dob) == true){
+          //  if (add_user($fName, $sName, $email, $password) == true){
+            if (add_user($fName, $sName, $email, $password,$dob) == true){
             //if (add_user($username,$email, $password, dob$) == true){
                 //header("Location:?action=login.php");
                 header("Location:index.php?action=login");
@@ -109,8 +109,11 @@ switch ($action) {
         include "../view/login.php";
         break;
     case 'do_login':
+
         $email = filter_input(INPUT_POST, 'email');
+
         $password = filter_input(INPUT_POST, 'password');
+
 
         $userDetails = check_isRegistered_user($email, $password);
         //print_r($userDetails);
