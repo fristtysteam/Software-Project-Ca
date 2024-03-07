@@ -174,6 +174,10 @@ switch ($action) {
         //header("Location:index.php?action=galleries");
         include "../view/galleries.php";
         break;
+    case 'events':
+        $pageTitle = "Event Page";
+        include "../view/event.php";
+        break;
     case 'cart':
         $pageTitle = "Cart Page";
         include "../view/cart.php";
