@@ -149,6 +149,7 @@ function check_isRegistered_user($email, $password)
     }
 
     $user = $statement->fetch();
+
     $statement->closeCursor();
 
     $count = $statement->rowCount();

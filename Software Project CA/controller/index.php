@@ -47,6 +47,7 @@ if ($action == Null) {
             $action = "login";
             //$action = "show_home";
              //$action = "showRegister";
+            //$action ="cart";
         }
     }
 }
@@ -115,12 +116,13 @@ switch ($action) {
         $userDetails = check_isRegistered_user($email, $password);
         //print_r($userDetails);
 
-       /*$_SESSION['username'] = $userDetails->username;
+       /*$pw2 = $_SESSION['passwod'] = $userDetails->password;
         echo $_SESSION['username'];*/
         //if($userDetails !== FALSE) {
         if($userDetails !== null) {
             $user = $_SESSION['username'] = $userDetails->username;
             $userType = $_SESSION['userType'] = $userDetails->userType;
+            //$pw2 = $_SESSION['passwod'] = $userDetails->password;
             if( $userType === "admin") {
                 //include "../view/admin.php";
                 //header("Location:index.php?action=shop");
@@ -129,13 +131,16 @@ switch ($action) {
             }elseif ($userType === "artist"){
                 header("Location:index.php?action=artist_action");
                 exit();
-            }else {
+            }else if(( $userType === "basic") || ( $userType === "premium")|| ( $userType === "guest") ) {
                 //$_SESSION['username'] = $userDetails->username;
                 //print_r($userDetails);
-              //global  $user = $_SESSION['userName'] ;
+                //global  $user = $_SESSION['userName'] ;
                 //echo  $_SESSION['userName'] ;
                 header("Location:index.php?action=shop");
+                //header("Location:index.php?action=cart");
                 exit();
+            }else{
+                header("Location:index.php?action=login");
             }
         }
         break;
