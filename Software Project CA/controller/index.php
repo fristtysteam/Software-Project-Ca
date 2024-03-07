@@ -113,16 +113,27 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password');
 
         $userDetails = check_isRegistered_user($email, $password);
-        if($userDetails !== FALSE) {
-            $_SESSION['userType'] = $userType->userType;
-            if( $userType === "admin"){
-                include "../view/admin.php";
+        //print_r($userDetails);
+
+       /*$_SESSION['username'] = $userDetails->username;
+        echo $_SESSION['username'];*/
+        //if($userDetails !== FALSE) {
+        if($userDetails !== null) {
+            $user = $_SESSION['username'] = $userDetails->username;
+            $userType = $_SESSION['userType'] = $userDetails->userType;
+            if( $userType === "admin") {
+                //include "../view/admin.php";
                 //header("Location:index.php?action=shop");
+                header("Location:index.php?action=show_admin");
+                exit();
+            }elseif ($userType === "artist"){
+                header("Location:index.php?action=artist_action");
                 exit();
             }else {
                 //$_SESSION['username'] = $userDetails->username;
-
                 //print_r($userDetails);
+              //global  $user = $_SESSION['userName'] ;
+                //echo  $_SESSION['userName'] ;
                 header("Location:index.php?action=shop");
                 exit();
             }
@@ -140,6 +151,14 @@ switch ($action) {
         Session_unset();
         Session_destroy();
         header("Location:index.php?action=login");
+        break;
+    case 'show_admin':
+        $pageTitle = "Admin Actions Page";
+        include "../view/admin.php";
+        break;
+    case 'artist_action':
+        $pageTitle = "Artist Actions Page";
+        include "../view/artistActions.php";
         break;
     case 'membership':
         $pageTitle = "Membership Page";

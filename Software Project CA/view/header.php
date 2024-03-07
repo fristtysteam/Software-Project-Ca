@@ -1,4 +1,4 @@
-<
+<?php //session_start(); ?>
 
 <!DOCTYPE html>
 <!--
@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movies - <?php //echo $pageName; ?> - Page</title>
+    <title>Art Gallery - <?php //echo $pageName; ?> - Page</title>
     <link href="nav.php" rel="stylesheet" type="text/css" />
 
     <link href="../css/nav.css" rel="stylesheet" type="text/css" />

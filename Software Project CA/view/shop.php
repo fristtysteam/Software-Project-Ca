@@ -18,9 +18,14 @@ $currentLanguage = getLanguage();
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Welcome to Our Shop</h1>
-
-    <div class="row mb-5">
+   <!-- <h1 class="text-center mb-4">Welcome to Our Shop</h1>-->
+    <?php /*if( isset($_SESSION["username"])){
+             echo '<div class=" lead text-center text-danger py-1">'.$_SESSION["username"].'</div>';
+        */
+        echo '<div class=" lead text-center text-danger py-1 fs-3">'.$_SESSION["username"].'<h1 class="text-center mb-4">Welcome to Our Shop</h1>'.'</div>'
+    //echo '<div class=" lead text-center text-danger py-1">'.$user.'</div>'
+           ?>
+    <div class="row mb-5 g-2">
         <div class="col-md-4">
             <h2>Categories</h2>
             <ul class="list-group">
@@ -32,7 +37,7 @@ $currentLanguage = getLanguage();
             </ul>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-8 g-lg-3">
 
                 <?php
                 $artworks = getArtworks();
@@ -58,8 +63,8 @@ $currentLanguage = getLanguage();
         </div>
 
 
-    <div class="row mb-5">
-        <div class="col-md-4">
+    <div class="row mb-5 ">
+        <div class="col-md-4 g-2">
             <h2>Not what you are looking for?</h2>
             <ul class="list-group">
                 <li class="list-group-item">Paintings</li>

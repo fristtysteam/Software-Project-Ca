@@ -201,16 +201,146 @@ function pre_login_check($email, $password)
     }
 // IF USER DETAIL IS VALID
 // START THE SESSION !!
-    session_start();
+    //session_start();
 
     $user = $statement->fetch();
     $statement->closeCursor();
 
 //Save session variables
-    $_SESSION['userId'] = $user['id'];
+    /*$_SESSION['userId'] = $user['id'];
     $_SESSION['userType'] = $user['userType'];
 
-    return $user['userType'];
+    return $user['userType'];*/
+    return $user;
 }
+function getAllUsers() {
 
+    /*********************************************************************
+     * Function to get all users from DB                                 *
+     * Parameters: None                                                  *
+     * Returns: Query Results array of records of all users              *
+     *                                                                   *
+     *********************************************************************/
+
+    global $db;
+
+    $query = "SELECT * FROM users ORDER BY id";
+    $statement = $db->prepare($query);
+
+    try{
+        $statement->execute();
+    }catch(PDOException $ex){
+        // Redirect to an Error page passing the error message
+        header("Location:../view/error.php?msg=" . $ex->getMessage());
+    }
+    $users = $statement->fetchAll();
+    $statement->closeCursor();
+    return $users;
+}
+function getUserByType($usertype) {
+
+    /******************************************************************************
+     * Function to get all users of same Type from DB                             *
+     * Parameters: userType                                                       *
+     * Returns: Query Results array of records of all user of the indicated type  *
+     *                                                                            *
+     ******************************************************************************/
+
+    global $db;
+
+    $query = "SELECT * FROM users WHERE userType = :userType";
+    $statement =$db->prepare($query);
+    $statement->bindValue(":userType", $usertype);
+    try{
+        $statement->execute();
+    }catch(PDOException $ex){
+        // Redirect to an Error page passing the error message
+        header("Location:../view/error.php?msg=" . $ex->getMessage());
+    }
+    $users = $statement->fetchAll();
+    $statement->closeCursor();
+    return $users;
+}
+function getUserById($id) {
+
+    /******************************************************************************
+     * Function to get a user from DB                                             *
+     * Parameters: user Id                                                        *
+     * Returns: Query Results a record of a single user                           *
+     *                                                                            *
+     ******************************************************************************/
+
+    global $db;
+
+    $query = "SELECT * FROM users WHERE id = :id";
+    $statement =$db->prepare($query);
+    $statement->bindValue(":id", $id);
+    try{
+        $statement->execute();
+    }catch(PDOException $ex){
+        // Redirect to an Error page passing the error message
+        header("Location:../view/error.php?msg=" . $ex->getMessage());
+    }
+    $user = $statement->fetch();
+    $statement->closeCursor();
+    return $user;
+}
+function update_userDetail($fName,$sName,$email,$password, $usertype)
+{
+    /****************************************************
+     *Function to update a user's detail (The default is general user)
+     * Parameters email, password
+     * Returns true or false
+     ****************************************************/
+
+    global $db;
+
+    $query =  "UPDATE users SET useranme = '$fName', name = '$sName', email = '$email', password = '$password',  userType = '$usertype',WHERE email = '$email'";
+    print($query);
+//$query = "INSERT INTO employees(firstname,surname,email, password) VALUES (:firstname,:surname,:email, :password)";
+    // $query = "INSERT INTO employees(firstName, surName, email, password, jobTitle, deptName, userType,status) VALUES (:firstname,:surname,:email, :password, :jobtitle,:dept,:usertype,:status )";
+    $statement = $db->prepare($query);
+    /*$statement->bindValue(":firstname", $fName);
+    $statement->bindValue(":surname", $sName);
+    $statement->bindValue(":email", $email);
+    $statement->bindValue(":password", $password);
+    $statement->bindValue(":jobtitle", $jobTitle);
+    $statement->bindValue(":dept", $dept);
+    $statement->bindValue(":usertype", $usertype);    $info = $result->fetch_array();
+    $statement->bindValue(":status", $status);*/
+    try{
+        $statement->execute();
+    } catch (Exception $ex) {
+
+        // redirect to an error page passing the error message
+        //$categories = get_categories();
+        header("Location:../View/error.php?msg=" .$ex->getMessage());
+        exit();
+    }
+    $statement->closeCursor();
+    return true;
+}
+function deleteEmployee($userId)
+{
+    /*******************************************************************
+     * Function to delete an user from DB                    *
+     * Parameters: the user id                                 *
+     * Returns: none                                                   *
+     *******************************************************************/
+
+    global $db;
+    $query = "DELETE FROM users WHERE id= :id";
+
+    $statement = $db->prepare($query);
+    $statement->bindValue(":id", $userId);
+    try {
+        $statement->execute();
+    } catch (PDOException $ex) {
+        echo $ex->getMessage();
+    }
+
+
+    $statement->closeCursor();
+
+}
 
