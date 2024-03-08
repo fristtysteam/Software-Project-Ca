@@ -1,14 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>-->
-    <!-- Bootstrap CSS -->
-   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body> -->
-
 <?php include '../view/header.php'; ?>
 <?php include '../view/nav.php'; ?>
 
@@ -19,7 +8,7 @@
                 <h2 class="text-danger">Login</h2>
                 <p class="text-muted mt-3">Enter login details below</p>
             </div>
-
+            <?php //echo '<div class=" lead text-center text-danger py-1">'.$php_errormsg.'</div>' ?>
             <!-- Form for login -->
             <form id="login_form" method="POST" action="../controller/index.php">
                 <input type="hidden" value="do_login" name="action">
