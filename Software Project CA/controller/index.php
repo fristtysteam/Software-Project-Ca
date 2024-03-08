@@ -110,43 +110,30 @@ switch ($action) {
         include "../view/login.php";
         break;
     case 'do_login':
-
         $email = filter_input(INPUT_POST, 'email');
-
         $password = filter_input(INPUT_POST, 'password');
 
-        // Hash the password before checking with one stored in the database
-       // $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-        //echo $hashedPassword ;
-        $userDetails = check_isRegistered_user($email, $password);
-        //$userDetails = check_isRegistered_user($email, $hashedPassword );
-        //print_r($userDetails);
 
-       /*$pw2 = $_SESSION['passwod'] = $userDetails->password;
-        echo $_SESSION['username'];*/
-        //if($userDetails !== FALSE) {
+        $userDetails = check_isRegistered_user($email, $password);
+
         if($userDetails !== null) {
-            $user = $_SESSION['username'] = $userDetails->username;
-            $userType = $_SESSION['userType'] = $userDetails->userType;
-            //$pw2 = $_SESSION['passwod'] = $userDetails->password;
-            if( $userType === "admin") {
-                //include "../view/admin.php";
-                //header("Location:index.php?action=shop");
+            // Debugging: Check user details
+            var_dump($userDetails);
+
+            $user = $_SESSION['username'] = $userDetails['username'];
+            $userType = $_SESSION['userType'] = $userDetails['userType'];
+            if($userType === "admin") {
                 header("Location:index.php?action=show_admin");
                 exit();
-            }elseif ($userType === "artist"){
+            } elseif ($userType === "artist") {
                 header("Location:index.php?action=artist_action");
                 exit();
-            }else if(( $userType === "basic") || ( $userType === "premium")|| ( $userType === "guest") ) {
-                //$_SESSION['username'] = $userDetails->username;
-                //print_r($userDetails);
-                //global  $user = $_SESSION['userName'] ;
-                //echo  $_SESSION['userName'] ;
+            } else if(in_array($userType, ["basic", "premium", "guest"])) {
                 header("Location:index.php?action=shop");
-                //header("Location:index.php?action=cart");
                 exit();
-            }else{
+            } else {
                 header("Location:index.php?action=login");
+                exit();
             }
         }
         break;
@@ -185,6 +172,10 @@ switch ($action) {
         //include "../view/galleries.php";
         //header("Location:index.php?action=galleries");
         include "../view/galleries.php";
+        break;
+    case 'events':
+        $pageTitle = "Event Page";
+        include "../view/event.php";
         break;
     case 'cart':
         $pageTitle = "Cart Page";
