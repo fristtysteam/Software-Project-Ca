@@ -44,8 +44,7 @@ require_once '../model/databaseConnection.php';
                     <a class="nav-link" href="../controller/index.php?action=set_language_irish">Irish</a>
                 </li>
                 <?php
-                // Check if the user is logged in
-                /*if(isset($_SESSION['username'])) {
+                if(isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
                     echo '<li class="nav-item navbar-small-links">
                                 <a class="nav-link" href="#">Welcome, ' . $username . '</a>
@@ -54,7 +53,7 @@ require_once '../model/databaseConnection.php';
                     echo '<li class="nav-item navbar-small-links">
                                 <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
                           </li>';
-                } //else {*/
+                } else {
                     // Display the logout link
                     echo '<li class="nav-item navbar-small-links">
                                 <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
@@ -65,8 +64,8 @@ require_once '../model/databaseConnection.php';
     </li>
     <li class="nav-item navbar-small-links">
         <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
-    </li>'
-                //}
+    </li>';
+                }
                 ?>
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=cart">

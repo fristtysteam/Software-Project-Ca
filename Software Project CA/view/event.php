@@ -6,17 +6,37 @@ include'../view/header.php';
 $currentLanguage = getLanguage();
 require_once '../model/displayEvent.php';
 
-// Get events
+$month = isset($month) ? $month : date('m');
+$year = isset($year) ? $year : date('Y');
+
 $events = getEvents();
 ?>
-<body>
+<style>
+    .calendar td {
+        cursor: pointer;
+    }
+    .event-details {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+</style>
+<title>Event Calendar</title>
 
+<style>
+    .calendar td {
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
 <div class="container">
     <h1 class="text-center mt-5 mb-4">Event Calendar</h1>
-
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <table class="table table-bordered calendar">
+            <table id="calendarTable" class="table table-bordered calendar">
                 <thead>
                 <tr>
                     <th>Sun</th>
@@ -30,9 +50,6 @@ $events = getEvents();
                 </thead>
                 <tbody>
                 <?php
-                $month = isset($_GET['month']) ? $_GET['month'] : date('m');
-                $year = isset($_GET['year']) ? $_GET['year'] : date('Y');
-
                 $numDays = date('t', mktime(0, 0, 0, $month, 1, $year));
                 $firstDay = date('N', mktime(0, 0, 0, $month, 1, $year));
 
@@ -43,22 +60,25 @@ $events = getEvents();
 
                 for ($day = 1; $day <= $numDays; $day++) {
                     $event_found = false;
+                    $event_info = "";
                     foreach ($events as $event) {
                         $event_date = date('d', strtotime($event['start_date']));
                         if ($event_date == $day) {
-                            echo "<td>";
-                            echo "<strong>Title:</strong> {$event['title']}<br>";
-                            echo "<strong>Venue:</strong> {$event['venue']}<br>";
-                            echo "<strong>Start Date:</strong> {$event['start_date']}<br>";
-                            echo "<strong>End Date:</strong> {$event['end_date']}<br>";
-                            echo "</td>";
+                            $event_info .= "<div class='event-details'>";
+                            $event_info .= "<strong>Title:</strong> {$event['title']}<br>";
+                            $event_info .= "<strong>Venue:</strong> {$event['venue']}<br>";
+                            $event_info .= "<strong>Start Date:</strong> {$event['start_date']}<br>";
+                            $event_info .= "<strong>End Date:</strong> {$event['end_date']}<br>";
+                            $event_info .= "</div>";
                             $event_found = true;
                             break;
                         }
                     }
                     if (!$event_found) {
-                        echo "<td>$day</td>";
+                        $event_info = "";
                     }
+
+                    echo "<td class='calendar-day' data-toggle='tooltip' title='" . $event_info . "'>$day</td>";
 
                     if (date('N', mktime(0, 0, 0, $month, $day, $year)) == 7) {
                         echo '</tr><tr>';
@@ -76,5 +96,13 @@ $events = getEvents();
     </div>
 </div>
 
+
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
 </body>
 </html>
