@@ -115,25 +115,17 @@ switch ($action) {
 
         $password = filter_input(INPUT_POST, 'password');
 
-        /*$password = password_hash($password, PASSWORD_DEFAULT);
-        echo $password;*/
+
         $userDetails = check_isRegistered_user($email, $password);
         //print_r($userDetails);
 
        /*$pw2 = $_SESSION['passwod'] = $userDetails->password;
         echo $_SESSION['username'];*/
         //if($userDetails !== FALSE) {
-        //Hash the password supplied for login
-
         if($userDetails !== null) {
             $user = $_SESSION['username'] = $userDetails->username;
             $userType = $_SESSION['userType'] = $userDetails->userType;
-            $pw2 = $_SESSION['password'] = $userDetails->password;
-            //echo $password ;
-            //echo $userType;
-            $pw2 = $_SESSION['password'] = $userDetails->password;
-            //echo $_SESSION['password'] = $userDetails->password;;
-            //if($password === $pw2){
+            //$pw2 = $_SESSION['passwod'] = $userDetails->password;
             if( $userType === "admin") {
                 //include "../view/admin.php";
                 //header("Location:index.php?action=shop");
@@ -150,9 +142,7 @@ switch ($action) {
                 header("Location:index.php?action=shop");
                 //header("Location:index.php?action=cart");
                 exit();
-           // }
             }else{
-                echo "Lgoin Failed ! TRY AGAIN";
                 header("Location:index.php?action=login");
             }
         }
@@ -189,6 +179,7 @@ switch ($action) {
     case 'galleries':
         // Logic for galleries page
         $pageTitle = "Galleries Page";
+        //include "../view/galleries.php";
         //header("Location:index.php?action=galleries");
         include "../view/galleries.php";
         break;

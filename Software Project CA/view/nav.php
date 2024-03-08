@@ -32,6 +32,9 @@ require_once '../model/databaseConnection.php';
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=galleries">Galleries</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../controller/index.php?action=events">Events</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item navbar-small-links">

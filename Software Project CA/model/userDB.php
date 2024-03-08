@@ -1,9 +1,7 @@
 <?php
+require_once 'databaseConnection.php';
 
-/*
- * Created on 7/12/2021
- * Author: Julie Olamijuwon
- */
+
 $error = 0;
 $error_message = "";
 //function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
@@ -24,36 +22,32 @@ function pre_registration_check( $fName, $sName, $email, $password,$password2)
     }
 
 }
-function add_user( $fName, $sName, $email, $password, $dob)
-//function add_user( $username, $email, $password)
+function add_user($fName, $sName, $email, $password, $dob)
 {
-    // Check if name is empty, and set a default value if it is
-    if (empty($name)) {
-        $err = 'Unknown';
-    }
-    //$username = ($fName . " " . $sName) ;
     global $db;
-    $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO users( username, name, email, password) VALUES ( :username, :name, :email, :password)";
-  // $query = "INSERT INTO users( username, name, email, password, 'DateOfBirth') VALUES ( :username, :name, :email, :password, :birthday)";
-    //$query = "INSERT INTO users( username, email, password) VALUES ( :username, :email, :password)";
+    // Concatenate first name and last name to form the username
+    $username = $fName . ' ' . $sName;
 
+    // Hash the password before storing it in the database
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+    $query = "INSERT INTO users (username, name, email, password, DateOfBirth) VALUES (:username, :name, :email, :password, :birthday)";
     $statement = $db->prepare($query);
 
-    $statement->bindValue(":username", $fName);
-    $statement->bindValue(":name", $sName);
+    $statement->bindValue(":username", $username);
+    $statement->bindValue(":name", $sName); // Assuming name should be the last name
     $statement->bindValue(":email", $email);
-    $statement->bindValue(":password", $password);
-    //$statement->bindValue(":birthday",$dob);
+    $statement->bindValue(":password", $hashedPassword);
+    $statement->bindValue(":birthday", $dob);
 
     try {
         $statement->execute();
     } catch (Exception $ex) {
         // Redirect to an error page passing the error message
-        header("Location:../View/error.php?msg=" . $ex->getMessage());
+        header("Location: ../View/error.php?msg=" . $ex->getMessage());
         exit();
     }
+
     $statement->closeCursor();
     return true;
 }
@@ -134,49 +128,31 @@ function check_newUser($email, $password)
         return true;
     }
 }
-function check_isRegistered_user($email, $password)
-{
+function check_isRegistered_user($email, $password) {
     global $db;
 
-    $query = "SELECT * FROM users WHERE email = :email AND password = :password";
+    // Select user by email
+    $query = "SELECT * FROM users WHERE email = :email";
     $statement = $db->prepare($query);
+    $statement->bindParam(":email", $email, PDO::PARAM_STR);
+    $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    $statement->bindValue(":email", $email);
-    $statement->bindValue(":password", $password);
-
-    try {
-        $statement->execute();
-    } catch (Exception $ex) {
-        header("Location:../View/error.php?msg=" . $ex->getMessage());
-        exit();
+    // If no user found with the given email
+    if (!$user) {
+        echo "Email not found";
+        return null; // User with given email not found
     }
 
-    $user = $statement->fetch();
-
-    $statement->closeCursor();
-
-    $count = $statement->rowCount();
-    if ($count != 1) {
-        return FALSE;
+    // Verify the provided password against the hashed password retrieved from the database.
+    if (password_verify($password, $user['password'])) {
+        echo "Password matched"; // For debugging purposes
+        return $user; // Return the user data if password matches
+    } else {
+        echo "Password does not match"; // For debugging purposes
+        return null; // Incorrect password
     }
-
-    return $user;
 }
-
-//function check_isRegistered_user($email, $password)
-//{
- //   global $db;
-
-   // $query = "SELECT * FROM users WHERE email = :email";
-   // $statement = $db->prepare($query);
-   // $statement->execute(array(':email' => $email));
-   // $user = $statement->fetch(PDO::FETCH_ASSOC);
-
-   // if ($user && password_verify($password, $user['password'])) {
-   //     return $user;
-   // } else {
-      //  return false;
-
 
 function pre_login_check($email, $password)
 {
@@ -208,146 +184,16 @@ function pre_login_check($email, $password)
     }
 // IF USER DETAIL IS VALID
 // START THE SESSION !!
-    //session_start();
+    session_start();
 
     $user = $statement->fetch();
     $statement->closeCursor();
 
 //Save session variables
-    /*$_SESSION['userId'] = $user['id'];
+    $_SESSION['userId'] = $user['id'];
     $_SESSION['userType'] = $user['userType'];
 
-    return $user['userType'];*/
-    return $user;
+    return $user['userType'];
 }
-function getAllUsers() {
 
-    /*********************************************************************
-     * Function to get all users from DB                                 *
-     * Parameters: None                                                  *
-     * Returns: Query Results array of records of all users              *
-     *                                                                   *
-     *********************************************************************/
-
-    global $db;
-
-    $query = "SELECT * FROM users ORDER BY id";
-    $statement = $db->prepare($query);
-
-    try{
-        $statement->execute();
-    }catch(PDOException $ex){
-        // Redirect to an Error page passing the error message
-        header("Location:../view/error.php?msg=" . $ex->getMessage());
-    }
-    $users = $statement->fetchAll();
-    $statement->closeCursor();
-    return $users;
-}
-function getUserByType($usertype) {
-
-    /******************************************************************************
-     * Function to get all users of same Type from DB                             *
-     * Parameters: userType                                                       *
-     * Returns: Query Results array of records of all user of the indicated type  *
-     *                                                                            *
-     ******************************************************************************/
-
-    global $db;
-
-    $query = "SELECT * FROM users WHERE userType = :userType";
-    $statement =$db->prepare($query);
-    $statement->bindValue(":userType", $usertype);
-    try{
-        $statement->execute();
-    }catch(PDOException $ex){
-        // Redirect to an Error page passing the error message
-        header("Location:../view/error.php?msg=" . $ex->getMessage());
-    }
-    $users = $statement->fetchAll();
-    $statement->closeCursor();
-    return $users;
-}
-function getUserById($id) {
-
-    /******************************************************************************
-     * Function to get a user from DB                                             *
-     * Parameters: user Id                                                        *
-     * Returns: Query Results a record of a single user                           *
-     *                                                                            *
-     ******************************************************************************/
-
-    global $db;
-
-    $query = "SELECT * FROM users WHERE id = :id";
-    $statement =$db->prepare($query);
-    $statement->bindValue(":id", $id);
-    try{
-        $statement->execute();
-    }catch(PDOException $ex){
-        // Redirect to an Error page passing the error message
-        header("Location:../view/error.php?msg=" . $ex->getMessage());
-    }
-    $user = $statement->fetch();
-    $statement->closeCursor();
-    return $user;
-}
-function update_userDetail($fName,$sName,$email,$password, $usertype)
-{
-    /****************************************************
-     *Function to update a user's detail (The default is general user)
-     * Parameters email, password
-     * Returns true or false
-     ****************************************************/
-
-    global $db;
-
-    $query =  "UPDATE users SET useranme = '$fName', name = '$sName', email = '$email', password = '$password',  userType = '$usertype',WHERE email = '$email'";
-    print($query);
-//$query = "INSERT INTO employees(firstname,surname,email, password) VALUES (:firstname,:surname,:email, :password)";
-    // $query = "INSERT INTO employees(firstName, surName, email, password, jobTitle, deptName, userType,status) VALUES (:firstname,:surname,:email, :password, :jobtitle,:dept,:usertype,:status )";
-    $statement = $db->prepare($query);
-    /*$statement->bindValue(":firstname", $fName);
-    $statement->bindValue(":surname", $sName);
-    $statement->bindValue(":email", $email);
-    $statement->bindValue(":password", $password);
-    $statement->bindValue(":jobtitle", $jobTitle);
-    $statement->bindValue(":dept", $dept);
-    $statement->bindValue(":usertype", $usertype);    $info = $result->fetch_array();
-    $statement->bindValue(":status", $status);*/
-    try{
-        $statement->execute();
-    } catch (Exception $ex) {
-
-        // redirect to an error page passing the error message
-        //$categories = get_categories();
-        header("Location:../View/error.php?msg=" .$ex->getMessage());
-        exit();
-    }
-    $statement->closeCursor();
-    return true;
-}
-function deleteEmployee($userId)
-{
-    /*******************************************************************
-     * Function to delete an user from DB                    *
-     * Parameters: the user id                                 *
-     * Returns: none                                                   *
-     *******************************************************************/
-
-    global $db;
-    $query = "DELETE FROM users WHERE id= :id";
-
-    $statement = $db->prepare($query);
-    $statement->bindValue(":id", $userId);
-    try {
-        $statement->execute();
-    } catch (PDOException $ex) {
-        echo $ex->getMessage();
-    }
-
-
-    $statement->closeCursor();
-
-}
 
