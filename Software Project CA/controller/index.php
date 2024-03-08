@@ -115,8 +115,11 @@ switch ($action) {
 
         $password = filter_input(INPUT_POST, 'password');
 
-
+        // Hash the password before checking with one stored in the database
+       // $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        //echo $hashedPassword ;
         $userDetails = check_isRegistered_user($email, $password);
+        //$userDetails = check_isRegistered_user($email, $hashedPassword );
         //print_r($userDetails);
 
        /*$pw2 = $_SESSION['passwod'] = $userDetails->password;

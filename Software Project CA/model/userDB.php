@@ -137,13 +137,16 @@ function check_isRegistered_user($email, $password) {
     $statement->bindParam(":email", $email, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
-
+    //print_r($user);
     // If no user found with the given email
     if (!$user) {
         echo "Email not found";
         return null; // User with given email not found
     }
-
+    /*TESTING
+    echo $user['password'];
+    echo "<br> ";
+    echo $password;*/
     // Verify the provided password against the hashed password retrieved from the database.
     if (password_verify($password, $user['password'])) {
         echo "Password matched"; // For debugging purposes
