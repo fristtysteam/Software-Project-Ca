@@ -1,5 +1,5 @@
 <?php
-require_once '../model/getArt.php';
+require_once '../model/getProducts.php';
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 include "../view/nav.php";
@@ -40,23 +40,23 @@ $currentLanguage = getLanguage();
         <div class="col-md-8 g-lg-3">
 
                 <?php
-                $artworks = getArtworks();
-                if (!empty($artworks)) {
-                    foreach ($artworks as $artwork): ?>
+                $products = getProducts();
+                if (!empty($products)) {
+                    foreach ($products as $products): ?>
                         <div class="card">
-                            <img src="<?php echo $artwork['url']; ?>" class="card-img-top image" >
+                            <img src="<?php echo $products['url']; ?>" class="card-img-top image" >
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $artwork['title']; ?></h5>
-                                <p class="card-text"><?php echo $artwork['desc']; ?></p>
-                                <p class="card-text"><?php echo $artwork['artist']; ?></p>
-                                <p class="card-text"><?php echo $artwork['countryOfOrigin']; ?></p>
-                                <a href="../model/doCart.php?product_id=<?php echo $artwork['product_id']; ?>" class="btn btn-primary">Add to Cart</a>
+                                <h5 class="card-title"><?php echo $products['name']; ?></h5>
+                                <p class="card-text"><?php echo $products['description']; ?></p>
+                                <p class="card-text">The price of this artwork is : <?php echo $products['price']; ?>$</p>
+                                <p class="card-text"><?php echo $products['quantity']; ?></p>
+                                <a href="../model/doCart.php?product_id=<?php echo $products['id']; ?>" class="btn btn-primary">Add to Cart</a>
                             </div>
                         </div>
                     <?php
                     endforeach;
                 } else {
-                    echo "No artworks found.";
+                    echo "No Products available at this moment.";
                 }
                 ?>
             </div>

@@ -194,11 +194,17 @@ switch ($action) {
     case 'set_language_irish':
         // Logic for setting language to Irish
         break;
+
+    case 'deleteProduct':
+        if(isset($_GET['id'])) {
+            $productId = $_GET['id'];
+            deleteProduct($productId);
+        }
+        header("Location: index.php?action=adminViewProducts");
+        exit();
     default:
-       // echo "Invalid Action";
         $error = "Unknown action value:" . $action;
         include '../view/error.php';
-
         break;
 }
 ?>
