@@ -167,6 +167,10 @@ switch ($action) {
         $pageTitle = "Shop Page";
         include "../view/shop.php";
         break;
+    case 'adminViewProducts':
+        $pageTitle = "Admin View Products";
+        include "../view/viewProducts.php";
+        break;
     case 'galleries':
         // Logic for galleries page
         $pageTitle = "Galleries Page";
