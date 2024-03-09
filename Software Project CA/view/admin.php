@@ -3,48 +3,52 @@ require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
 
-$action = filter_input(INPUT_GET, 'action');
 
+$action = filter_input(INPUT_GET, 'action');
 
 include '../view/header.php';
 include '../view/nav.php';
 
 if (isset($_SESSION["username"])) {
-    echo '<div class="lead text-center text-danger py-1 fs-3">'.$_SESSION["username"].'<h1 class="text-center mb-4">Welcome To Admin Page</h1>'.'</div>';
+    echo '<div class="lead text-center text-danger py-1 fs-3">' . $_SESSION["username"] . '<h1 class="text-center mb-4">Welcome To Admin Page</h1>' . '</div>';
 } else {
     header("Location: index.php?action=login");
     exit();
 }
-
-
 ?>
-<div class="container">
-    <div class="row g-2">
-        <div class="col-md-6">
-            <div class="p-3 border bg-light d-flex justify-content-center">
-                <a href="index.php?action=adminViewProducts" class="btn btn-lg btn-primary align-text-center">View Products</a>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <a href="index.php?action=adminViewProducts" class="btn btn-lg btn-primary">View Products</a>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="p-3 border bg-light">
-                <form method="get" action="<?php // echo $page_url; ?>">
-                    <button class="btn btn-secondary" type="submit">Edit Products</button>
-                </form>
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                        <a href="index.php?action=adminAddProducts" class="btn btn-lg btn-primary">Add Products</a>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="p-3 border bg-light">
-                <form method="get" action="<?php // echo $page_url; ?>">
-                    <button class="btn btn-secondary" type="submit">View Products orders</button>
-                </form>
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <form method="get" action="<?php // echo $page_url; ?>">
+                        <button class="btn btn-secondary" type="submit">View Product Orders</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="p-3 border bg-light">
-                <form method="get" action="<?php // echo $page_url; ?>">
-                    <button class="btn btn-secondary" type="submit">View User List</button>
-                </form>
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <form method="get" action="<?php // echo $page_url; ?>">
+                        <button class="btn btn-secondary" type="submit">View User List</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -54,11 +58,9 @@ if (isset($_SESSION["username"])) {
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" type="button">Button</button>
-                <button class="btn btn-primary" type="button">Button</button>
             </div>
         </div>
     </div>
 </div>
 
-<?php include'../view/header.php' ?>
+<?php include '../view/footer.php' ?>

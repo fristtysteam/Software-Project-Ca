@@ -4,6 +4,9 @@ require_once '../model/databaseConnection.php';
 
  include "header.php";
  include "../model/language.php";
+
+$isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
+
 ?>
 
 
@@ -35,7 +38,13 @@ require_once '../model/databaseConnection.php';
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=events">Events</a>
                 </li>
+                <?php if ($isAdmin): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
+                    </li>
+                <?php endif; ?>
             </ul>
+
             <ul class="navbar-nav">
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=set_language_english">English</a>
