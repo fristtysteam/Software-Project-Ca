@@ -37,7 +37,7 @@ $products = getProducts();
                         <p class="card-text"><?php echo $product['description']; ?></p>
                         <p class="card-text">The price of this artwork is: <?php echo $product['price']; ?>$</p>
                         <p class="card-text">Quantity: <?php echo $product['quantity']; ?></p>
-                        <a href="../controller/index.php?action=deleteProduct&deleteProduct=<?php echo $product['id']; ?>" class="btn btn-danger">Delete</a>
+                        <a href="../model/deleteProduct.php?deleteProduct=<?php echo $product['id']; ?>" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
