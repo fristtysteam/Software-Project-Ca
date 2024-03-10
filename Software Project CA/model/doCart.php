@@ -1,50 +1,41 @@
 <?php
-session_start();
 require_once 'databaseConnection.php';
+require_once 'cartModel.php'; // Include the CartModel class
 
-if (isset($_GET['product_id'])) {
-    $productId = intval($_GET['product_id']);
+global $db;
+$cartModel = new CartModel($db);
 
-    $stmt =  $db->prepare("SELECT name, price FROM product WHERE id = ?");
-    $stmt->execute([$productId]);
-    $product = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($product) {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = array();
-        }
-
-        if (isset($_GET['action']) && $_GET['action'] === 'update') {
-            $newQuantity = isset($_GET['quantity']) ? intval($_GET['quantity']) : 1;
-            if ($newQuantity > 0) {
-                $_SESSION['cart'][$productId]['quantity'] = $newQuantity;
-            } else {
-                unset($_SESSION['cart'][$productId]);
-            }
-        } elseif (isset($_GET['action']) && $_GET['action'] === 'remove') {
-            unset($_SESSION['cart'][$productId]);
-        } else {
-            if (isset($_SESSION['cart'][$productId])) {
-                $_SESSION['cart'][$productId]['quantity']++;
-            } else {
-                $_SESSION['cart'][$productId] = array(
-                    'name' => $product['name'],
-                    'price' => $product['price'],
-                    'quantity' => 1
-                );
-            }
-        }
-
-        header('Location: ../view/cart.php');
-        exit;
-    } else {
-        header('Location: error.php');
-        exit;
-    }
-} else {
-    header('Location: error.php');
-    exit;
+// Start session (do not start session here if it's already started)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
+if (isset($_SESSION['userId'])) {
+    if (isset($_GET['product_id'])) {
+        $productId = $_GET['product_id'];
+        $userId = $_SESSION['userId'];
 
+        // If the user submits the form to add an item to the cart
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Check if quantity is set
+            if (isset($_POST['quantity'])) {
+                $quantity = $_POST['quantity'];
+
+                if ($cartModel->addToCart($userId, $productId, $quantity)) {
+                    echo "Item added to cart successfully";
+                } else {
+                    echo "Error adding product to cart";
+                }
+            } else {
+                echo "Quantity not specified";
+            }
+        } else {
+            echo "Invalid request method";
+        }
+    } else {
+       // echo "Product ID not specified";
+    }
+} else {
+    echo "You must be logged in to add products to the cart";
+}
 ?>

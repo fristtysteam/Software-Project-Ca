@@ -1,18 +1,36 @@
 <?php
 require_once '../model/databaseConnection.php';
-require_once '../model/language.php';
-include "../view/nav.php";
-include'../view/header.php';
-$currentLanguage = getLanguage();
+require_once '../model/doCart.php';
+require_once '../model/cartModel.php';
 
+include "nav.php";
+include 'header.php';
 
+// Function to retrieve cart items
 function getCartItems() {
-
-    return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+    global $cartModel;
+    return isset($_SESSION['userId']) ? $cartModel->getCartItems($_SESSION['userId']) : [];
 }
 
+// Get cart items
 $cartItems = getCartItems();
+
+// Check if remove button is clicked
+if (isset($_POST['remove_from_cart'])) {
+    $cart_id = $_POST['cart_id']; // Get cart_id from form submission
+    $removed = $cartModel->removeFromCart($cart_id); // Call removeFromCart function
+
+    // Provide feedback to the user
+    if ($removed) {
+        echo "<script>alert('Item removed from cart successfully.');</script>";
+        echo "<script>location.reload();</script>";
+        exit();
+    } else {
+        echo "<script>alert('Failed to remove item from cart.');</script>";
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +49,7 @@ $cartItems = getCartItems();
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
+                <th>Action</th> <!-- New column for the Remove button -->
             </tr>
             </thead>
             <tbody>
@@ -40,6 +59,12 @@ $cartItems = getCartItems();
                     <td><?php echo $item['price']; ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td><?php echo $item['price'] * $item['quantity']; ?></td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="cart_id" value="<?php echo $item['id']; ?>"> <!-- Assuming the cart item has an ID -->
+                            <button type="submit" name="remove_from_cart" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this item?');">Remove</button> <!-- Submit button to remove item -->
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -49,5 +74,3 @@ $cartItems = getCartItems();
 </div>
 </body>
 </html>
-
-

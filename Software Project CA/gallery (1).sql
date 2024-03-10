@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2024 at 09:28 PM
+-- Generation Time: Mar 10, 2024 at 09:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,6 +63,17 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `price`) VALUES
+(31, 30, 11, 14, 0),
+(32, 18, 12, 2, 0),
+(34, 18, 11, 2, 0),
+(35, 28, 11, 1, 0),
+(36, 28, 12, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -137,10 +148,16 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) VALUES
-(3, 'Canvas Print - The Persistence of Memory', 70, 8, 'https://cdn.britannica.com/96/240496-138-66D89FAD/Salvador-Dali-Persistence-of-Memory.jpg?w=800&h=450&c=crop', 'The Persistence of Memory is a 1931 painting by artist Salvador Dalí and one of the most recognizable works of Surrealism. First shown at the Julien Levy Gallery in 1932, since 1934 the painting has been in the collection of the Museum of Modern Art in New York City, which received it from an anonymous donor.'),
-(5, 'Canvas Print - Girl with a Pearl Earring', 65, 7, 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/800px-1665_Girl_with_a_Pearl_Earring.jpg', 'Girl with a Pearl Earring is an oil painting by Dutch Golden Age painter Johannes Vermeer, dated c. 1665. Going by various names over the centuries, it became known by its present title towards the end of the 20th century after the earring worn by the girl portrayed there.'),
-(6, 'marco art 1', 290000, 1, 'https://i.pinimg.com/564x/d1/e8/9d/d1e89d633c82876f831afd76c06d6017.jpg', 'one of my drawings'),
-(7, 'Marco art 2', 23232, 23, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'one of my drawings');
+(11, 'Marco2 ', 2, 1, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'a'),
+(12, 'Temos', 35, 10, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
+(13, 'asuk', 290000, 7, 'https://i.pinimg.com/564x/70/1c/2a/701c2a7daf5a66ec88f239507eaede05.jpg', 'asuk'),
+(14, 'carina', 1212121, 5, 'https://i.pinimg.com/564x/8e/f7/59/8ef759578f6f5c1e38284f78076e8826.jpg', 'carina'),
+(15, 'embass', 233, 21111, 'https://i.pinimg.com/564x/87/3d/b4/873db4d23705a612641cf8d3bcafa63a.jpg', '2121'),
+(16, 'glass', 2211, 112, 'https://i.pinimg.com/564x/77/ee/5b/77ee5bfee18f692e112d7841f1c79585.jpg', '21'),
+(17, 'unbrela', 20, 20, 'https://i.pinimg.com/564x/08/dc/27/08dc27ac3eb19d30ea87b8ae433513fb.jpg', 'umbrela'),
+(18, 'izanami', 11, 5, 'https://i.pinimg.com/564x/b7/91/47/b791470afd2c7257853ea49cb4104144.jpg', 'as'),
+(19, 'blood', 2, 8, 'https://i.pinimg.com/564x/28/3e/fe/283efeac5f4af04b01bb1fec01967539.jpg', 'a nice art piece'),
+(20, 'yeeee', 112, 2, 'https://i.pinimg.com/564x/0b/d7/79/0bd779c4c50a276f33620ab8238d08e6.jpg', 'aaa');
 
 -- --------------------------------------------------------
 
@@ -185,7 +202,9 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth
 (25, 'asas asas', 'asas', 'asas@gm', '$2y$10$xi5.2FIE8v39yhrW.vz5cOQRE006PoXOQAm8jCGSu3rZp0EhaG2ny', '2024-03-02', 'admin'),
 (26, 'ta ta', 'ta', 'ta@gm', '$2y$10$x.H5Z.WeAKZIb0dVqLbXmOsJQENOTAfG40UZ1FvCANmoCJzQXUPpG', '2024-03-03', 'admin'),
 (27, 'gas gas', 'gas', 'gas@g', '$2y$10$xUfIXYIw3xX8mAhtSwfiRe63uHJOrDxcJGaGpwzob.buJCv/J7XkS', '2024-03-03', 'admin'),
-(28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'basic');
+(28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'basic'),
+(29, 'j j', 'j', 'j@gmail', '$2y$10$xzelHNmExQigEuK1h7hSCO8VCVwDCf5IDd08jnzI0Fec9tHnLJ.F6', '2024-03-03', 'admin'),
+(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -205,8 +224,7 @@ ALTER TABLE `art`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `art_id` (`product_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`);
+  ADD KEY `cart_ibfk_1` (`product_id`);
 
 --
 -- Indexes for table `event`
@@ -250,16 +268,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables

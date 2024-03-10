@@ -2,6 +2,7 @@
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
+
 // Variables
 $error = "";
 $userId = "";
@@ -11,28 +12,23 @@ $userName = "";
 $loggedInAt = "";
 $loggedOutAt = "";
 
-// need to check if a session is active
+// Start session
 session_start();
 
-if( isset($_SESSION['userId']) != Null) {
-    // ok there is a session active.
+if (isset($_SESSION['userId'])) {
+    // Session is active
     $userId = $_SESSION['userId'];
-    $usersEmail = $_SESSION['email'];
-    $userType = $_SESSION['userType'];
-    $userName = $_SESSION['userName'];
+    $usersEmail = isset($_SESSION['email']) ? $_SESSION['email'] : "";
+    $userType = isset($_SESSION['userType']) ? $_SESSION['userType'] : "";
+    $userName = isset($_SESSION['userName']) ? $_SESSION['userName'] : "";
     $loggedInAt = date("Y-m-d h:i:s");
-//echo $userName ."" , $loggedInAt ;
-    //printf($userName ."" , $loggedInAt );
-    // Session cookies to db
-    //saveSessionData($userId,$userName,$userType,$loggedInAt);
-
-}else {
+} else {
+    // Session is not active
     $userId = "";
     $usersEmail = "";
     $userName = "";
     $userType = 0;
 }
-
 
 $currentLanguage = getLanguage();
 
@@ -45,9 +41,6 @@ if ($action == Null) {
         if ($action == NULL) {
 
             $action = "login";
-            //$action = "show_home";
-             //$action = "showRegister";
-            //$action ="cart";
         }
     }
 }
@@ -113,22 +106,20 @@ switch ($action) {
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
 
-
         $userDetails = check_isRegistered_user($email, $password);
 
         if($userDetails !== null) {
-            // Debugging: Check user details
-            var_dump($userDetails);
+            $_SESSION['userId'] = $userDetails['id'];
+            $_SESSION['username'] = $userDetails['username'];
+            $_SESSION['userType'] = $userDetails['userType'];
 
-            $user = $_SESSION['username'] = $userDetails['username'];
-            $userType = $_SESSION['userType'] = $userDetails['userType'];
-            if($userType === "admin") {
+            if($userDetails['userType'] === "admin") {
                 header("Location:index.php?action=show_admin");
                 exit();
-            } elseif ($userType === "artist") {
+            } elseif ($userDetails['userType'] === "artist") {
                 header("Location:index.php?action=artist_action");
                 exit();
-            } else if(in_array($userType, ["basic", "premium", "guest"])) {
+            } else if(in_array($userDetails['userType'], ["basic", "premium", "guest"])) {
                 header("Location:index.php?action=shop");
                 exit();
             } else {
@@ -136,7 +127,6 @@ switch ($action) {
                 exit();
             }
         }
-        //
         break;
     case 'check_login':
 
