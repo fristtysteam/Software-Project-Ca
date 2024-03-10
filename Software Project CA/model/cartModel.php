@@ -91,13 +91,10 @@ class CartModel {
         try {
             $stmt = $this->db->prepare($sql);
 
-            // Bind parameter
             $stmt->bindParam(':user_id', $user_id);
 
-            // Execute the statement
             $stmt->execute();
 
-            // Fetch all rows
             $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $cartItems;
@@ -106,10 +103,35 @@ class CartModel {
             return false;
         }
     }
-}
 
-// Example usage:
-// $db = new mysqli("localhost", "username", "password", "gallery");
-// $cartModel = new CartModel($db);
-// $cartModel->addToCart(1, 2); // Example of adding an item to the cart
+    // Clear cart for a user
+    public function clearCart($user_id) {
+        $sql = "DELETE FROM cart WHERE user_id = :user_id";
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    // Update product quantity
+    public function updateProductQuantity($product_id, $quantity) {
+        $sql = "UPDATE product SET quantity = quantity - :quantity WHERE id = :product_id";
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+            $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+}
 ?>
