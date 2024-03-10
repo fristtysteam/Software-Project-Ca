@@ -1,6 +1,6 @@
 <?php
 require_once 'databaseConnection.php';
-
+global $db;
 function deleteProduct($productId, $db) {
     $query = "DELETE FROM product WHERE id = ?";
     $stmt = $db->prepare($query);

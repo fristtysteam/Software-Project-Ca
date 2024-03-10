@@ -161,9 +161,17 @@ switch ($action) {
         $pageTitle = "Admin View Products";
         include "../view/viewProducts.php";
         break;
+    case 'adminViewEvents':
+        $pageTitle = "Admin View Events";
+        include "../view/adminViewEvents.php";
+        break;
     case 'adminAddProducts':
         $pageTitle = "Admin Add Products";
         include "../view/adminAddProduct.php";
+        break;
+    case 'adminAddEvents':
+        $pageTitle = "Admin Add Events";
+        include "../view/adminAddEvent.php";
         break;
     case 'checkout':
         $pageTitle = "checkout";
@@ -172,6 +180,10 @@ switch ($action) {
     case 'adminEditProducts':
         $pageTitle = "Admin Edit Products";
         include "../view/adminEditProduct.php";
+        break;
+    case 'adminEditEvent':
+        $pageTitle = "Admin Edit Events";
+        include "../view/adminEditEvent.php";
         break;
     case 'galleries':
         // Logic for galleries page

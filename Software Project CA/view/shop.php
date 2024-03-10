@@ -24,7 +24,13 @@ $cartItems = getCartItems();
 </head>
 <body>
 <div class="container mt-5">
-    <div class=" lead text-center text-danger py-1 fs-3"><?php echo $_SESSION["username"]; ?><h1 class="text-center mb-4">Welcome to Our Shop</h1></div>
+
+    <div class="lead text-center text-black-50 py-1 fs-3">
+        <?php if(isset($_SESSION["username"])): ?>
+            <?php echo $_SESSION["username"]; ?>
+        <?php endif; ?>
+        <h1 class="text-center mb-4">Welcome to Our Shop</h1>
+    </div>
     <div class="row mb-5 g-2">
         <div class="col-md-4">
             <h2>Categories</h2>
@@ -46,12 +52,16 @@ $cartItems = getCartItems();
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $product['name']; ?></h5>
                             <p class="card-text"><?php echo $product['description']; ?></p>
-                            <p class="card-text">The price of this artwork is: <?php echo $product['price']; ?>$</p>
-                            <p class="card-text"><?php echo $product['quantity']; ?></p>
-                            <form action="../model/doCart.php?product_id=<?php echo $product['id']; ?>" method="post">
-                                <input type="number" name="quantity" value="1" min="1">
-                                <button type="submit" class="btn btn-primary">Add to Cart</button>
-                            </form>
+                            <p class="card-text">Price: <?php echo $product['price']; ?>$</p>
+                            <p class="card-text">Quantity available: <?php echo $product['quantity']; ?></p>
+                            <?php if ($product['quantity'] > 0): ?>
+                                <form action="../model/doCart.php?product_id=<?php echo $product['id']; ?>" method="post">
+                                    <input type="number" name="quantity" value="1" min="1" max="<?php echo $product['quantity']; ?>">
+                                    <button type="submit" class="btn">Add to Cart</button>
+                                </form>
+                            <?php else: ?>
+                                <button type="button" class="btn btn-secondary" disabled>Out of Stock</button>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach;

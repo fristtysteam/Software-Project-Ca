@@ -63,7 +63,7 @@ if (isset($_POST['remove_from_cart'])) {
                         <td>
                             <form method="post">
                                 <input type="hidden" name="cart_id" value="<?php echo $item['id']; ?>">
-                                <button type="submit" name="remove_from_cart" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this item?');">Remove</button> <!-- Submit button to remove item -->
+                                <button type="submit" name="remove_from_cart" class="btn" onclick="return confirm('Are you sure you want to remove this item?');">Remove</button> <!-- Submit button to remove item -->
                             </form>
                         </td>
                     </tr>
@@ -71,7 +71,7 @@ if (isset($_POST['remove_from_cart'])) {
                 </tbody>
             </table>
         </div>
-        <a href="index.php?action=checkout" class="btn btn-primary checkout-btn">Proceed to Checkout</a>
+        <a href="index.php?action=checkout" class="btn">Proceed to Checkout</a>
     <?php endif; ?>
 </div>
 </body>

@@ -46,7 +46,25 @@ if (isset($_SESSION["username"])) {
             <div class="card mb-3">
                 <div class="card-body text-center">
                     <form method="get" action="<?php // echo $page_url; ?>">
-                        <button class="btn btn-secondary" type="submit">View User List</button>
+                        <a href="index.php?action=adminEditEvent" class="btn btn-lg btn-primary">Edit Event</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <form method="get" action="<?php // echo $page_url; ?>">
+                        <a href="index.php?action=adminViewEvents" class="btn btn-lg btn-primary">View Events</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <form method="get" action="<?php // echo $page_url; ?>">
+                        <a href="index.php?action=adminAddEvents" class="btn btn-lg btn-primary">Add Events</a>
                     </form>
                 </div>
             </div>

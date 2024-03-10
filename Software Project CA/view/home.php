@@ -38,8 +38,8 @@ $currentLanguage = getLanguage();
             }
             ?>
         </p>
-        <a href="?action=login" class="btn btn-primary">Login</a>
-        <a href="?action=register" class="btn btn-secondary">Register</a>
+        <a href="?action=login" class="btn">Login</a>
+        <a href="?action=showRegister" class="btn">Register</a>
     </div>
 </section>
 

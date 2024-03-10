@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2024 at 09:50 PM
+-- Generation Time: Mar 11, 2024 at 12:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,11 +69,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `price`) VALUES
-(31, 30, 11, 14, 0),
-(32, 18, 12, 2, 0),
-(34, 18, 11, 2, 0),
-(35, 28, 11, 1, 0),
-(36, 28, 12, 3, 0);
+(50, 30, 13, 1, 0),
+(64, 18, 12, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -95,9 +92,7 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `title`, `venue`, `start_date`, `end_date`, `month`) VALUES
-(1, 'Event 1', 'Venue 1', '2024-03-05', '2024-03-05', 3),
-(2, 'Event 2', 'Venue 2', '2024-03-15', '2024-03-16', 3),
-(3, 'Event 3', 'Venue 3', '2024-03-25', '2024-03-27', 3);
+(1, 'event 24 lol', 'haha ', '2024-03-02', '2024-03-03', 2024);
 
 -- --------------------------------------------------------
 
@@ -148,9 +143,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) VALUES
-(11, 'Marco2 ', 2, 1, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'a'),
-(12, 'Temos', 35, 10, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
-(13, 'asuk', 290000, 7, 'https://i.pinimg.com/564x/70/1c/2a/701c2a7daf5a66ec88f239507eaede05.jpg', 'asuk'),
+(11, 'Marco2 ', 2, 0, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'a'),
+(12, 'Temos', 35, 8, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
+(13, 'asuk', 290000, 6, 'https://i.pinimg.com/564x/70/1c/2a/701c2a7daf5a66ec88f239507eaede05.jpg', 'asuk'),
 (14, 'carina', 1212121, 5, 'https://i.pinimg.com/564x/8e/f7/59/8ef759578f6f5c1e38284f78076e8826.jpg', 'carina'),
 (15, 'embass', 233, 21111, 'https://i.pinimg.com/564x/87/3d/b4/873db4d23705a612641cf8d3bcafa63a.jpg', '2121'),
 (16, 'glass', 2211, 112, 'https://i.pinimg.com/564x/77/ee/5b/77ee5bfee18f692e112d7841f1c79585.jpg', '21'),
@@ -271,7 +266,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product`

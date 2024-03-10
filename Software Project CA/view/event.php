@@ -4,7 +4,7 @@ require_once '../model/language.php';
 include "../view/nav.php";
 include'../view/header.php';
 $currentLanguage = getLanguage();
-require_once '../model/displayEvent.php';
+require_once '../model/getEvents.php';
 
 $month = isset($month) ? $month : date('m');
 $year = isset($year) ? $year : date('Y');
