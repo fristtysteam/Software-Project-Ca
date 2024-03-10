@@ -10,7 +10,8 @@ include '../view/header.php';
 include '../view/nav.php';
 
 if (isset($_SESSION["username"])) {
-    echo '<div class="lead text-center text-danger py-1 fs-3">' . $_SESSION["username"] . '<h1 class="text-center mb-4">Welcome To Admin Page</h1>' . '</div>';
+    echo '<div class="lead text-center text-danger py-1 fs-3">' . $_SESSION["username"] . '</div>';
+    echo '<h1 class="text-center mb-4">Welcome To Admin Page</h1>';
 } else {
     header("Location: index.php?action=login");
     exit();
@@ -36,9 +37,8 @@ if (isset($_SESSION["username"])) {
         <div class="col-md-6">
             <div class="card mb-3">
                 <div class="card-body text-center">
-                    <form method="get" action="<?php // echo $page_url; ?>">
-                        <button class="btn btn-secondary" type="submit">View Product Orders</button>
-                    </form>
+                    <a href="index.php?action=adminEditProducts" class="btn btn-lg btn-primary">Edit Existing Products</a>
+
                 </div>
             </div>
         </div>

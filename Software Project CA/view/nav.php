@@ -1,5 +1,4 @@
 <?php
-//session_start();
 require_once '../model/databaseConnection.php';
 
  include "header.php";
@@ -22,7 +21,7 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" href="../controller/index.php?action=show_home">Home</a>
                 </li>
@@ -38,36 +37,28 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=events">Events</a>
                 </li>
-                <?php if ($isAdmin): ?>
+                <?php if ($isAdmin && isset($_SESSION['username'])): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
                     </li>
                 <?php endif; ?>
             </ul>
 
-            <ul class="navbar-nav">
-                <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=set_language_english">English</a>
-                </li>
-                <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=set_language_irish">Irish</a>
-                </li>
+            <ul class="navbar-nav ms-auto">
+
                 <?php
                 if(isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
                     echo '<li class="nav-item navbar-small-links">
                                 <a class="nav-link" href="#">Welcome, ' . $username . '</a>
                           </li>';
-                    // Display the logout link
                     echo '<li class="nav-item navbar-small-links">
                                 <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
                           </li>';
                 } else {
-                    // Display the logout link
                     echo '<li class="nav-item navbar-small-links">
                                 <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
                           </li>';
-                    // If not logged in, display login and register links
                     echo '<li class="nav-item navbar-small-links">
         <a class="nav-link" href="../controller/index.php?action=login">Login</a>
     </li>
@@ -85,7 +76,6 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
         </div>
     </div>
 </nav>
-
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
