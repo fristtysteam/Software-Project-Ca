@@ -81,6 +81,30 @@ class CartModel {
             return false;
         }
     }
+    public function removeFromCartByUserId($user_id) {
+        $sql = "DELETE FROM cart WHERE user_id = :user_id";
+
+        try {
+            $stmt = $this->db->prepare($sql);
+
+            // Bind parameter
+            $stmt->bindParam(':user_id', $user_id);
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Check if the deletion was successful
+            if ($stmt->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
 
     // Retrieve cart items for a user
     public function getCartItems($user_id) {

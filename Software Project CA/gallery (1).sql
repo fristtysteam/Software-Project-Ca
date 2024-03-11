@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 02:06 AM
+-- Generation Time: Mar 11, 2024 at 04:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,7 +70,8 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `price`) VALUES
 (50, 30, 13, 1, 0),
-(64, 18, 12, 2, 0);
+(83, 18, 14, 1, 0),
+(84, 18, 15, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -101,27 +102,40 @@ INSERT INTO `event` (`id`, `title`, `venue`, `start_date`, `end_date`, `month`) 
 --
 
 CREATE TABLE `order` (
-  `id` int(11) NOT NULL,
-  `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `price` double NOT NULL,
   `user_id` int(11) NOT NULL,
   `quantity` int(10) NOT NULL,
-  `order_date` date NOT NULL
+  `order_date` date NOT NULL,
+  `cart_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `orderline`
+-- Dumping data for table `order`
 --
 
-CREATE TABLE `orderline` (
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` double NOT NULL,
-  `order_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `order` (`product_id`, `price`, `user_id`, `quantity`, `order_date`, `cart_id`) VALUES
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(15, 233, 18, 1, '2024-03-11', 84),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(15, 233, 18, 1, '2024-03-11', 84),
+(14, 1212121, 18, 1, '2024-03-11', 83),
+(15, 233, 18, 1, '2024-03-11', 84);
 
 -- --------------------------------------------------------
 
@@ -144,17 +158,16 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) VALUES
 (11, 'Marco2 ', 2, 0, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'a'),
-(12, 'Temos', 35, 8, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
-(13, 'asuk', 290000, 6, 'https://i.pinimg.com/564x/70/1c/2a/701c2a7daf5a66ec88f239507eaede05.jpg', 'asuk'),
-(14, 'carina', 1212121, 5, 'https://i.pinimg.com/564x/8e/f7/59/8ef759578f6f5c1e38284f78076e8826.jpg', 'carina'),
-(15, 'embass', 233, 21111, 'https://i.pinimg.com/564x/87/3d/b4/873db4d23705a612641cf8d3bcafa63a.jpg', '2121'),
-(16, 'glass', 2211, 112, 'https://i.pinimg.com/564x/77/ee/5b/77ee5bfee18f692e112d7841f1c79585.jpg', '21'),
+(12, 'Temos', 35, 0, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
+(13, 'asuk', 290000, 0, 'https://i.pinimg.com/564x/70/1c/2a/701c2a7daf5a66ec88f239507eaede05.jpg', 'asuk'),
+(14, 'carina', 1212121, -17, 'https://i.pinimg.com/564x/8e/f7/59/8ef759578f6f5c1e38284f78076e8826.jpg', 'carina'),
+(15, 'embass', 233, 21094, 'https://i.pinimg.com/564x/87/3d/b4/873db4d23705a612641cf8d3bcafa63a.jpg', '2121'),
+(16, 'glass', 2211, 100, 'https://i.pinimg.com/564x/77/ee/5b/77ee5bfee18f692e112d7841f1c79585.jpg', '21'),
 (17, 'unbrela', 20, 20, 'https://i.pinimg.com/564x/08/dc/27/08dc27ac3eb19d30ea87b8ae433513fb.jpg', 'umbrela'),
 (18, 'izanami', 11, 5, 'https://i.pinimg.com/564x/b7/91/47/b791470afd2c7257853ea49cb4104144.jpg', 'as'),
 (19, 'blood', 2, 8, 'https://i.pinimg.com/564x/28/3e/fe/283efeac5f4af04b01bb1fec01967539.jpg', 'a nice art piece'),
-(20, 'yeeee', 112, 2, 'https://i.pinimg.com/564x/0b/d7/79/0bd779c4c50a276f33620ab8238d08e6.jpg', 'aaa'),
-(21, 'Test', 0, 0, 'https://i.pinimg.com/564x/a6/28/54/a6285455709d445305bae1521b318a39.jpg', NULL),
-(22, 'sa', 0, 0, 'https://i.pinimg.com/564x/a6/28/54/a6285455709d445305bae1521b318a39.jpg', NULL);
+(20, 'yeeee', 112, 1, 'https://i.pinimg.com/564x/0b/d7/79/0bd779c4c50a276f33620ab8238d08e6.jpg', 'aaa'),
+(21, 'Test', 0, 0, 'https://i.pinimg.com/564x/a6/28/54/a6285455709d445305bae1521b318a39.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -257,17 +270,7 @@ ALTER TABLE `event`
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `art_id` (`product_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`),
-  ADD UNIQUE KEY `cart_id` (`cart_id`);
-
---
--- Indexes for table `orderline`
---
-ALTER TABLE `orderline`
-  ADD UNIQUE KEY `product_id` (`product_id`),
-  ADD UNIQUE KEY `order_id` (`order_id`);
+  ADD KEY `order_ibfk_1` (`cart_id`);
 
 --
 -- Indexes for table `product`
@@ -299,7 +302,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -340,13 +343,6 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `orderline`
---
-ALTER TABLE `orderline`
-  ADD CONSTRAINT `orderline_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `orderline_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `userart`
