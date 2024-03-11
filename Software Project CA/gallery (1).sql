@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 12:50 AM
+-- Generation Time: Mar 11, 2024 at 02:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -152,7 +152,33 @@ INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) 
 (17, 'unbrela', 20, 20, 'https://i.pinimg.com/564x/08/dc/27/08dc27ac3eb19d30ea87b8ae433513fb.jpg', 'umbrela'),
 (18, 'izanami', 11, 5, 'https://i.pinimg.com/564x/b7/91/47/b791470afd2c7257853ea49cb4104144.jpg', 'as'),
 (19, 'blood', 2, 8, 'https://i.pinimg.com/564x/28/3e/fe/283efeac5f4af04b01bb1fec01967539.jpg', 'a nice art piece'),
-(20, 'yeeee', 112, 2, 'https://i.pinimg.com/564x/0b/d7/79/0bd779c4c50a276f33620ab8238d08e6.jpg', 'aaa');
+(20, 'yeeee', 112, 2, 'https://i.pinimg.com/564x/0b/d7/79/0bd779c4c50a276f33620ab8238d08e6.jpg', 'aaa'),
+(21, 'Test', 0, 0, 'https://i.pinimg.com/564x/a6/28/54/a6285455709d445305bae1521b318a39.jpg', NULL),
+(22, 'sa', 0, 0, 'https://i.pinimg.com/564x/a6/28/54/a6285455709d445305bae1521b318a39.jpg', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userart`
+--
+
+CREATE TABLE `userart` (
+  `art_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `artist` varchar(50) NOT NULL,
+  `desc` varchar(250) NOT NULL,
+  `countryOfOrigin` varchar(50) NOT NULL,
+  `url` varchar(500) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `userart`
+--
+
+INSERT INTO `userart` (`art_id`, `title`, `artist`, `desc`, `countryOfOrigin`, `url`, `userId`, `username`) VALUES
+(3, 'userArt5', 'm m', 'as', 'mexico', 'https://i.pinimg.com/564x/6a/82/30/6a8230cafaebe69b05938786f1000af1.jpg', 30, 'm m');
 
 -- --------------------------------------------------------
 
@@ -199,7 +225,7 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth
 (27, 'gas gas', 'gas', 'gas@g', '$2y$10$xUfIXYIw3xX8mAhtSwfiRe63uHJOrDxcJGaGpwzob.buJCv/J7XkS', '2024-03-03', 'admin'),
 (28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'basic'),
 (29, 'j j', 'j', 'j@gmail', '$2y$10$xzelHNmExQigEuK1h7hSCO8VCVwDCf5IDd08jnzI0Fec9tHnLJ.F6', '2024-03-03', 'admin'),
-(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'admin');
+(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'artist');
 
 --
 -- Indexes for dumped tables
@@ -250,6 +276,13 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `userart`
+--
+ALTER TABLE `userart`
+  ADD PRIMARY KEY (`art_id`),
+  ADD KEY `fk_userArt_users` (`userId`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -278,7 +311,13 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `userart`
+--
+ALTER TABLE `userart`
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -308,6 +347,12 @@ ALTER TABLE `order`
 ALTER TABLE `orderline`
   ADD CONSTRAINT `orderline_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `orderline_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `userart`
+--
+ALTER TABLE `userart`
+  ADD CONSTRAINT `fk_userArt_users` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
