@@ -4,18 +4,18 @@ require_once 'databaseConnection.php';
 
 $error = 0;
 $error_message = "";
-//function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
-function pre_registration_check( $fName, $sName, $email, $password,$password2)
+function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
+//function pre_registration_check( $fName, $sName, $email, $password,$password2)
 {
-    //if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) || empty($dob))
-    if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) )
+    if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) || empty($dob))
+    //if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) )
     {
 
         $error = 1;
         echo "Please ensure enter all detail ";
         return $error;
     }
-    if ($password !== $password2){
+    else if ($password !== $password2){
         echo "Password Must be the same";
         $error = 1;
         return $error;

@@ -38,6 +38,9 @@ $events = getEvents();
             </div>
         <?php endforeach; ?>
     </div>
+         <div class="card-body text-center">
+             <a href="index.php?action=show_admin" class="btn btn-lg btn-primary">Back To Admin</a>
+        </div>
 </div>
 
 <?php
