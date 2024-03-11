@@ -68,10 +68,11 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password');
         $password2 = filter_input(INPUT_POST, 'confirm_password');
         $dob = filter_input(INPUT_POST,'birthdate');
+        //$new_date = date('Y-m-d', strtotime($_POST['dateFrom']));
         //Validate Registration data
 
-       // $error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
-        $error = pre_registration_check( $fName, $sName, $email, $password,$password2);
+       $error = pre_registration_check( $fName, $sName, $email, $password,$password2,$dob);
+        //$error = pre_registration_check( $fName, $sName, $email, $password,$password2);
         //if($error < 1){
         if($error === null){
             $username = $fName." ".$sName;
