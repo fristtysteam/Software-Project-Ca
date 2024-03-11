@@ -22,14 +22,6 @@ if (isset($_POST['pay'])) {
     foreach ($cartItems as $item) {
         $product_id = $item['product_id'];
         $quantity = $item['quantity'];
-
-
-        if (!$cartModel->updateProductQuantity($product_id, $quantity)) {
-            $success = false;
-            break;
-        }
-
-
         $cart_id = $item['id'];
         $price = $item['price'];
         $user_id = $_SESSION['userId'];
@@ -39,31 +31,18 @@ if (isset($_POST['pay'])) {
             $success = false;
             break;
         }
-
-
-        if (!$cartModel->removeFromCartByUserId($user_id)) {
-
-            $success = false;
-
-        }
     }
-
 
     if ($success) {
-        echo "Orders placed successfully. ";
+        if ($cartModel->clearCart($_SESSION['userId'])) {
+            echo "Orders placed successfully. Cart cleared successfully.";
+        } else {
+            echo "Failed to clear cart.";
+        }
     } else {
-        echo "Failed to place orders. ";
+        echo "Failed to place orders.";
     }
 
-
-    if ($cartModel->clearCart($_SESSION['userId'])) {
-        echo "Cart cleared successfully. ";
-    } else {
-        echo "Failed to clear cart. ";
-    }
-
-
-    var_dump($success);
     exit();
 }
 ?>
@@ -73,7 +52,6 @@ if (isset($_POST['pay'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <!-- Custom styles -->
     <style>
         .checkout-table th, .checkout-table td {
             text-align: center;

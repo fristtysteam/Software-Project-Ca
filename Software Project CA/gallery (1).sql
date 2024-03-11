@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 04:29 PM
+-- Generation Time: Mar 11, 2024 at 11:58 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -93,7 +93,8 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `title`, `venue`, `start_date`, `end_date`, `month`) VALUES
-(1, 'event 24 lol', 'haha ', '2024-03-02', '2024-03-03', 2024);
+(1, 'event 26 lol', 'haha ', '2024-03-02', '2024-03-03', 2024),
+(2, 'event test', '2', '2024-03-09', '2024-03-11', 2024);
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,10 @@ INSERT INTO `order` (`product_id`, `price`, `user_id`, `quantity`, `order_date`,
 (14, 1212121, 18, 1, '2024-03-11', 83),
 (15, 233, 18, 1, '2024-03-11', 84),
 (14, 1212121, 18, 1, '2024-03-11', 83),
-(15, 233, 18, 1, '2024-03-11', 84);
+(15, 233, 18, 1, '2024-03-11', 84),
+(15, 233, 28, 1, '2024-03-11', 88),
+(15, 233, 28, 1, '2024-03-11', 88),
+(19, 2, 28, 1, '2024-03-11', 89);
 
 -- --------------------------------------------------------
 
@@ -157,17 +161,18 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) VALUES
-(11, 'Marco2 ', 2, 0, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'a'),
-(12, 'Temos', 35, 0, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
+(11, 'lightweird', 2, -1, 'https://i.pinimg.com/564x/67/ce/bc/67cebc70b75ddfd7c2c63ff8754697d5.jpg', 'a'),
+(12, 'yaapp', 35, -2, 'https://i.pinimg.com/564x/2f/23/fb/2f23fbe20829f60c35bad0ff7afb0da8.jpg', 'temo'),
 (13, 'asuk', 290000, 0, 'https://i.pinimg.com/564x/70/1c/2a/701c2a7daf5a66ec88f239507eaede05.jpg', 'asuk'),
 (14, 'carina', 1212121, -17, 'https://i.pinimg.com/564x/8e/f7/59/8ef759578f6f5c1e38284f78076e8826.jpg', 'carina'),
-(15, 'embass', 233, 21094, 'https://i.pinimg.com/564x/87/3d/b4/873db4d23705a612641cf8d3bcafa63a.jpg', '2121'),
+(15, 'embass23', 233, 21094, 'https://i.pinimg.com/564x/87/3d/b4/873db4d23705a612641cf8d3bcafa63a.jpg', '2121'),
 (16, 'glass', 2211, 100, 'https://i.pinimg.com/564x/77/ee/5b/77ee5bfee18f692e112d7841f1c79585.jpg', '21'),
 (17, 'unbrela', 20, 20, 'https://i.pinimg.com/564x/08/dc/27/08dc27ac3eb19d30ea87b8ae433513fb.jpg', 'umbrela'),
 (18, 'izanami', 11, 5, 'https://i.pinimg.com/564x/b7/91/47/b791470afd2c7257853ea49cb4104144.jpg', 'as'),
 (19, 'blood', 2, 8, 'https://i.pinimg.com/564x/28/3e/fe/283efeac5f4af04b01bb1fec01967539.jpg', 'a nice art piece'),
 (20, 'yeeee', 112, 1, 'https://i.pinimg.com/564x/0b/d7/79/0bd779c4c50a276f33620ab8238d08e6.jpg', 'aaa'),
-(21, 'Test', 0, 0, 'https://i.pinimg.com/564x/a6/28/54/a6285455709d445305bae1521b318a39.jpg', NULL);
+(23, 'YAAAA', 32, 2, 'https://i.pinimg.com/564x/62/fd/12/62fd126931e9548feae1ca0d8a15c8a2.jpg', 'yeebudydyyy'),
+(24, 'budybudy', 22, 4, 'https://i.pinimg.com/564x/49/e1/19/49e11946757dbc08293644d03923a012.jpg', 'bd');
 
 -- --------------------------------------------------------
 
@@ -191,7 +196,7 @@ CREATE TABLE `userart` (
 --
 
 INSERT INTO `userart` (`art_id`, `title`, `artist`, `desc`, `countryOfOrigin`, `url`, `userId`, `username`) VALUES
-(3, 'userArt5', 'm m', 'as', 'mexico', 'https://i.pinimg.com/564x/6a/82/30/6a8230cafaebe69b05938786f1000af1.jpg', 30, 'm m');
+(4, 'yebudy', 'm m', 'yee', 'Portugal', 'https://i.pinimg.com/564x/01/42/4b/01424b6ff785b7039631394256c543d6.jpg', 30, 'm m');
 
 -- --------------------------------------------------------
 
@@ -238,7 +243,8 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth
 (27, 'gas gas', 'gas', 'gas@g', '$2y$10$xUfIXYIw3xX8mAhtSwfiRe63uHJOrDxcJGaGpwzob.buJCv/J7XkS', '2024-03-03', 'admin'),
 (28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'basic'),
 (29, 'j j', 'j', 'j@gmail', '$2y$10$xzelHNmExQigEuK1h7hSCO8VCVwDCf5IDd08jnzI0Fec9tHnLJ.F6', '2024-03-03', 'admin'),
-(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'artist');
+(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'artist'),
+(31, 't t', 't', 't@g', '$2y$10$ehzQwQiudGvdgEfSOgnRXe9my6JDVSg.PR3/Ej8yPMm61.fj0Nqhu', '2024-03-01', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -302,31 +308,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `userart`
 --
 ALTER TABLE `userart`
-  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
@@ -337,12 +343,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `userart`

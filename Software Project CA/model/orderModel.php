@@ -30,42 +30,29 @@ function getOrders() {
 function addOrder($cart_id, $product_id, $price, $user_id, $quantity, $order_date) {
     global $db;
 
+    $sql = "INSERT INTO `order` (cart_id, product_id, price, user_id, quantity, order_date) VALUES (:cart_id, :product_id, :price, :user_id, :quantity, :order_date)";
+
     try {
-        // Check if the cart_id exists in the cart table
-        $checkCartQuery = "SELECT * FROM cart WHERE id = :cart_id";
-        $checkCartStmt = $db->prepare($checkCartQuery);
-        $checkCartStmt->bindParam(':cart_id', $cart_id);
-        $checkCartStmt->execute();
-        $cartExists = $checkCartStmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$cartExists) {
-            echo "Error: Cart with ID $cart_id does not exist.";
-            return false;
-        }
-
-        // Insert order into the order table
-        $sql = "INSERT INTO `order` (cart_id, product_id, price, user_id, quantity, order_date) 
-                VALUES (:cart_id, :product_id, :price, :user_id, :quantity, :order_date)";
         $stmt = $db->prepare($sql);
+
         $stmt->bindParam(':cart_id', $cart_id);
         $stmt->bindParam(':product_id', $product_id);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':user_id', $user_id);
         $stmt->bindParam(':quantity', $quantity);
         $stmt->bindParam(':order_date', $order_date);
+
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
             return true;
         } else {
-            echo "Error: Failed to insert order.";
             return false;
         }
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage(); // Output any SQL errors
+        echo "Error: " . $e->getMessage();
         return false;
     }
-
 
 
 }

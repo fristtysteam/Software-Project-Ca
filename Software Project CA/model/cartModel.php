@@ -104,6 +104,29 @@ class CartModel {
             return false;
         }
     }
+    public function removeFromCartByCartId($id) {
+        $sql = "DELETE FROM cart WHERE id = :id";
+
+        try {
+            $stmt = $this->db->prepare($sql);
+
+            // Bind parameter
+            $stmt->bindParam(':id', $id); // Change ':user_id' to ':id'
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Check if the deletion was successful
+            if ($stmt->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 
 
     // Retrieve cart items for a user
@@ -128,7 +151,6 @@ class CartModel {
         }
     }
 
-    // Clear cart for a user
     public function clearCart($user_id) {
         $sql = "DELETE FROM cart WHERE user_id = :user_id";
 
@@ -143,6 +165,7 @@ class CartModel {
         }
     }
 
+
     // Update product quantity
     public function updateProductQuantity($product_id, $quantity) {
         $sql = "UPDATE product SET quantity = quantity - :quantity WHERE id = :product_id";
@@ -150,6 +173,19 @@ class CartModel {
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
             $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+    public function clearCartOrders($user_id) {
+        $sql = "DELETE FROM `order` WHERE cart_id IN (SELECT id FROM cart WHERE user_id = :user_id)";
+
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
