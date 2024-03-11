@@ -3,19 +3,23 @@ require_once 'databaseConnection.php';
 require_once 'getProducts.php';
 
 
-function addProduct($name, $price, $quantity, $url, $description) {
+function addUserArt($title, $description, $countryOfOrigin, $url, $userId, $username) {
     global $db;
 
-    $sql = "INSERT INTO product (name, price, quantity, url, description) VALUES (:name, :price, :quantity, :url, :description)";
+    $sql = "INSERT INTO userArt (title, artist, `desc`, countryOfOrigin, url, userId, username) VALUES (:title, :artist, :description, :countryOfOrigin, :url, :userId, :username)";
 
     try {
         $stmt = $db->prepare($sql);
 
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':quantity', $quantity);
-        $stmt->bindParam(':url', $url);
+        $artist = $username;
+
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':artist', $artist);
         $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':countryOfOrigin', $countryOfOrigin);
+        $stmt->bindParam(':url', $url);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->bindParam(':username', $username);
 
         $stmt->execute();
 

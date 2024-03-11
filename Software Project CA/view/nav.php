@@ -32,7 +32,10 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                     <a class="nav-link" href="../controller/index.php?action=shop">Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../controller/index.php?action=galleries">Galleries</a>
+                    <a class="nav-link" href="../controller/index.php?action=gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../controller/index.php?action=usergallery">UserGallery</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=events">Events</a>

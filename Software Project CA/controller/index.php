@@ -145,9 +145,13 @@ switch ($action) {
         $pageTitle = "Admin Actions Page";
         include "../view/admin.php";
         break;
-    case 'artist_action':
+    case 'artistArtWork':
         $pageTitle = "Artist Actions Page";
-        include "../view/artistActions.php";
+        include "../view/userGallery.php";
+        break;
+    case 'addUserArt':
+        $pageTitle = "Artist Add Art";
+        include "../view/userAddArt.php";
         break;
     case 'membership':
         $pageTitle = "Membership Page";
@@ -185,12 +189,13 @@ switch ($action) {
         $pageTitle = "Admin Edit Events";
         include "../view/adminEditEvent.php";
         break;
-    case 'galleries':
-        // Logic for galleries page
-        $pageTitle = "Galleries Page";
-        //include "../view/galleries.php";
-        //header("Location:index.php?action=galleries");
-        include "../view/galleries.php";
+    case 'gallery':
+        $pageTitle = "Gallery Page";
+        include "../view/gallery.php";
+        break;
+    case 'usergallery':
+        $pageTitle = "User Gallery Page";
+        include "../view/userGallery.php";
         break;
     case 'events':
         $pageTitle = "Event Page";
