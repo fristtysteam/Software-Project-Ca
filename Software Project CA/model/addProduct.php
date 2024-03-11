@@ -3,23 +3,19 @@ require_once 'databaseConnection.php';
 require_once 'getProducts.php';
 
 
-function addUserArt($title, $description, $countryOfOrigin, $url, $userId, $username) {
+function addProduct($name, $price, $quantity, $url, $description) {
     global $db;
 
-    $sql = "INSERT INTO userArt (title, artist, `desc`, countryOfOrigin, url, userId, username) VALUES (:title, :artist, :description, :countryOfOrigin, :url, :userId, :username)";
+    $sql = "INSERT INTO product (name, price, quantity, url, description) VALUES (:name, :price, :quantity, :url, :description)";
 
     try {
         $stmt = $db->prepare($sql);
 
-        $artist = $username;
-
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':artist', $artist);
-        $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':countryOfOrigin', $countryOfOrigin);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':quantity', $quantity);
         $stmt->bindParam(':url', $url);
-        $stmt->bindParam(':userId', $userId);
-        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':description', $description);
 
         $stmt->execute();
 
@@ -33,4 +29,3 @@ function addUserArt($title, $description, $countryOfOrigin, $url, $userId, $user
         return false;
     }
 }
-?>

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $end = $_POST['end_date'];
     $month = $_POST['month'];
 
-    if (addProduct($title, $venue, $start, $end, $month)) {
+    if (addEvent($title, $venue, $start, $end, $month)) {
         header("Location: index.php?action=adminViewEvents");
         exit();
     } else {

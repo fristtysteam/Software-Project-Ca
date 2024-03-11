@@ -3,7 +3,7 @@ require_once 'databaseConnection.php';
 require_once 'getEvents.php';
 
 
-function addProduct($title, $venue, $start, $end, $month) {
+function addEvent($title, $venue, $start, $end, $month) {
     global $db;
 
     $sql = "INSERT INTO event (title, venue, start_date, end_date, month) VALUES (:title, :venue, :start_date, :end_date, :month)";

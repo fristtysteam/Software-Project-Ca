@@ -118,7 +118,7 @@ switch ($action) {
                 header("Location:index.php?action=show_admin");
                 exit();
             } elseif ($userDetails['userType'] === "artist") {
-                header("Location:index.php?action=artist_action");
+                header("Location:index.php?action=artistArtWork");
                 exit();
             } else if(in_array($userDetails['userType'], ["basic", "premium", "guest"])) {
                 header("Location:index.php?action=shop");
