@@ -1,6 +1,7 @@
 <?php
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
+
 include "../view/nav.php";
 include'../view/header.php';
 $currentLanguage = getLanguage();
@@ -90,19 +91,27 @@ $events = getEvents();
                     echo '<td></td>';
                 }
                 ?>
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <?php
+                        if ($_SESSION['userType'] === 'premium') {
+                            echo '<a href="../model/purchaseTicket.php" class="btn btn-primary">Purchase Ticket</a>';
+                        } else {
+                            echo '<p>You must have a premium membership to purchase a ticket.</p>';
+                        }
+                        ?>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-
-
 <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
-
 </script>
 </body>
 </html>

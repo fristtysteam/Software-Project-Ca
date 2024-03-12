@@ -106,21 +106,19 @@ switch ($action) {
         include "../view/login.php";
         break;
     case 'changeRole':
-        $user_id = $_SESSION['userId']; // Get the user ID from the session
-        $new_role = $_GET['user_type']; // Get the new role from the URL parameter
+        $user_id = $_SESSION['userId'];
+        $new_role = $_GET['user_type'];
 
-        // Perform validation on the new role if needed
 
-        // Update the user's role in the database
+
+
         if (changeUserRole($user_id, $new_role)) {
-            // Update the session variable with the new userType
             $_SESSION['userType'] = $new_role;
 
-            // Redirect to a success page or perform any other action
+
             header("Location: index.php?action=membership&success=true");
             exit();
         } else {
-            // Redirect with error message
             header("Location: index.php?action=membership&error=role_change_failed");
             exit();
         }
@@ -175,6 +173,10 @@ switch ($action) {
     case 'addUserArt':
         $pageTitle = "Artist Add Art";
         include "../view/userAddArt.php";
+        break;
+    case 'purchaseTicket':
+        $pageTitle = "Purchase Event Ticket";
+        include "../view/purchaseEventTicket.php";
         break;
     case 'membership':
         $pageTitle = "Membership Page";

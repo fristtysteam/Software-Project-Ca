@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 01:41 AM
+-- Generation Time: Mar 12, 2024 at 02:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -183,6 +183,18 @@ INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tickets`
+--
+
+CREATE TABLE `tickets` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `purchase_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userart`
 --
 
@@ -250,7 +262,7 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth
 (28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'basic'),
 (29, 'j j', 'j', 'j@gmail', '$2y$10$xzelHNmExQigEuK1h7hSCO8VCVwDCf5IDd08jnzI0Fec9tHnLJ.F6', '2024-03-03', 'admin'),
 (30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'artist'),
-(31, 't t', 't', 't@g', '$2y$10$ehzQwQiudGvdgEfSOgnRXe9my6JDVSg.PR3/Ej8yPMm61.fj0Nqhu', '2024-03-01', 'admin');
+(31, 't t', 't', 't@g', '$2y$10$ehzQwQiudGvdgEfSOgnRXe9my6JDVSg.PR3/Ej8yPMm61.fj0Nqhu', '2024-03-01', 'basic');
 
 --
 -- Indexes for dumped tables
@@ -291,6 +303,13 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `userart`
 --
 ALTER TABLE `userart`
@@ -329,6 +348,12 @@ ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
+-- AUTO_INCREMENT for table `tickets`
+--
+ALTER TABLE `tickets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `userart`
 --
 ALTER TABLE `userart`
@@ -349,6 +374,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `userart`
