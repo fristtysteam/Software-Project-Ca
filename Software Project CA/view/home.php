@@ -41,7 +41,7 @@ include'../view/header.php';
     <div class="container">
         <h2 class="text-center mb-4">Pages you should visit</h2>
         <ul class="list-group">
-            <li class="list-group-item"><a href="index.php?action=userGallery">User Art Gallery</a></li>
+            <li class="list-group-item"><a href="index.php?action=artistArtWork">User Art Gallery</a></li>
             <li class="list-group-item"><a href="index.php?action=showRegister">Register</a></li>
             <li class="list-group-item"><a href="index.php?action=login">Login</a></li>
             <li class="list-group-item"><a href="index.php?action=events">Events</a></li>
