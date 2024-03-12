@@ -8,7 +8,7 @@ include'../view/header.php';
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
 } else {
-    echo "Error: User ID is not set.";
+    echo "Must be logged in to access this page";
     exit();
 }
 $currentLanguage = getLanguage();
