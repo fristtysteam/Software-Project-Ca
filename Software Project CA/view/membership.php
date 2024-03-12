@@ -1,9 +1,16 @@
 <?php
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
+require_once '../model/membershipRoles.php';
+
 include "../view/nav.php";
 include'../view/header.php';
-
+if (isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
+} else {
+    echo "Error: User ID is not set.";
+    exit();
+}
 $currentLanguage = getLanguage();
 ?>
 
@@ -23,14 +30,24 @@ $currentLanguage = getLanguage();
             <div class="col-md-6">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h2 class="card-title">Standard Membership</h2>
+                        <h2 class="card-title">Basic Membership</h2>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Unlimited access to our art galleries</li>
-                            <li class="list-group-item">Ability to save and organize your favorite artworks</li>
-                            <li class="list-group-item">Receive regular updates and newsletters</li>
+                            <li class="list-group-item">Get emails and news feeds!</li>
                         </ul>
-                        <p class="card-text">Join now for free!</p>
-                        <a href="#" class="btn btn-primary">Join Standard</a>
+                        <p class="card-text">Experience art with our normal membership!</p>
+                        <a href="../controller/index.php?action=changeRole&user_id=<?php echo $userId; ?>&user_type=basic" class="btn btn-primary">Join Basic</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2 class="card-title">Artist Membership</h2>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ability to Post Art to Users Gallery</li>
+                        </ul>
+                        <p class="card-text">Join now and showcase your creativity!</p>
+                        <a href="../controller/index.php?action=changeRole&user_id=<?php echo $userId; ?>&user_type=artist" class="btn btn-primary">Join Artist Membership</a>
                     </div>
                 </div>
             </div>
@@ -39,21 +56,14 @@ $currentLanguage = getLanguage();
                     <div class="card-body">
                         <h2 class="card-title">Premium Membership</h2>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Early access to new art collections</li>
-                            <li class="list-group-item">Access to premium content and artist interviews</li>
-                            <li class="list-group-item">Discounts on art purchases and events</li>
-                            <li class="list-group-item">Personalized recommendations based on your preferences</li>
-                            <li class="list-group-item">Priority customer support</li>
+                            <li class="list-group-item">Ability to go to Special Events</li>
                         </ul>
                         <p class="card-text">Experience art like never before with our premium membership!</p>
-                        <a href="#" class="btn btn-primary">Upgrade to Premium</a>
+                        <a href="../controller/index.php?action=changeRole&user_id=<?php echo $userId; ?>&user_type=premium" class="btn btn-primary">Upgrade to Premium</a>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-
-    </body>
-    </html>
-
 <?php include'../view/footer.php' ?>

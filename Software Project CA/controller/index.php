@@ -2,6 +2,8 @@
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/userDB.php';
+require_once '../model/membershipRoles.php';
+
 
 // Variables
 $error = "";
@@ -102,6 +104,26 @@ switch ($action) {
     case 'login':
         $pageTitle = "Login Page";
         include "../view/login.php";
+        break;
+    case 'changeRole':
+        $user_id = $_SESSION['userId']; // Get the user ID from the session
+        $new_role = $_GET['user_type']; // Get the new role from the URL parameter
+
+        // Perform validation on the new role if needed
+
+        // Update the user's role in the database
+        if (changeUserRole($user_id, $new_role)) {
+            // Update the session variable with the new userType
+            $_SESSION['userType'] = $new_role;
+
+            // Redirect to a success page or perform any other action
+            header("Location: index.php?action=membership&success=true");
+            exit();
+        } else {
+            // Redirect with error message
+            header("Location: index.php?action=membership&error=role_change_failed");
+            exit();
+        }
         break;
     case 'do_login':
         $email = filter_input(INPUT_POST, 'email');
