@@ -55,3 +55,25 @@ function addArt($title, $artist, $desc, $url, $countryOfOrigin)
         return false;
     }
 }
+function deleteArt($artId, $db) {
+    $query = "DELETE FROM art WHERE product_id = ?";
+    $stmt = $db->prepare($query);
+    $stmt->execute([$artId]);
+
+    if ($stmt->rowCount() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+if(isset($_GET['deleteArt'])) {
+    $artId = $_GET['deleteArt'];
+
+    if(deleteArt($artId, $db)) {
+        header("Location:../controller/index.php?action=adminViewArt");
+        exit();
+    } else {
+        echo "Failed to delete art.";
+    }
+}
