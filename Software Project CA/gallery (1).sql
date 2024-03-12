@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 02:12 AM
+-- Generation Time: Mar 12, 2024 at 03:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,13 +63,6 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `price`) VALUES
-(50, 30, 13, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -145,7 +138,10 @@ INSERT INTO `order` (`product_id`, `price`, `user_id`, `quantity`, `order_date`,
 (15, 233, 18, 1, '2024-03-12', 92),
 (24, 22, 28, 1, '2024-03-12', 93),
 (23, 32, 28, 1, '2024-03-12', 94),
-(15, 233, 18, 1, '2024-03-12', 95);
+(15, 233, 18, 1, '2024-03-12', 95),
+(13, 290000, 30, 1, '2024-03-12', 50),
+(17, 20, 30, 1, '2024-03-12', 96),
+(15, 233, 30, 1, '2024-03-12', 97);
 
 -- --------------------------------------------------------
 
@@ -189,8 +185,153 @@ INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `url`, `description`) 
 CREATE TABLE `tickets` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `purchase_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `purchase_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `event_title` varchar(50) DEFAULT NULL,
+  `event_venue` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `user_id`, `purchase_date`, `event_title`, `event_venue`) VALUES
+(1, 30, '2024-03-12 01:33:04', NULL, NULL),
+(2, 30, '2024-03-12 01:33:48', NULL, NULL),
+(3, 30, '2024-03-12 01:33:59', NULL, NULL),
+(4, 30, '2024-03-12 01:40:37', NULL, NULL),
+(5, 30, '2024-03-12 01:40:38', NULL, NULL),
+(6, 30, '2024-03-12 01:40:39', NULL, NULL),
+(7, 30, '2024-03-12 01:40:55', NULL, NULL),
+(8, 30, '2024-03-12 01:50:54', NULL, NULL),
+(9, 30, '2024-03-12 01:50:55', NULL, NULL),
+(10, 30, '2024-03-12 01:50:56', NULL, NULL),
+(11, 30, '2024-03-12 01:50:58', NULL, NULL),
+(12, 30, '2024-03-12 01:50:58', NULL, NULL),
+(13, 30, '2024-03-12 01:50:59', NULL, NULL),
+(14, 30, '2024-03-12 01:50:59', NULL, NULL),
+(15, 30, '2024-03-12 01:51:01', NULL, NULL),
+(16, 30, '2024-03-12 01:51:02', NULL, NULL),
+(17, 30, '2024-03-12 01:51:02', NULL, NULL),
+(18, 30, '2024-03-12 01:51:03', NULL, NULL),
+(19, 30, '2024-03-12 01:51:03', NULL, NULL),
+(20, 30, '2024-03-12 01:51:07', NULL, NULL),
+(21, 30, '2024-03-12 01:51:10', NULL, NULL),
+(22, 30, '2024-03-12 01:51:14', NULL, NULL),
+(23, 30, '2024-03-12 01:51:15', NULL, NULL),
+(24, 30, '2024-03-12 01:51:28', NULL, NULL),
+(25, 30, '2024-03-12 01:51:28', NULL, NULL),
+(26, 30, '2024-03-12 01:51:28', NULL, NULL),
+(27, 30, '2024-03-12 01:51:29', NULL, NULL),
+(28, 30, '2024-03-12 01:51:29', NULL, NULL),
+(29, 30, '2024-03-12 01:51:29', NULL, NULL),
+(30, 30, '2024-03-12 01:53:46', NULL, NULL),
+(31, 30, '2024-03-12 01:53:57', NULL, NULL),
+(32, 30, '2024-03-12 01:53:59', NULL, NULL),
+(33, 30, '2024-03-12 01:54:01', NULL, NULL),
+(34, 30, '2024-03-12 01:55:13', NULL, NULL),
+(35, 30, '2024-03-12 01:57:07', NULL, NULL),
+(36, 30, '2024-03-12 01:57:10', NULL, NULL),
+(37, 30, '2024-03-12 01:57:12', NULL, NULL),
+(38, 30, '2024-03-12 01:57:16', NULL, NULL),
+(39, 30, '2024-03-12 01:58:59', NULL, NULL),
+(40, 30, '2024-03-12 01:59:02', NULL, NULL),
+(41, 30, '2024-03-12 01:59:02', NULL, NULL),
+(42, 30, '2024-03-12 01:59:20', NULL, NULL),
+(43, 30, '2024-03-12 01:59:24', NULL, NULL),
+(44, 30, '2024-03-12 02:00:51', NULL, NULL),
+(45, 30, '2024-03-12 02:00:52', NULL, NULL),
+(46, 30, '2024-03-12 02:00:53', NULL, NULL),
+(47, 30, '2024-03-12 02:00:54', NULL, NULL),
+(48, 30, '2024-03-12 02:00:55', NULL, NULL),
+(49, 30, '2024-03-12 02:00:58', NULL, NULL),
+(50, 30, '2024-03-12 02:00:59', NULL, NULL),
+(51, 30, '2024-03-12 02:01:00', NULL, NULL),
+(52, 30, '2024-03-12 02:01:02', NULL, NULL),
+(53, 30, '2024-03-12 02:01:03', NULL, NULL),
+(54, 30, '2024-03-12 02:02:24', NULL, NULL),
+(55, 30, '2024-03-12 02:02:28', NULL, NULL),
+(56, 30, '2024-03-12 02:02:32', NULL, NULL),
+(57, 30, '2024-03-12 02:04:19', NULL, NULL),
+(58, 30, '2024-03-12 02:04:20', NULL, NULL),
+(59, 30, '2024-03-12 02:04:21', NULL, NULL),
+(60, 30, '2024-03-12 02:05:06', NULL, NULL),
+(61, 30, '2024-03-12 02:05:07', NULL, NULL),
+(62, 30, '2024-03-12 02:05:08', NULL, NULL),
+(63, 30, '2024-03-12 02:05:08', NULL, NULL),
+(64, 30, '2024-03-12 02:05:08', NULL, NULL),
+(65, 30, '2024-03-12 02:05:08', NULL, NULL),
+(66, 30, '2024-03-12 02:05:08', NULL, NULL),
+(67, 30, '2024-03-12 02:05:09', NULL, NULL),
+(68, 30, '2024-03-12 02:05:09', NULL, NULL),
+(69, 30, '2024-03-12 02:05:09', NULL, NULL),
+(70, 30, '2024-03-12 02:05:10', NULL, NULL),
+(71, 30, '2024-03-12 02:05:10', NULL, NULL),
+(72, 30, '2024-03-12 02:05:13', NULL, NULL),
+(73, 30, '2024-03-12 02:05:16', NULL, NULL),
+(74, 30, '2024-03-12 02:05:24', NULL, NULL),
+(75, 30, '2024-03-12 02:06:23', NULL, NULL),
+(76, 30, '2024-03-12 02:06:28', NULL, NULL),
+(77, 30, '2024-03-12 02:06:46', NULL, NULL),
+(78, 30, '2024-03-12 02:06:55', NULL, NULL),
+(79, 30, '2024-03-12 02:08:24', NULL, NULL),
+(80, 30, '2024-03-12 02:08:27', NULL, NULL),
+(81, 30, '2024-03-12 02:10:45', NULL, NULL),
+(82, 30, '2024-03-12 02:10:45', NULL, NULL),
+(83, 30, '2024-03-12 02:10:46', NULL, NULL),
+(84, 30, '2024-03-12 02:10:47', NULL, NULL),
+(85, 30, '2024-03-12 02:10:49', NULL, NULL),
+(86, 30, '2024-03-12 02:10:49', NULL, NULL),
+(87, 30, '2024-03-12 02:12:30', NULL, NULL),
+(88, 30, '2024-03-12 02:12:30', NULL, NULL),
+(89, 30, '2024-03-12 02:12:30', NULL, NULL),
+(90, 30, '2024-03-12 02:12:41', NULL, NULL),
+(91, 30, '2024-03-12 02:13:18', NULL, NULL),
+(92, 30, '2024-03-12 02:18:09', NULL, NULL),
+(93, 30, '2024-03-12 02:18:11', NULL, NULL),
+(94, 30, '2024-03-12 02:18:24', NULL, NULL),
+(95, 30, '2024-03-12 02:18:39', NULL, NULL),
+(96, 30, '2024-03-12 02:18:48', NULL, NULL),
+(97, 30, '2024-03-12 02:18:58', NULL, NULL),
+(98, 30, '2024-03-12 02:19:03', NULL, NULL),
+(99, 30, '2024-03-12 02:19:29', NULL, NULL),
+(100, 30, '2024-03-12 02:19:30', NULL, NULL),
+(101, 30, '2024-03-12 02:19:47', NULL, NULL),
+(102, 30, '2024-03-12 02:19:49', NULL, NULL),
+(103, 30, '2024-03-12 02:19:50', NULL, NULL),
+(104, 30, '2024-03-12 02:20:32', NULL, NULL),
+(105, 30, '2024-03-12 02:20:42', NULL, NULL),
+(106, 30, '2024-03-12 02:21:03', NULL, NULL),
+(107, 30, '2024-03-12 02:21:04', NULL, NULL),
+(108, 30, '2024-03-12 02:21:05', NULL, NULL),
+(109, 30, '2024-03-12 02:21:06', NULL, NULL),
+(110, 30, '2024-03-12 02:21:07', NULL, NULL),
+(111, 30, '2024-03-12 02:21:09', NULL, NULL),
+(112, 30, '2024-03-12 02:22:29', NULL, NULL),
+(113, 30, '2024-03-12 02:22:30', NULL, NULL),
+(114, 30, '2024-03-12 02:22:31', NULL, NULL),
+(115, 30, '2024-03-12 02:22:34', NULL, NULL),
+(116, 30, '2024-03-12 02:23:26', NULL, NULL),
+(117, 30, '2024-03-12 02:23:28', NULL, NULL),
+(118, 30, '2024-03-12 02:23:28', NULL, NULL),
+(119, 32, '2024-03-12 02:24:37', NULL, NULL),
+(120, 32, '2024-03-12 02:24:40', NULL, NULL),
+(121, 28, '2024-03-12 02:27:19', NULL, NULL),
+(122, 28, '2024-03-12 02:42:21', 'event test', '2'),
+(123, 28, '2024-03-12 02:43:45', 'event test', '2'),
+(124, 28, '2024-03-12 02:43:46', 'event 26 lol', 'haha '),
+(125, 28, '2024-03-12 02:43:48', 'event test', '2'),
+(126, 28, '2024-03-12 02:43:51', 'event 26 lol', 'haha '),
+(127, 28, '2024-03-12 02:45:19', 'event 26 lol', 'haha '),
+(128, 28, '2024-03-12 02:45:55', 'event 26 lol', 'haha '),
+(129, 28, '2024-03-12 02:45:56', 'event 26 lol', 'haha '),
+(130, 28, '2024-03-12 02:45:58', 'event 26 lol', 'haha '),
+(131, 28, '2024-03-12 02:46:07', 'event 26 lol', 'haha '),
+(132, 28, '2024-03-12 02:46:08', 'event 26 lol', 'haha '),
+(133, 28, '2024-03-12 02:46:39', 'event 26 lol', 'haha '),
+(134, 28, '2024-03-12 02:46:41', 'event test', '2'),
+(135, 28, '2024-03-12 02:46:55', 'event test', '2'),
+(136, 28, '2024-03-12 02:47:00', 'event test', '2'),
+(137, 28, '2024-03-12 02:47:02', 'event 26 lol', 'haha ');
 
 -- --------------------------------------------------------
 
@@ -259,10 +400,11 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth
 (25, 'asas asas', 'asas', 'asas@gm', '$2y$10$xi5.2FIE8v39yhrW.vz5cOQRE006PoXOQAm8jCGSu3rZp0EhaG2ny', '2024-03-02', 'admin'),
 (26, 'ta ta', 'ta', 'ta@gm', '$2y$10$x.H5Z.WeAKZIb0dVqLbXmOsJQENOTAfG40UZ1FvCANmoCJzQXUPpG', '2024-03-03', 'admin'),
 (27, 'gas gas', 'gas', 'gas@g', '$2y$10$xUfIXYIw3xX8mAhtSwfiRe63uHJOrDxcJGaGpwzob.buJCv/J7XkS', '2024-03-03', 'admin'),
-(28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'basic'),
+(28, 'g g', 'g', 'g@gmail', '$2y$10$suz.y8Kovw.JTvAZg3fEee3XmHWvjwjFB/3csM.RAeJXc./ax2aTy', '2024-03-02', 'premium'),
 (29, 'j j', 'j', 'j@gmail', '$2y$10$xzelHNmExQigEuK1h7hSCO8VCVwDCf5IDd08jnzI0Fec9tHnLJ.F6', '2024-03-03', 'admin'),
-(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'artist'),
-(31, 't t', 't', 't@g', '$2y$10$ehzQwQiudGvdgEfSOgnRXe9my6JDVSg.PR3/Ej8yPMm61.fj0Nqhu', '2024-03-01', 'basic');
+(30, 'm m', 'm', 'm@g', '$2y$10$xsymQmRiM2qsliiXghOJTOMdXmcqQ.Zkl3Yn2vYzmnpk3QNwpTuD2', '2024-03-02', 'premium'),
+(31, 't t', 't', 't@g', '$2y$10$ehzQwQiudGvdgEfSOgnRXe9my6JDVSg.PR3/Ej8yPMm61.fj0Nqhu', '2024-03-01', 'basic'),
+(32, 'u u', 'u', 'u@g', '$2y$10$p/GwPu21dVjMPkavwvRazedvDwjBbv7Nt/8mN9B1KA..EqcAcTY2i', '2024-03-22', 'premium');
 
 --
 -- Indexes for dumped tables
@@ -333,7 +475,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -351,7 +493,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `userart`
@@ -363,7 +505,7 @@ ALTER TABLE `userart`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables

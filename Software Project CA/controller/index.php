@@ -177,7 +177,27 @@ switch ($action) {
     case 'purchaseTicket':
         $pageTitle = "Purchase Event Ticket";
         include "../view/purchaseEventTicket.php";
+        if (isset($_GET['eventId'])) {
+            $eventId = $_GET['eventId'];
+
+            $eventDetails = getEventDetails($eventId);
+
+            if ($eventDetails) {
+                $eventTitle = $eventDetails['title'];
+                $eventVenue = $eventDetails['venue'];
+
+                purchaseTicket($userId, $eventTitle, $eventVenue);
+
+                echo "Your ticket has been bought, Check your orders to see it";
+            } else {
+                header("Location: ../view/error.php");
+                exit();
+            }
+        }
         break;
+
+
+
     case 'membership':
         $pageTitle = "Membership Page";
         include "../view/membership.php";

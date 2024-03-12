@@ -15,4 +15,18 @@ function getEvents() {
     }
     return $events;
 }
+function getEventDetails($eventId) {
+    global $db;
+    try {
+        $query = "SELECT * FROM event WHERE id = :eventId";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':eventId', $eventId);
+        $stmt->execute();
+        $event = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $event;
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}
 ?>
