@@ -202,6 +202,10 @@ switch ($action) {
         $pageTitle = "Event Page";
         include "../view/event.php";
         break;
+    case 'orders':
+        $pageTitle = "Orders Page";
+        include "../view/showMyOrders.php";
+        break;
     case 'cart':
         $pageTitle = "Cart Page";
         include "../view/cart.php";

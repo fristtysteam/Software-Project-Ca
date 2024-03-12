@@ -1,6 +1,6 @@
 
 body {
-    padding-top: 56px;
+    padding-top: 106px;
 }
 
 .navbar {
@@ -24,7 +24,7 @@ body {
 }
 
 .navbar-custom {
-    max-width: 50%;
+    max-width: 70%;
     margin: 0 auto;
 }
 

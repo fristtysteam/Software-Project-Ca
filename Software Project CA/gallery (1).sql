@@ -7,7 +7,7 @@ USE gallery;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 11:58 PM
+-- Generation Time: Mar 12, 2024 at 01:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,9 +69,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`, `price`) VALUES
-(50, 30, 13, 1, 0),
-(83, 18, 14, 1, 0),
-(84, 18, 15, 1, 0);
+(50, 30, 13, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -139,7 +137,15 @@ INSERT INTO `order` (`product_id`, `price`, `user_id`, `quantity`, `order_date`,
 (15, 233, 18, 1, '2024-03-11', 84),
 (15, 233, 28, 1, '2024-03-11', 88),
 (15, 233, 28, 1, '2024-03-11', 88),
-(19, 2, 28, 1, '2024-03-11', 89);
+(19, 2, 28, 1, '2024-03-11', 89),
+(18, 11, 28, 1, '2024-03-12', 90),
+(14, 1212121, 18, 1, '2024-03-12', 83),
+(15, 233, 18, 1, '2024-03-12', 84),
+(16, 2211, 18, 1, '2024-03-12', 91),
+(15, 233, 18, 1, '2024-03-12', 92),
+(24, 22, 28, 1, '2024-03-12', 93),
+(23, 32, 28, 1, '2024-03-12', 94),
+(15, 233, 18, 1, '2024-03-12', 95);
 
 -- --------------------------------------------------------
 
@@ -308,7 +314,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `event`

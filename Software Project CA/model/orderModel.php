@@ -8,7 +8,7 @@ function getOrders() {
 
     if ($db) {
         try {
-            $query = "SELECT * FROM order";
+            $query = "SELECT * FROM `order`";
 
             $stmt = $db->prepare($query);
 
@@ -27,6 +27,38 @@ function getOrders() {
 
     return $orders;
 }
+function getOrdersByUserId($user_id)
+{
+    global $db;
+
+
+    if ($db) {
+
+        try {
+
+            $query = "SELECT * FROM `order` WHERE user_id = :user_id";
+
+            $stmt = $db->prepare($query);
+
+            $stmt->bindParam(':user_id', $user_id);
+
+            $stmt->execute();
+
+            $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $orders;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            file_put_contents('error.log', $e->getMessage(), FILE_APPEND);
+            return null;
+        }
+    } else {
+        echo "Error: Unable to connect to the database.";
+        return null;
+    }
+}
+
+
 function addOrder($cart_id, $product_id, $price, $user_id, $quantity, $order_date) {
     global $db;
 
