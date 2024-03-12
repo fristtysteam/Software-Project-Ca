@@ -218,6 +218,10 @@ switch ($action) {
         $pageTitle = "Admin Add Products";
         include "../view/adminAddProduct.php";
         break;
+    case 'adminAddArt':
+        $pageTitle = "Admin Add Art";
+        include "../view/adminAddArt.php";
+        break;
     case 'adminAddEvents':
         $pageTitle = "Admin Add Events";
         include "../view/adminAddEvent.php";

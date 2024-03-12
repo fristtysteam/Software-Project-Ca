@@ -27,3 +27,31 @@ function getArtworks() {
 
     return $artworks;
 }
+function addArt($title, $artist, $desc, $url, $countryOfOrigin)
+{
+    global $db;
+
+    $sql = "INSERT INTO art (title, artist, `desc`, url, countryOfOrigin) VALUES (:title, :artist, :desc, :url, :countryOfOrigin)";
+
+    try {
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':artist', $artist);
+        $stmt->bindParam(':desc', $desc);
+        $stmt->bindParam(':url', $url);
+        $stmt->bindParam(':countryOfOrigin', $countryOfOrigin);
+
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
+}

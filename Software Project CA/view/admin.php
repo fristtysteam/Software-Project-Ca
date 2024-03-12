@@ -71,6 +71,15 @@ if (isset($_SESSION["username"])) {
         </div>
     </div>
 </div>
+<div class="col-md-6">
+    <div class="card mb-3">
+        <div class="card-body text-center">
+            <form method="get" action="<?php // echo $page_url; ?>">
+                <a href="index.php?action=adminAddArt" class="btn btn-lg btn-primary">Add Gallery Art</a>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="container mt-3">
     <div class="row justify-content-center">
