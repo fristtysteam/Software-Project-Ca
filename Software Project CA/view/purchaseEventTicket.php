@@ -25,7 +25,7 @@ $events = getEvents();
                         <p class="card-text">Start Date: <?php echo $event['start_date']; ?></p>
                         <p class="card-text">End Date: <?php echo $event['end_date']; ?></p>
                         <p class="card-text">Month: <?php echo $event['month']; ?></p>
-                        <a href="purchaseEventTicket.php?action=purchaseTicket&eventId=<?php echo $event['id']; ?>" class="btn btn-primary">Purchase Ticket</a>
+                        <a href="../model/purchaseTicket.php?action=purchaseTicket&eventId=<?php echo $event['id']; ?>" class="btn btn-primary">Purchase Ticket</a>
                     </div>
                 </div>
             </div>
