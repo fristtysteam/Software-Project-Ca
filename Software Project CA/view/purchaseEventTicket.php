@@ -1,14 +1,11 @@
 <?php
+require_once '../model/purchaseTicket.php'; // Include purchaseTicket.php file
 require_once '../model/getEvents.php';
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 
 include "../view/nav.php";
 include '../view/header.php';
-
-if(isset($_GET['action']) && $_GET['action'] === 'purchaseTicket' && isset($_GET['eventId'])) {
-
-}
 
 $events = getEvents();
 ?>
@@ -25,14 +22,14 @@ $events = getEvents();
                         <p class="card-text">Start Date: <?php echo $event['start_date']; ?></p>
                         <p class="card-text">End Date: <?php echo $event['end_date']; ?></p>
                         <p class="card-text">Month: <?php echo $event['month']; ?></p>
-                        <a href="../model/purchaseTicket.php?action=purchaseTicket&eventId=<?php echo $event['id']; ?>" class="btn btn-primary">Purchase Ticket</a>
+                        <a href="../controller/index.php?action=purchaseTicket&eventId=<?php echo $event['id']; ?>" class="btn btn-primary">Purchase Ticket</a>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
     <div class="card-body text-center">
-        <a href="index.php?action=events" class="btn btn-lg btn-primary">Back To Event Page</a>
+        <a href="../controller/index.php?action=events" class="btn btn-lg btn-primary">Back To Event Page</a>
     </div>
 </div>
 

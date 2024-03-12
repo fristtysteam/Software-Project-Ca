@@ -1,6 +1,8 @@
 <?php
 require_once '../model/databaseConnection.php';
 require_once '../model/orderModel.php';
+require_once '../model/purchaseTicket.php';
+
 
 include "../view/nav.php";
 include '../view/header.php';
@@ -8,9 +10,9 @@ include '../view/header.php';
 if (isset($_SESSION['userId'])) {
     $user_id = $_SESSION['userId'];
     $orders = getOrdersByUserId($user_id);
+    $tickets = getTicketsByUserId($user_id);
 } else {
     echo "Error: User ID is not set.";
-    exit();
 }
 ?>
 
@@ -31,7 +33,24 @@ if (isset($_SESSION['userId'])) {
                 </div>
             <?php endforeach; ?>
         </div>
+        <h1 class="text-center mt-5">View Your Tickets</h1>
+        <div class="row mt-5">
+            <?php foreach ($tickets as $ticket): ?>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="card-text">Title: <?php echo $ticket['event_title']; ?></p>
+                            <p class="card-text">Venue: <?php echo $ticket['event_venue']; ?></p>
+                            <p class="card-text">Purchase Date: <?php echo $ticket['purchase_date']; ?></p>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
+
+
 
 <?php
 include '../view/footer.php';
