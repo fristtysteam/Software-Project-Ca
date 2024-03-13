@@ -45,7 +45,7 @@ if (isset($_POST['pay'])) {
             echo "Failed to clear cart.";
         }
     } else {
-        echo "Failed to place orders.";
+        echo "Failed to place orders.mmmm";
     }
 
     exit();

@@ -12,13 +12,20 @@ if (isset($_SESSION['userId'])) {
     $orders = getOrdersByUserId($user_id);
     $tickets = getTicketsByUserId($user_id);
 } else {
-    echo "Error: User ID is not set.";
+    echo "<h2 class='text-center mt-5'>You must be logged in to make orders</h2>";
+    $orders = [];
+    $tickets = [];
 }
+
 ?>
 
     <div class="container">
-        <h1 class="text-center mt-5">View Your Orders</h1>
+        <?php if (isset($_SESSION['userId'])) {
+
+        echo"<h1 class='text-center mt-5'>View Your Orders</h1>";
+        }?>
         <div class="row mt-5">
+
             <?php foreach ($orders as $order): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
@@ -33,7 +40,10 @@ if (isset($_SESSION['userId'])) {
                 </div>
             <?php endforeach; ?>
         </div>
-        <h1 class="text-center mt-5">View Your Tickets</h1>
+        <?php if (isset($_SESSION['userId'])) {
+
+            echo"<h1 class='text-center mt-5'>View Your Tickets</h1>";
+        }?>
         <div class="row mt-5">
             <?php foreach ($tickets as $ticket): ?>
                 <div class="col-md-4 mb-4">
