@@ -29,7 +29,7 @@ if (isset($_SESSION['userId'])) {
     $userId = "";
     $usersEmail = "";
     $userName = "";
-    $userType = 0;
+    $userType = "";
 }
 
 $currentLanguage = getLanguage();
