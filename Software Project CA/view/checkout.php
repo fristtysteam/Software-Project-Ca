@@ -14,6 +14,12 @@ function getCartItems() {
 
 $cartItems = getCartItems();
 
+// Calculate total price
+$totalPrice = 0;
+foreach ($cartItems as $item) {
+    $totalPrice += $item['price'] * $item['quantity'];
+}
+
 if (isset($_POST['pay'])) {
     global $cartModel;
 
@@ -84,6 +90,7 @@ if (isset($_POST['pay'])) {
         </table>
     </div>
     <div class="text-end">
+        <p>Total: $<?php echo $totalPrice; ?></p>
         <form method="post">
             <button type="submit" name="pay" class="btn btn-primary">Pay</button>
         </form>
