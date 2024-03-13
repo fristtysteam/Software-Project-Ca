@@ -36,6 +36,12 @@ if (isset($_POST['pay'])) {
             $success = false;
             break;
         }
+
+        // Update product quantity
+        if (!$cartModel->updateProductQuantity($product_id, $quantity)) {
+            $success = false;
+            break;
+        }
     }
 
     if ($success) {
@@ -45,7 +51,7 @@ if (isset($_POST['pay'])) {
             echo "Failed to clear cart.";
         }
     } else {
-        echo "Failed to place orders.mmmm";
+        echo "Failed to place orders.";
     }
 
     exit();
