@@ -14,7 +14,6 @@ function getCartItems() {
 
 $cartItems = getCartItems();
 
-// Calculate total price
 $totalPrice = 0;
 foreach ($cartItems as $item) {
     $totalPrice += $item['price'] * $item['quantity'];
