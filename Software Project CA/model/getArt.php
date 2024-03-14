@@ -77,3 +77,4 @@ if(isset($_GET['deleteArt'])) {
         echo "Failed to delete art.";
     }
 }
+
