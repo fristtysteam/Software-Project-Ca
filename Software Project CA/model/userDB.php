@@ -5,10 +5,15 @@ require_once 'databaseConnection.php';
 $error = 0;
 $error_message = "";
 function pre_registration_check( $fName, $sName, $email, $password,$password2, $dob)
-//function pre_registration_check( $fName, $sName, $email, $password,$password2)
 {
+    /***********************************************************
+     * Function to Validate user input at time of registration *
+     * before saving user detail to DB                         *
+     * @param: The user ID.                                    *
+     * @Return: There user record.                             *
+     ***********************************************************/
+
     if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) || empty($dob))
-    //if (empty($fName) || empty($sName) || empty($email) || empty($password) ||empty($password2) )
     {
 
         $error = 1;
@@ -198,5 +203,83 @@ function pre_login_check($email, $password)
 
     return $user['userType'];
 }
+function getSingleUserById($userId) {
+
+    /***********************************************************
+     * Function to get a specific user record from DB          *
+     * Parameters: the user ID                                 *
+     * Returns: the record                                     *
+     ***********************************************************/
+
+    global $db;
+    $query = "SELECT * FROM users WHERE id = :id";
+
+    $statement =$db->prepare($query);
+    $statement->bindValue(":id", $userId);
+    try{
+        $statement->execute();
+    }catch(PDOException $ex){
+        // Redirect to an Error page passing the error message
+        header("Location:../view/error.php?msg=" . $ex->getMessage());
+    }
+    // Retrieve user record from db
+    $user = $statement->fetch();
+    $statement->closeCursor();
+    return $user;
+
+}
+function update_userDetail($id,$fName,$sName,$email, $dateOfBirth, $usertype)
+{
+    /****************************************************
+     *Function to add a user(The default is general user)
+     * Parameters email, password
+     * Returns true or false
+     ****************************************************/
+
+    global $db;
+
+    $query =  "UPDATE users SET username = '$fName', name = '$sName',email = '$email',dateOfBirth = '$dateOfBirth', userType = '$usertype',  WHERE id = '$id' ";
+    //print($query);
+  //$query = "INSERT INTO users(username,name,email, password) VALUES (:firstname,:surname,:email, :password)";
+    $statement = $db->prepare($query);
+
+    try{
+        $statement->execute();
+    } catch (Exception $ex) {
+
+        // redirect to an error page passing the error message
+        //$categories = get_categories();
+        header("Location:../View/error.php?msg=" .$ex->getMessage());
+        exit();
+    }
+    $statement->closeCursor();
+    return true;
+}
+
+
+
+function deleteClient($clientId){
+    /*******************************************************************
+     * Function to delete a client record from DB                      *
+     * Parameters: the cilent's id                                     *
+     * Returns: none                                                   *
+     *******************************************************************/
+
+    global $db;
+    $query = "DELETE FROM clients WHERE clienttId= :client_id";
+
+    $statement= $db->prepare($query);
+    $statement->bindValue(":client_id", $clientId);
+    try{
+        $statement->execute();
+    } catch (PDOException $ex) {
+        echo $ex->getMessage();
+    }
+
+
+    $statement->closeCursor();
+
+}
+
 
 
