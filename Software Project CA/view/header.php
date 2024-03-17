@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Art Gallery - <?php //echo $pageName; ?> - Page</title>
     <link href="nav.php" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
     <link href="../css/nav.css" rel="stylesheet" type="text/css" />
 

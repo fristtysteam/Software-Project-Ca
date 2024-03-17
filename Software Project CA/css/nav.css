@@ -1,8 +1,18 @@
 
 body {
-    padding-top: 106px;
+    padding-top: 130px;
 }
+.navbar {
+    background-image: url('https://i.pinimg.com/564x/49/f1/cc/49f1cc66e68161c655f2a46fea217114.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 5px black;
 
+}
 .navbar {
     background-color: #ffffff;
     border: 1px solid #000000;

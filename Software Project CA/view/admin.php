@@ -17,6 +17,15 @@ if (isset($_SESSION["username"])) {
     exit();
 }
 ?>
+<style>
+    body {
+        background-image: url('https://i.pinimg.com/564x/c8/c2/51/c8c251b2a632eead31c928d6e347b1e3.jpg');
+        background-repeat: no-repeat;
+        background-position: center ;
+    }
+
+
+</style>
 
 <!--<div class="container-fluid">-->
 <div class="col-lg-12 mb-5">

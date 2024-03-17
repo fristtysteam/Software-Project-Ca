@@ -71,18 +71,7 @@ $cartItems = getCartItems();
             ?>
         </div>
     </div>
-    <div class="row mb-5 ">
-        <div class="col-md-4 g-2">
-            <h2>Not what you are looking for?</h2>
-            <ul class="list-group">
-                <li class="list-group-item">Paintings</li>
-                <li class="list-group-item">Sculptures</li>
-                <li class="list-group-item">Photography</li>
-                <li class="list-group-item">Prints</li>
-                <li class="list-group-item">Pottery</li>
-            </ul>
-        </div>
-    </div>
+
 </div>
 </body>
 </html>

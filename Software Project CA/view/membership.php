@@ -22,7 +22,18 @@ $currentLanguage = getLanguage();
         <title>Membership</title>
         <link rel="stylesheet" href="../css/membership.css">
     </head>
-    <body>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/564x/ac/a9/9c/aca99c0917941159fb6421a5173af5da.jpg');
+            background-repeat: no-repeat;
+            background-position: center top;
+        }
+
+        .gallery-img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+    </style>
 
 
     <div class="container">

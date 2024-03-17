@@ -13,12 +13,24 @@ include'../view/header.php';
 </head>
 
 <body>
+<style>
+    body {
+        background-image: url('https://i.pinimg.com/564x/ef/9e/1b/ef9e1b0ebc19c3576bb812bdaa11fc18.jpg');
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+
+    .gallery-img {
+        max-height: 200px;
+        object-fit: cover;
+    }
+</style>
 
 
 <section class="flex-md-grow-1 py-5">
     <div class="container text-center">
         <h1>Welcome to the DKIT Art Gallery</h1>
-        <p class="lead">Immerse yourself in the world of creativity and expression.</p>
+        <p >Immerse yourself in the world of creativity and expression.</p>
         <a href="?action=login" class="btn btn-primary me-2">Login</a>
         <a href="?action=showRegister" class="btn btn-secondary">Register</a>
     </div>

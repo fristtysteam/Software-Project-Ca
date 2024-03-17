@@ -23,6 +23,15 @@ $events = getEvents();
         margin-top: 10px;
         border-radius: 5px;
     }
+
+    .table {
+        background-image: url('https://i.pinimg.com/564x/6b/c0/e6/6bc0e6f71d43f95490fa8979f7768362.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
 </style>
 <title>Event Calendar</title>
 
@@ -114,4 +123,6 @@ $events = getEvents();
     });
 </script>
 </body>
+<?php include '../view/footer.php' ?>
+
 </html>
