@@ -254,6 +254,30 @@ switch ($action) {
         //$users = getSingleUser();
         include "../view/adminEditUser.php";
         break;
+    case 'edit_user';
+        if(isset($_GET['id']))
+        {
+        $id = $_GET['id'];
+        $user  = getSingleUserById($id);
+            if($user === null)
+            {
+                echo 'Record Not Found';
+            }
+        }
+       // $id = filter_input(INPUT_POST, 'id');
+        //$user = getSingleUserById($id);
+        include "../view/adminEditUser.php";
+        break;
+    case 'update_user_detail';
+        $id = filter_input(INPUT_POST, 'id');
+        //if($id !=null){echo' Confirm Delete'."".$id}
+        $username = filter_input(INPUT_POST, 'username');
+        $name = filter_input(INPUT_POST, 'name');
+        $email = filter_input(INPUT_POST, 'email');
+        $usertype = filter_input(INPUT_POST, 'userType');
+
+       // update_userDetail($id,$username,$name,$email, $usertype)
+        break;
     case 'delete_user';
         $id = filter_input(INPUT_POST, 'id');
         //if($id !=null){echo' Confirm Delete'."".$id}
