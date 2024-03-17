@@ -1,7 +1,7 @@
 <?php
-require_once '../model/databaseConnection.php';
+require('../model/databaseConnection.php');
+require ('../model/userDB.php');
 require_once '../model/language.php';
-require_once '../model/userDB.php';
 require_once '../model/membershipRoles.php';
 
 
@@ -13,7 +13,7 @@ $userType = "";
 $userName = "";
 $loggedInAt = "";
 $loggedOutAt = "";
-
+global $users;
 // Start session
 session_start();
 
@@ -242,6 +242,24 @@ switch ($action) {
         $pageTitle = "Admin Edit Events";
         include "../view/adminEditEvent.php";
         break;
+    case 'admin_Edit_Users_Records';
+
+        $pageTitle = "Admin Edit Users Details";
+        //$users = getAllUsers();
+
+        include "../view/adminListUsers.php";
+        break;
+    case 'show adminEditUser';
+        $pageTitle = "Edit Users Details";
+        //$users = getSingleUser();
+        include "../view/adminEditUser.php";
+        break;
+    case 'delete_user';
+        $id = filter_input(INPUT_POST, 'id');
+        //if($id !=null){echo' Confirm Delete'."".$id}
+        deleteClient($id);
+        break;
+
     case 'gallery':
         $pageTitle = "Gallery Page";
         include "../view/gallery.php";

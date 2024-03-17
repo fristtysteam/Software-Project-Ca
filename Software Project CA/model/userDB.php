@@ -203,6 +203,31 @@ function pre_login_check($email, $password)
 
     return $user['userType'];
 }
+function getAllUsers() {
+
+    /***********************************************************
+     * Function to get all users record from DB                *
+     * Parameters: None                                        *
+     * Returns: An array of users records                      *
+     ***********************************************************/
+
+    global $db;
+    $query = "SELECT * FROM users ORDER BY id";
+
+    $statement =$db->prepare($query);
+
+    try{
+        $statement->execute();
+    }catch(PDOException $ex){
+        // Redirect to an Error page passing the error message
+        header("Location:../view/error.php?msg=" . $ex->getMessage());
+    }
+    // Retrieve user record from db
+    $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $statement->closeCursor();
+    return $users;
+
+}
 function getSingleUserById($userId) {
 
     /***********************************************************
