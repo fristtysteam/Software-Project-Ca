@@ -18,12 +18,13 @@
         </div>
 
         <?php
-        if(isset($_GET['id'])){
+        /*if(isset($_GET['id']))
+        {
             $id = $_GET['id'];
             $user  = getSingleUserById($id);
             if($user != null)
             {
-             ?>
+            */ ?>
 
         <form id="update_user-Form" method="POST" action="../controller/index.php">
             <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
@@ -35,17 +36,17 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="firstname" name="fname" value="<?php echo $user['id'] ?? ''; ?>"  type="text" placeholder="FirstName" required>
+                <input class="form-control" id="firstname" name="id" value="<?php echo $user['id'] ?? ''; ?>"  type="text" placeholder="ID" required>
             </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="lastname" name="sname"  value="<?php echo $user['name'] ?? ''; ?>" type="text" placeholder="LastName" required>
-            </div>
-
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                 <input class="form-control" id="username" name="username" value="<?php echo $user['username'] ?? ''; ?>" type="text" placeholder="Username" required >
             </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input class="form-control" id="lastname" name="name"  value="<?php echo $user['name'] ?? ''; ?>" type="text" placeholder="Name" required>
+            </div>
+
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                 <input class="form-control" id="email" name="email"value="<?php echo $user['email'] ?? ''; ?>"  type="text" placeholder="Email Address" required>
@@ -53,7 +54,7 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="username" name="username" value="<?php echo $user['username'] ?? ''; ?>" type="text" placeholder="Username" required >
+                <input class="form-control" id="username" name="userType" value="<?php echo $user['userType'] ?? ''; ?>" type="text" placeholder="UserType" required >
             </div>
             <div class="input-group mt-5 ">
                 <button  class="form-control bg-dark fs-4 text-white"
@@ -69,9 +70,14 @@
 
         </form>
         <?php
-        }
+        /*}
         }
         else
+        {
+            */?>
+        <h4>Record Not Found</h4>
+        <?php
+        //}
         ?>
 
     </div>

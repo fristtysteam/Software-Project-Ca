@@ -248,7 +248,7 @@ function getSingleUserById($userId) {
         header("Location:../view/error.php?msg=" . $ex->getMessage());
     }
     // Retrieve user record from db
-    $user = $statement->fetch();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
     $statement->closeCursor();
     return $user;
 
@@ -263,7 +263,7 @@ function update_userDetail($id,$fName,$sName,$email, $dateOfBirth, $usertype)
 
     global $db;
 
-    $query =  "UPDATE users SET username = '$fName', name = '$sName',email = '$email',dateOfBirth = '$dateOfBirth', userType = '$usertype',  WHERE id = '$id' ";
+    $query =  "UPDATE users SET username = '$fName', name = '$sName',email = '$email', userType = '$usertype',  WHERE id = '$id' ";
     //print($query);
   //$query = "INSERT INTO users(username,name,email, password) VALUES (:firstname,:surname,:email, :password)";
     $statement = $db->prepare($query);
@@ -283,18 +283,18 @@ function update_userDetail($id,$fName,$sName,$email, $dateOfBirth, $usertype)
 
 
 
-function deleteClient($clientId){
+function deleteUser($userId){
     /*******************************************************************
      * Function to delete a client record from DB                      *
-     * Parameters: the cilent's id                                     *
+     * Parameters: the user's id                                     *
      * Returns: none                                                   *
      *******************************************************************/
 
     global $db;
-    $query = "DELETE FROM clients WHERE clienttId= :client_id";
+    $query = "DELETE FROM users WHERE id= :id";
 
     $statement= $db->prepare($query);
-    $statement->bindValue(":client_id", $clientId);
+    $statement->bindValue(":id", $userId);
     try{
         $statement->execute();
     } catch (PDOException $ex) {
