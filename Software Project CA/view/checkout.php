@@ -37,7 +37,6 @@ if (isset($_POST['pay'])) {
             break;
         }
 
-        // Update product quantity
         if (!$cartModel->updateProductQuantity($product_id, $quantity)) {
             $success = false;
             break;
@@ -64,12 +63,16 @@ if (isset($_POST['pay'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <style>
-        .checkout-table th, .checkout-table td {
+        table th, .checkout-table td {
             text-align: center;
+            color: #000;
+            font-size: 20px;
         }
+
+
     </style>
 </head>
-<body>
+<body class="checkout-body">
 <div class="container">
     <h1 class="mb-4">Checkout</h1>
     <div class="table-responsive">

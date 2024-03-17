@@ -19,7 +19,7 @@ if (isset($_SESSION["username"])) {
 ?>
 <style>
     body {
-        background-image: url('https://i.pinimg.com/564x/c8/c2/51/c8c251b2a632eead31c928d6e347b1e3.jpg');
+        background-image: url('https://i.pinimg.com/564x/39/56/cc/3956cc2a273d3eba4c7ac6d32c2d14ad.jpg');
         background-repeat: no-repeat;
         background-position: center ;
     }
