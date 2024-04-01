@@ -249,20 +249,44 @@ switch ($action) {
 
         include "../view/adminListUsers.php";
         break;
-    case 'show adminEditUser';
+    case 'show_adminEditUser';
         $pageTitle = "Edit Users Details";
+        include "../view/editUser.php";
         //$users = getSingleUser();
-        include "../view/adminEditUser.php";
+        //include "../view/adminEditUser.php";
+       //#### https://www.youtube.com/watch?v=NqP0-UkIQS4 ####
+        //$userId = filter_input(INPUT_GET, 'id');
+        /*if(isset($_GET['id']))
+        //if(isset($HTTP_SESSION_VARS['id']))
+        {
+            $id = $_GET['id'];
+            //$id = $HTTP_SESSION_VARS['id'];
+            $user  = getSingleUserById($id);
+            print_r($user);
+            /*if($user === null)
+            {
+                echo 'Record Not Found';
+             echo $user['id'];
+            }else {
+                header("Location: ../view/editUser.php");
+                exit();
+            }*/
+        //}
+        //header("Location: ../view/adminEditUser.php");
+        //header("Location: ../view/editUser.php");
+        //exit();
         break;
     case 'edit_user';
         if(isset($_GET['id']))
         {
         $id = $_GET['id'];
         $user  = getSingleUserById($id);
-            if($user === null)
+        print_r($user);
+            /*if($user != null)
             {
-                echo 'Record Not Found';
+             echo $user[id];
             }
+            echo 'Record Not Found';*/
         }
        // $id = filter_input(INPUT_POST, 'id');
         //$user = getSingleUserById($id);
@@ -282,6 +306,10 @@ switch ($action) {
         $id = filter_input(INPUT_POST, 'id');
         //if($id !=null){echo' Confirm Delete'."".$id}
         deleteClient($id);
+       /* if(isset($_GET['id'])){
+            $userId = $_GET['id'];
+            deleteUser($userId);
+        }*/
         break;
 
     case 'gallery':

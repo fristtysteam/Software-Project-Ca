@@ -238,7 +238,7 @@ function getSingleUserById($userId) {
 
     global $db;
     $query = "SELECT * FROM users WHERE id = :id";
-
+    //$query = "SELECT * FROM users WHERE id = $userId";
     $statement =$db->prepare($query);
     $statement->bindValue(":id", $userId);
     try{
@@ -249,6 +249,7 @@ function getSingleUserById($userId) {
     }
     // Retrieve user record from db
     $user = $statement->fetch(PDO::FETCH_ASSOC);
+    //$user = $statement->fetch();
     $statement->closeCursor();
     return $user;
 

@@ -43,7 +43,8 @@
                                 <td><?php echo $user["userType"] ?></td>
 
                                 <td>
-                                    <button class="btn-success" type="submit" name="update_user"><a class='text-light' href="?action=show adminEditUser&id=<?php echo $user['id']; ?>">Update </a></button>
+                                    <!--<button class="btn-success" type="submit" name="update_user" value="$user['id']"><a class='text-light' href="?action=show_adminEditUser&id=<?php //echo $user['id']; ?>">Update </a></button>-->
+                                    <button class="btn-success" type="submit" name="" value=" "><a class='text-light' href="?action=show_adminEditUser&id=<?php echo $user['id']; ?>">Update </a></button>
 
                                 </td>
                                 <td>

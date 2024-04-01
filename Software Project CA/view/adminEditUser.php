@@ -23,8 +23,9 @@
             $id = $_GET['id'];
             $user  = getSingleUserById($id);
             if($user != null)
-            {
-            */ ?>
+            {*/
+            //$user
+            ?>
 
         <form id="update_user-Form" method="POST" action="../controller/index.php">
             <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
@@ -32,12 +33,12 @@
              //echo '<div class=" lead text-center text-danger py-1">'.$_SESSION["error"].'</div>'; ?>-->
 
             <input type="hidden" value="update_user" name="action">
-
-
-            <div class="input-group mb-3">
+            <!--<input type="hidden"  value="<?php// echo $user['id'] ; ?>-->
+             <input type="hidden"  value="<?php echo $user['id']; ?>
+            <!--<div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                <input class="form-control" id="firstname" name="id" value="<?php echo $user['id'] ?? ''; ?>"  type="text" placeholder="ID" required>
-            </div>
+                <input class="form-control" id="userId" name="id" value="<?php// echo $user['id'] ?? ''; ?>"  type="hidden" placeholder="ID" required>
+            </div>-->
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                 <input class="form-control" id="username" name="username" value="<?php echo $user['username'] ?? ''; ?>" type="text" placeholder="Username" required >
@@ -61,8 +62,7 @@
                          id=""
                          type="submit"
                          name="update_user"
-                    <!--name="action"-->
-                  <!-- value="update_user"-->
+
                     >
                         Submit
                 </button>
@@ -70,14 +70,15 @@
 
         </form>
         <?php
-        /*}
+       /* }
         }
         else
-        {
-            */?>
+        {?>
         <h4>Record Not Found</h4>
+
         <?php
-        //}
+
+        }*/
         ?>
 
     </div>
