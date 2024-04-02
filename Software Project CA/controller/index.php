@@ -250,31 +250,18 @@ switch ($action) {
         include "../view/adminListUsers.php";
         break;
     case 'show_adminEditUser';
-        $pageTitle = "Edit Users Details";
-        include "../view/editUser.php";
-        //$users = getSingleUser();
-        //include "../view/adminEditUser.php";
-       //#### https://www.youtube.com/watch?v=NqP0-UkIQS4 ####
-        //$userId = filter_input(INPUT_GET, 'id');
-        /*if(isset($_GET['id']))
-        //if(isset($HTTP_SESSION_VARS['id']))
-        {
-            $id = $_GET['id'];
-            //$id = $HTTP_SESSION_VARS['id'];
-            $user  = getSingleUserById($id);
-            print_r($user);
-            /*if($user === null)
-            {
-                echo 'Record Not Found';
-             echo $user['id'];
-            }else {
-                header("Location: ../view/editUser.php");
-                exit();
-            }*/
-        //}
-        //header("Location: ../view/adminEditUser.php");
-        //header("Location: ../view/editUser.php");
-        //exit();
+        //$pageTitle = "Edit Users Details";
+
+          if(isset($_GET['id']))
+             $id = $_GET['id'];
+
+             $user  = getSingleUserById($id);
+             if( $user  ){
+                 include "../view/editUser.php";
+                    exit();
+
+             }
+             echo 'Record Not Found !';
         break;
     case 'edit_user';
         if(isset($_GET['id']))
@@ -300,7 +287,17 @@ switch ($action) {
         $email = filter_input(INPUT_POST, 'email');
         $usertype = filter_input(INPUT_POST, 'userType');
 
-       // update_userDetail($id,$username,$name,$email, $usertype)
+        if(($id !=null) || ($username != null) || ($name != null) || ($usertype != null)){
+            $result = update_userDetail($id,$username,$name,$email, $usertype);
+            if($result === true){
+                echo 'User record update !';
+            }
+        }else{
+            echo "All fields required !";
+        }
+
+
+
         break;
     case 'delete_user';
         $id = filter_input(INPUT_POST, 'id');

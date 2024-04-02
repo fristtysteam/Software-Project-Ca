@@ -24,10 +24,10 @@
               onsubmit="return validateSignUp()">-->
         <form id="registerForm" method="POST" action="../controller/index.php">
             <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
-            <?php /*if( isset($_SESSION["error"])){
+            <?php if( isset($_SESSION["error"])){
              echo '<div class=" lead text-center text-danger py-1">'.$_SESSION["error"].'</div>';
 
-           }*/?>
+           }?>
 
             <input type="hidden" value="register" name="action">
             <input type="hidden" value="check_registrationData"  id="checkdata" name="action">

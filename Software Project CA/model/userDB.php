@@ -254,23 +254,29 @@ function getSingleUserById($userId) {
     return $user;
 
 }
-function update_userDetail($id,$fName,$sName,$email, $dateOfBirth, $usertype)
+function update_userDetail($id,$fName,$sName,$email, $usertype)
 {
     /****************************************************
-     *Function to add a user(The default is general user)
-     * Parameters email, password
+     *Function to edit/update a user's record
+     * Parameters username, name, email, password, usertype
      * Returns true or false
      ****************************************************/
 
     global $db;
 
-    $query =  "UPDATE users SET username = '$fName', name = '$sName',email = '$email', userType = '$usertype',  WHERE id = '$id' ";
-    //print($query);
-  //$query = "INSERT INTO users(username,name,email, password) VALUES (:firstname,:surname,:email, :password)";
-    $statement = $db->prepare($query);
+    //$query =  "UPDATE users SET username = '$fName', name = '$sName',email = '$email', userType = '$usertype',  WHERE id = '$id' ";
+    $query = "UPDATE users SET username = :username, name = :name, email = :email, usertype = :usertype WHERE id = :id";
 
     try{
+        $statement = $db->prepare($query);
+        $statement->bindParam(':id', $id);
+        $statement->bindParam(':username', $fName);
+        $statement->bindParam(':name', $sName);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':usertype', $usertype);
+
         $statement->execute();
+
     } catch (Exception $ex) {
 
         // redirect to an error page passing the error message
@@ -287,7 +293,7 @@ function update_userDetail($id,$fName,$sName,$email, $dateOfBirth, $usertype)
 function deleteUser($userId){
     /*******************************************************************
      * Function to delete a client record from DB                      *
-     * Parameters: the user's id                                     *
+     * Parameters: the user's id                                       *
      * Returns: none                                                   *
      *******************************************************************/
 
