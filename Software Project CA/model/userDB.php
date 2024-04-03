@@ -282,6 +282,7 @@ function update_userDetail($id,$fName,$sName,$email, $usertype)
         // redirect to an error page passing the error message
         //$categories = get_categories();
         header("Location:../View/error.php?msg=" .$ex->getMessage());
+        //include "../View/editUser.php"; echo "Problem updating record !";
         exit();
     }
     $statement->closeCursor();

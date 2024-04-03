@@ -103,7 +103,7 @@ if (isset($_SESSION["username"])) {
                         <h3> Actions on User:</h3>
                         <div class="card-body text-center d-inline-block " >
                             <a href="index.php?action=admin_Edit_Users_Records" class="btn btn-lg text-primary btn-outline-secondary fs-5 mb-4">Edit User Info:</a>
-
+                            <a href="index.php?action=show_contact" class="btn btn-lg text-primary btn-outline-dark mb-4">Contact User</a>
                         </div>
                     </div>
                 </div>

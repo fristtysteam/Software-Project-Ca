@@ -18,29 +18,7 @@
             <?php
             if(isset($_GET['id'])):
             $id = $_GET['id'];
-            //if(isset($_GET['id']) && isset($_SESSION['id'])):
-                //if(isset($HTTP_SESSION_VARS['id']))
-               /* if(isset($_GET['id'])):
-                $id = $_GET['id'];
-                //$id = $HTTP_SESSION_VARS['id'];
-                $user  = getSingleUserById($id);
-                // print_r($user);
-            if (isset($user)) {
-                //$name = [$user['username']];
-                    echo $user['username'];
-            }
-                 //echo $name;
             ?>
-
-               <?php if($user === null):?>
-                    //if(isEmpty($user));?>
-                     <h4>Record Not Found</h4>
-
-                */?>
-               <?php //else: ?>
-
-
-
                     <form id="update_user-Form" method="POST" action="../controller/index.php">
                         <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
                         <?php if( isset($_SESSION["error"]))
@@ -82,25 +60,15 @@
                                 Submit
                             </button>
                         </div>
-                        <?php endif;?>
+                        <?php //endif;?>
                     </form>
 
-           <?php //endif; ?>
+           <?php endif; ?>
 
        </div>
     </div>
 </div>
 
-<?php
-/* }
- }
- else
- {?>
- <h4>Record Not Found</h4>
 
- <?php
-
- }*/
-?>
 
 <?php include'../view/footer.php' ?>

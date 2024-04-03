@@ -290,7 +290,10 @@ switch ($action) {
         if(($id !=null) || ($username != null) || ($name != null) || ($usertype != null)){
             $result = update_userDetail($id,$username,$name,$email, $usertype);
             if($result === true){
-                echo 'User record update !';
+                header("Location:index.php?action=admin_Edit_Users_Records");
+                $_SESSION["success"] = 'User record update !';
+
+                exit();
             }
         }else{
             echo "All fields required !";
@@ -307,6 +310,10 @@ switch ($action) {
             $userId = $_GET['id'];
             deleteUser($userId);
         }*/
+        break;
+    case "show_contact";
+        $pageTitle = "Contact Page";
+        include "../view/contact.php";
         break;
 
     case 'gallery':
