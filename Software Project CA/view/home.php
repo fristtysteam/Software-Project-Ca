@@ -15,7 +15,6 @@ include'../view/header.php';
 <body>
 <style>
     body {
-        background-image: url('https://i.pinimg.com/564x/ef/9e/1b/ef9e1b0ebc19c3576bb812bdaa11fc18.jpg');
         background-repeat: no-repeat;
         background-position: center top;
     }

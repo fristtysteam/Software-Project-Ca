@@ -1,18 +1,14 @@
 <?php
 require_once '../model/databaseConnection.php';
-
- include "header.php";
- include "../model/language.php";
+include "header.php";
+include "../model/language.php";
 
 $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
-
 ?>
 
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom bg-img">
 
-
-
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="#">
             <img src="../3.jpg" alt="Logo">
             Dkit Art Gallery
@@ -51,28 +47,21 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
             </ul>
 
             <ul class="navbar-nav ms-auto">
-
-                <?php
-                if(isset($_SESSION['username'])) {
-                    $username = $_SESSION['username'];
-                    echo '<li class="nav-item navbar-small-links">
-                                <a class="nav-link" href="#">Welcome, ' . $username . '</a>
-                          </li>';
-                    echo '<li class="nav-item navbar-small-links">
-                                <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
-                          </li>';
-                } else {
-                    echo '<li class="nav-item navbar-small-links">
-                                <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
-                          </li>';
-                    echo '<li class="nav-item navbar-small-links">
-        <a class="nav-link" href="../controller/index.php?action=login">Login</a>
-    </li>
-    <li class="nav-item navbar-small-links">
-        <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
-    </li>';
-                }
-                ?>
+                <?php if(isset($_SESSION['username'])): ?>
+                    <li class="nav-item navbar-small-links">
+                        <a class="nav-link" href="#">Welcome, <?= $_SESSION['username'] ?></a>
+                    </li>
+                    <li class="nav-item navbar-small-links">
+                        <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item navbar-small-links">
+                        <a class="nav-link" href="../controller/index.php?action=login">Login</a>
+                    </li>
+                    <li class="nav-item navbar-small-links">
+                        <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=cart">
                         <img src="../2.jpg" alt="Cart" style="width: 30px; height: 30px;">
@@ -82,7 +71,6 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
         </div>
     </div>
 </nav>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iQFZK3d6PJKzutOz9w8a/+LXRvM5Ae0iYTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></script>

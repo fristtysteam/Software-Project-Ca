@@ -1,6 +1,6 @@
 <style>
     .footer {
-        background-image: url('https://i.pinimg.com/564x/49/f1/cc/49f1cc66e68161c655f2a46fea217114.jpg');
+        background-image: url('https://thumbs.dreamstime.com/b/distressed-halftone-grunge-black-white-vector-texture-wrapping-pack-paper-background-creation-abstract-vintage-distressed-104229502.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

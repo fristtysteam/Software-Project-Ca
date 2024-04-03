@@ -1,9 +1,13 @@
+.bg-img {
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://images.unsplash.com/photo-1596367407372-96cb88503db6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D');
+}
 
 body {
     padding-top: 130px;
 }
 .navbar {
-    background-image: url('https://i.pinimg.com/564x/49/f1/cc/49f1cc66e68161c655f2a46fea217114.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
