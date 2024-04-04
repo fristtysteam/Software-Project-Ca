@@ -11,7 +11,7 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom bg-img">
     <div class="container-fluid">
         <a class="navbar-brand text-primary fw-bolder" href="#">
             <img src="../3.jpg" alt="Logo">
