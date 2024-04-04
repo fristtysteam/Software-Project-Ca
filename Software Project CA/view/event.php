@@ -25,7 +25,7 @@ $events = getEvents();
     }
 
     .table {
-        background-image: url('https://i.pinimg.com/564x/6b/c0/e6/6bc0e6f71d43f95490fa8979f7768362.jpg');
+        background-image: url('https://images.unsplash.com/photo-1596367407372-96cb88503db6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
