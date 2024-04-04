@@ -53,57 +53,45 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <?php //endif; ?>
             </ul>
 
-           <!-- <ul class="navbar-nav ms-auto">-->
 
-                <?php
-                //if(isset($_SESSION['username'])) :
-                   // $username = $_SESSION['username'];
-                    echo '<!--<li class="nav-item navbar-small-links">-->
-                                <!--<a class="nav-link" href="#">Welcome,</a>-->
-                          <!--</li>-->';
-                    echo '<!--<li class="nav-item navbar-small-links">-->
-                              <!--<a class="nav-link" href="../controller/index.php?action=logout">Logout</a>-->
-                          <!--</li>-->';
-                ?>
-                <?php// endif; ?>
-           <!-- </ul>-->
-        </div>
 </nav>
 
 <?php if (isset($_SESSION['username'])):
     $username = $_SESSION['username'];
     $usertype = $_SESSION['userType'];
     echo '<!--<div class="row  d-flex justify-content-between>-->';
-    echo '<div class="row  d-flex justify-content-between"><button class="col-auto bg-light">
+    echo '<div class="row-md-6 d-flex justify-content-between p-0"><button class="col-auto bg-light">
                             <a class="nav-link" href="../controller/index.php?action=cart">
                                 <img src="../2.jpg" alt="Cart" style="width: 40px; height: 40px;">
                             </a>
                         </button>';
-    echo '<!--<li class="col-auto">-->
+    echo '<button class="col-auto">
                             <a class="nav-link" href="../controller/index.php?action=orders">My Orders</a>
-                        <!--</li>-->';
+                        </button>';
 
     echo '<!--<button class="col-auto">
                             <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
                         </button>-->';
-    echo '<ol class="col-auto">
+    echo '<button class="col-auto">
                             <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
-                        </ol>
-                       </div>
-                       <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        </button>
+                        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                         <h3 class="alert-dismissible text-danger">Welcome, ' . $username . '</h3>
                         <button  type="button" class="btn-close" data-bs-dismiss="alert"  area-label="close" ></button>
                         </div>
+                       </div>
+                       
                         '
 
 
 
      ?>
-    <?php if($usertype === "admin")
-    echo '<button class="col-auto">
+    <?php if($usertype === "admin"):
+    echo '<button class="col-auto mt-3">
                             <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
                         </button>';
         ?>
+<?php endif; ?>
 <?php endif; ?>
 
 
