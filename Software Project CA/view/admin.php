@@ -7,15 +7,15 @@ require_once '../model/userDB.php';
 $action = filter_input(INPUT_GET, 'action');
 
 include '../view/header.php';
-include '../view/nav.php';
+include '../view/nav2.php';
 
-if (isset($_SESSION["username"])) {
-    echo '<div class="lead text-center text-danger py-1 fs-3">' . $_SESSION["username"] . '</div>';
-    echo '<h1 class="text-center mb-4">Welcome To Admin Page</h1>';
-} else {
-    header("Location: index.php?action=login");
-    exit();
-}
+//if (isset($_SESSION["username"])) {
+    echo '<!--<div class="lead text-center text-danger py-1 fs-3">' . $_SESSION["username"] . '</div>-->';
+    echo '<!--<h1 class="text-center mb-4">Welcome To Admin Page</h1>-->';
+//} else {
+    //header("Location: index.php?action=login");
+   // exit();
+//}
 ?>
 <style>
     body {

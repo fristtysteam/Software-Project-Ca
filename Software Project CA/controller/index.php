@@ -42,7 +42,8 @@ if ($action == Null) {
         $action = filter_input(INPUT_GET, 'action');
         if ($action == NULL) {
 
-            $action = "login";
+            //$action = "login2";
+            $action = "login2";
         }
     }
 }
@@ -103,7 +104,8 @@ switch ($action) {
         break;
     case 'login':
         $pageTitle = "Login Page";
-        include "../view/login.php";
+        //include "../view/login.php";
+        include "../view/login2.php";
         break;
     case 'changeRole':
         $user_id = $_SESSION['userId'];

@@ -4,7 +4,8 @@ require_once '../model/language.php';
 require_once '../model/cartModel.php';
 require_once '../model/doCart.php';
 
-include "../view/nav.php";
+//include "../view/nav.php";
+include "../view/nav2.php";
 include '../view/header.php';
 $currentLanguage = getLanguage();
 

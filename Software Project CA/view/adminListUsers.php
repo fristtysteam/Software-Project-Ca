@@ -5,7 +5,8 @@
 
 
 <?php include'../view/header.php' ?>
-<?php include'../view/nav.php' ?>
+<?php// include'../view/nav.php' ?>
+<?php include'../view/nav2.php' ?>
 
 <div class="container-fluid px-4">
     <h4 class="mt-4">Users</h4>

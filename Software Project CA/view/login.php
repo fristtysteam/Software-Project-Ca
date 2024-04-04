@@ -1,5 +1,5 @@
 <?php include '../view/header.php'; ?>
-<?php include '../view/nav.php'; ?>
+<?php include '../view/nav2.php'; ?>
 
 <!--<div class="container">-->
     <div class="row mt-2 bg-secondary">
