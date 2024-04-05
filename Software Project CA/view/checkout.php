@@ -68,8 +68,6 @@ if (isset($_POST['pay'])) {
             color: #000;
             font-size: 20px;
         }
-
-
     </style>
 </head>
 <body class="checkout-body">
@@ -88,18 +86,18 @@ if (isset($_POST['pay'])) {
             <tbody>
             <?php foreach ($cartItems as $item): ?>
                 <tr>
-                    <td><?php echo $item['name']; ?></td>
-                    <td>$<?php echo $item['price']; ?></td>
-                    <td><?php echo $item['quantity']; ?></td>
-                    <td>$<?php echo $item['price'] * $item['quantity']; ?></td>
+                    <td><?php echo htmlspecialchars($item['name']); ?></td>
+                    <td>$<?php echo htmlspecialchars($item['price']); ?></td>
+                    <td><?php echo htmlspecialchars($item['quantity']); ?></td>
+                    <td>$<?php echo htmlspecialchars($item['price'] * $item['quantity']); ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
     </div>
     <div class="text-end">
-        <p>Total: $<?php echo $totalPrice; ?></p>
-        <form method="post">
+        <p>Total: $<?php echo htmlspecialchars($totalPrice); ?></p>
+        <form method="post" action="payment.php">
             <button type="submit" name="pay" class="btn btn-primary">Pay</button>
         </form>
     </div>

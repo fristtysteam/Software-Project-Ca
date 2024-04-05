@@ -244,6 +244,10 @@ switch ($action) {
         $pageTitle = "Admin Edit Events";
         include "../view/adminEditEvent.php";
         break;
+    case 'payment':
+        $pageTitle = "Payment page";
+        include "../view/payment.php";
+        break;
     case 'admin_Edit_Users_Records';
 
         $pageTitle = "Admin Edit Users Details";
