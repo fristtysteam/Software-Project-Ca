@@ -97,7 +97,9 @@ if (isset($_POST['pay'])) {
     </div>
     <div class="text-end">
         <p>Total: $<?php echo htmlspecialchars($totalPrice); ?></p>
-        <form method="post" action="payment.php">
+        <!--<form method="post" action="payment.php">-->
+        <form method="post" action="../controller/index.php">
+            <input type="hidden" value="pay" name="action">
             <button type="submit" name="pay" class="btn btn-primary">Pay</button>
         </form>
     </div>

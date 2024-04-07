@@ -107,6 +107,11 @@ switch ($action) {
         //include "../view/login.php";
         include "../view/login2.php";
         break;
+    case 'login2':
+        $pageTitle = "Login Page";
+        //include "../view/login.php";
+        include "../view/login2.php";
+        break;
     case 'changeRole':
         $user_id = $_SESSION['userId'];
         $new_role = $_GET['user_type'];
@@ -244,7 +249,8 @@ switch ($action) {
         $pageTitle = "Admin Edit Events";
         include "../view/adminEditEvent.php";
         break;
-    case 'payment':
+    //case 'payment':
+    case 'pay':
         $pageTitle = "Payment page";
         include "../view/payment.php";
         break;

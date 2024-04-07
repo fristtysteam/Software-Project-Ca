@@ -2,10 +2,20 @@
 require_once '../model/databaseConnection.php';
 include "nav.php";
 include 'header.php';
+?>
+<!--<div class="row  d-flex justify-content-center mt-5 mb-5">
+    <div class="col-md-6 ">
+        <div class="card ">
+            <div class="card-header">
+                <h4>Enter Payment Detail:</h4>
+            </div>
+            </div>
 
-$totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
+            <div class="card-body">-->
+                <?php
+                $totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
 
-$paymentIntegrationSnippet = '
+                $paymentIntegrationSnippet = '
     <div class="payment-integration">
         <script src=""></script>
 
@@ -25,25 +35,37 @@ $paymentIntegrationSnippet = '
         </div>
 
         <div id="paymentProcessorButton">
-            <button type="button">Pay with [Payment Processor]</button>
+            <button class="bg-info" type="button">Pay with [Payment Processor]</button>
         </div>
     </div>
-';
-?>
+      <!--</div>
+        </div>
+    </div>
+</div>-->
+'; ?>
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
 </head>
-<body>
+<body>-->
 <div class="container">
-    <h1>Checkout</h1>
+    <div class="row  d-flex justify-content-center mt-5 mb-5">
+        <div class="col-md-6 ">
+            <div class="card ">
+                <div class="card-header">
+                    <h4>Enter Payment Detail:</h4>
+                </div>
+            </div>
+
+            <div class="card-body"
+    <<h4>Checkout</h4>
     <p>Total to pay: $<?php echo number_format($totalPrice, 2); ?></p>
 
-    <form id="paymentForm" action="processPayment.php" method="post">
+    <form id="paymentForm" action="processPayment.php" method="post" >
         <div class="form-group">
             <label for="nameOnCard">Name on Card</label>
             <input type="text" id="nameOnCard" name="nameOnCard" required>
@@ -51,8 +73,12 @@ $paymentIntegrationSnippet = '
         <!-- The placeholders for payment fields will be displayed here -->
         <?php echo $paymentIntegrationSnippet; ?>
 
-        <button type="submit" class="btn">Pay $<?php echo number_format($totalPrice, 2); ?></button>
+        <button  type="submit"  name=" processPayment" class="btn mt-3">Pay $<?php echo number_format($totalPrice, 2); ?></button>
     </form>
 </div>
-</body>
-</html>
+    </div>
+</div>
+<!--</div>
+</div>-->
+<!--</body>
+</html>-->
