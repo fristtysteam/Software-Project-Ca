@@ -6,7 +6,7 @@ require_once '../model/cartModel.php';
 include "nav.php";
 include 'header.php';
 
-$totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
+$totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
 
 ?>
 
@@ -20,7 +20,7 @@ $totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
                 <div class="card-body">
                     <h4>Checkout</h4>
                     <p>Total to pay: $<?php echo number_format($totalPrice, 2); ?></p>
-                    <form id="paymentForm" action="" method="post">
+                    <form id="paymentForm" action="processPayment.php" method="post">
                         <div class="form-group">
                             <label for="nameOnCard">Name on Card</label>
                             <input type="text" id="nameOnCard" name="nameOnCard" required>
@@ -38,9 +38,6 @@ $totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
                                 <label for="cvv">CVV:</label>
                                 <input type="text" id="cvv" name="cvv" placeholder="123" required>
                             </div>
-                            <div id="paymentProcessorButton">
-                                <button class="bg-info" type="button">Pay with [Payment Processor]</button>
-                            </div>
                         </div>
                         <button type="submit" id="payButton" class="btn mt-3">Pay $<?php echo number_format($totalPrice, 2); ?></button>
                     </form>
@@ -51,29 +48,3 @@ $totalPrice = isset($_SESSION['totalPrice']) ? $_SESSION['totalPrice'] : 0;
 </div>
 
 <?php include 'footer.php'; ?>
-
-<script>
-    document.getElementById('paymentForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var cardNumber = document.getElementById('cardNumber').value;
-        var expiryDate = document.getElementById('expiryDate').value;
-        var cvv = document.getElementById('cvv').value;
-        var nameOnCard = document.getElementById('nameOnCard').value;
-
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'processPayment.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    window.location.href = '../view/showMyOrders.php';
-                } else {
-                    console.error('Error processing payment: ' + xhr.responseText);
-                }
-            }
-        };
-        xhr.send('nameOnCard=' + encodeURIComponent(nameOnCard));
-    });
-</script>
