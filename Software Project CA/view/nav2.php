@@ -59,27 +59,37 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 <?php if (isset($_SESSION['username'])):
     $username = $_SESSION['username'];
     $usertype = $_SESSION['userType'];
+
+   echo '<!--<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        <h3 class="alert-dismissible text-danger">Welcome, ' . $username . '</h3>
+                        <button  type="button" class="btn-close" data-bs-dismiss="alert"  area-label="close" ></button>
+                        </div>-->';
     echo '<!--<div class="row  d-flex justify-content-between>-->';
-    echo '<div id="nav2row2" class="row-md-6 d-flex justify-content-between p-0"><button id="nav2btn" class="col-auto bg-light">
-                            <a class="nav-link" href="../controller/index.php?action=cart">
+    echo '<div class="row-md-6 d-flex justify-content-between p-0 mb-5">
+            <!--<button class="col-auto bg-light" style="max-height: 40px; max-width: 0px">-->
+                           <!-- <a class="nav-link" href="../controller/index.php?action=cart">
                                 <img src="../2.jpg" alt="Cart" style="width: 40px; height: 40px;">
-                            </a>
-                        </button>';
-    echo '<button class="col-auto">
+                            </a>-->
+                        <!--</button>-->
+                        <a class="nav-link" href="../controller/index.php?action=cart">
+                                <img src="../2.jpg" alt="Cart" style="width: 40px; height: 40px;">
+                            </a>';
+
+    echo '<!--<button class="col-auto" style="max-height: 40px">-->
                             <a class="nav-link" href="../controller/index.php?action=orders">My Orders</a>
-                        </button>';
+                        <!--</button>-->';
 
     echo '<!--<button class="col-auto">
                             <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
                         </button>-->';
-    echo '<button class="col-auto">
+    echo '<!--<button class="col-auto" style="max-height: 40px">-->
                             <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
-                        </button>
-                        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                        <h3 class="alert-dismissible text-danger">Welcome, ' . $username . '</h3>
-                        <button  type="button" class="btn-close" data-bs-dismiss="alert"  area-label="close" ></button>
-                        </div>
-                       </div>
+                        <!--</button>-->
+                        <!--<p class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        <h3 class="alert-dismissible text-danger">Welcome, ' //. $username . '</h3>
+                        .'<button  type="button" class="btn-close" data-bs-dismiss="alert"  area-label="close" ></button>
+                        </p>-->
+                      <!-- </div>-->
                        
                         '
 
@@ -87,11 +97,18 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 
      ?>
     <?php if($usertype === "admin"):
-    echo '<button class="col-auto mt-3">
+    echo '<!--<button class="col-auto mt-3">-->
                             <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
-                        </button>';
+                       <!-- </button>-->';
         ?>
 <?php endif; ?>
+
+<?php echo '</div> 
+<div class="alert alert-danger alert-dismissible fade show mt-" role="alert">
+    <h5 class="alert-dismissible text-danger">Welcome, ' . $username . '</h5>
+    <button  type="button" class="btn-close" data-bs-dismiss="alert"  area-label="close" ></button>
+</div>';
+?>
 <?php endif; ?>
 
 
