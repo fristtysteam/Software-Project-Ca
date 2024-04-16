@@ -60,7 +60,7 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
     $username = $_SESSION['username'];
     $usertype = $_SESSION['userType'];
     echo '<!--<div class="row  d-flex justify-content-between>-->';
-    echo '<div class="row-md-6 d-flex justify-content-between p-0"><button class="col-auto bg-light">
+    echo '<div id="nav2row2" class="row-md-6 d-flex justify-content-between p-0"><button id="nav2btn" class="col-auto bg-light">
                             <a class="nav-link" href="../controller/index.php?action=cart">
                                 <img src="../2.jpg" alt="Cart" style="width: 40px; height: 40px;">
                             </a>

@@ -3,8 +3,10 @@ require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 require_once '../model/membershipRoles.php';
 
-include "../view/nav.php";
+//include "../view/nav.php";
 include'../view/header.php';
+include "../view/nav2.php";
+
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
 } else {

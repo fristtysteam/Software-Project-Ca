@@ -4,7 +4,8 @@ require_once '../model/orderModel.php';
 require_once '../model/purchaseTicket.php';
 
 
-include "../view/nav.php";
+//include "../view/nav.php";
+include "../view/nav2.php";
 include '../view/header.php';
 
 if (isset($_SESSION['userId'])) {

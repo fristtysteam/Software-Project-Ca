@@ -20,8 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $pageTitle = "Admin Add Event";
-include "../view/nav.php";
+//include "../view/nav.php";
 include '../view/header.php';
+include "../view/nav2.php";
 
 ?>
 

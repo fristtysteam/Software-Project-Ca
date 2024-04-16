@@ -20,8 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $pageTitle = "Admin Add Product";
-include "../view/nav.php";
+
+//include "../view/nav.php";
 include '../view/header.php';
+include "../view/nav2.php";
 
 ?>
 

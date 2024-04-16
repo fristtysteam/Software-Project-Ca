@@ -3,8 +3,10 @@ require_once '../model/databaseConnection.php';
 require_once '../model/doCart.php';
 require_once '../model/cartModel.php';
 
-include "nav.php";
+//include "nav.php";
+include "nav2.php";
 include 'header.php';
+
 global $cartModel;
 
 function getCartItems() {

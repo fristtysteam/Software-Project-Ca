@@ -4,8 +4,11 @@
 -------------------------------->
 
 
-<?php include'../view/header.php' ?>
-<?php include'../view/nav.php' ?>
+<?php
+include'../view/header.php' ;
+//include'../view/nav.php';
+include "../view/nav2.php";
+?>
 <?php //require_once '../scripts/validateRegistrationData.js' ?>
 <script src="../scripts/validateSignup.js"></script>
 

@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $pageTitle = "User Add Artwork";
-include "../view/nav.php";
+//include "../view/nav.php";
+include "../view/nav2.php";
 include '../view/header.php';
 
 ?>

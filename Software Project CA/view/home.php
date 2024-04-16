@@ -1,6 +1,7 @@
 <?php
 require_once '../model/databaseConnection.php';
-include "../view/nav.php";
+//include "../view/nav.php";
+include "../view/nav2.php";
 include'../view/header.php';
 ?>
 <!DOCTYPE html>

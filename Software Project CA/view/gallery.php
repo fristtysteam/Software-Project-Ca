@@ -3,8 +3,10 @@ require_once '../model/getArt.php';
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 
-include "../view/nav.php";
+//include "../view/nav.php";
+include "../view/nav2.php";
 include '../view/header.php';
+
 $currentLanguage = getLanguage();
 ?>
   <?php

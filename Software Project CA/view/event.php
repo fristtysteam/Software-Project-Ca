@@ -2,8 +2,10 @@
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
 
-include "../view/nav.php";
+//include "../view/nav.php";
 include'../view/header.php';
+include "../view/nav2.php";
+
 $currentLanguage = getLanguage();
 require_once '../model/getEvents.php';
 
