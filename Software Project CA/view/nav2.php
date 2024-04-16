@@ -19,13 +19,13 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item navbar-small-links">
-                    <a class="nav-link active " href="../controller/index.php?action=show_home">Home</a>
+                    <a class="nav-link active" href="../controller/index.php?action=show_home">Home</a>
                 </li>
                 <?php if (isset($_SESSION['username'])): ?>
                     <li class="nav-item navbar-small-links">
-                        <a class="nav-link " href="../controller/index.php?action=membership"><strong>Membership</strong></a>
+                        <a class="nav-link" href="../controller/index.php?action=membership"><strong>Membership</strong></a>
                     </li>
                 <?php endif; ?>
                 <li class="nav-item navbar-small-links">
@@ -40,13 +40,17 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=events"><strong>Events</strong></a>
                 </li>
-                <li class="nav-item navbar-small-links">
-                    <a class="nav-link" href="../controller/index.php?action=showRegister"><strong>Register<strong></a>
-                </li>
-                <?php if ($isAdmin && isset($_SESSION['username'])): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../controller/index.php?action=show_admin">Admin</a>
+                <?php if (!$_SESSION): ?>
+                    <li class="nav-item navbar-small-links">
+                        <a class="nav-link" href="../controller/index.php?action=showRegister"><strong>Register</strong></a>
                     </li>
+                <?php endif; ?>
+                <?php if ($_SESSION): ?>
+                    <div class="col-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+                            </li>
+                    </div>
                 <?php endif; ?>
             </ul>
         </div>
@@ -74,9 +78,7 @@ if ($isHomePage && isset($_SESSION['username'])):
             <div class="col-auto">
                 <a href="../controller/index.php?action=orders" class="nav-link">My Orders</a>
             </div>
-            <div class="col-auto">
-                <a href="../controller/index.php?action=logout" class="nav-link">Logout</a>
-            </div>
+
             <?php if($usertype === "admin"): ?>
                 <div class="col-auto">
                     <a href="../controller/index.php?action=show_admin" class="nav-link">Admin</a>

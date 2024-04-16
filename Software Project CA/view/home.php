@@ -3,7 +3,12 @@ require_once '../model/databaseConnection.php';
 //include "../view/nav.php";
 include "../view/nav2.php";
 include'../view/header.php';
+
+// Check if the user is logged in
+$loggedIn = isset($_SESSION['username']);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,8 +36,10 @@ include'../view/header.php';
     <div class="container text-center">
         <h1>Welcome to the DKIT Art Gallery</h1>
         <p >Immerse yourself in the world of creativity and expression.</p>
-        <a href="?action=login" class="btn btn-primary me-2">Login</a>
-        <a href="?action=showRegister" class="btn btn-secondary">Register</a>
+        <?php if (!$loggedIn): ?>
+            <a href="?action=login" class="btn btn-primary me-2">Login</a>
+            <a href="?action=showRegister" class="btn btn-secondary">Register</a>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -54,8 +61,10 @@ include'../view/header.php';
         <h2 class="text-center mb-4">Pages you should visit</h2>
         <ul class="list-group">
             <li class="list-group-item"><a href="index.php?action=artistArtWork">User Art Gallery</a></li>
-            <li class="list-group-item"><a href="index.php?action=showRegister">Register</a></li>
-            <li class="list-group-item"><a href="index.php?action=login">Login</a></li>
+            <?php if (!$loggedIn): ?>
+                <li class="list-group-item"><a href="index.php?action=showRegister">Register</a></li>
+                <li class="list-group-item"><a href="index.php?action=login">Login</a></li>
+            <?php endif; ?>
             <li class="list-group-item"><a href="index.php?action=events">Events</a></li>
             <li class="list-group-item"><a href="index.php?action=shop">Shop</a></li>
             <li class="list-group-item"><a href="index.php?action=gallery">Gallery</a></li>
