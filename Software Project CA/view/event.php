@@ -105,12 +105,13 @@ $events = getEvents();
                 <tr>
                     <td colspan="7" class="text-center">
                         <?php
-                        if ($_SESSION['userType'] === 'premium') {
+                        if (isset($_SESSION['userType']) && $_SESSION['userType'] === 'premium') {
                             echo '<a href="../controller/index.php?action=purchaseTicket" class="btn btn-primary">Purchase Ticket</a>';
                         } else {
                             echo '<p>You must have a premium membership to purchase a ticket.</p>';
                         }
                         ?>
+
                     </td>
                 </tr>
                 </tbody>
