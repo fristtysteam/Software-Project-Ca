@@ -6,7 +6,7 @@ global $db;
 $cartModel = new CartModel($db);
 
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    //session_start();
 }
 
 if (isset($_SESSION['userId'])) {

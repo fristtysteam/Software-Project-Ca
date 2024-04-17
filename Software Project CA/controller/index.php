@@ -3,6 +3,9 @@ require('../model/databaseConnection.php');
 require ('../model/userDB.php');
 require_once '../model/language.php';
 require_once '../model/membershipRoles.php';
+require_once '../model/cartModel.php';
+require_once '../model/doCart.php';
+require_once '../model/orderModel.php';
 
 
 // Variables
@@ -237,10 +240,7 @@ switch ($action) {
         $pageTitle = "Admin Add Events";
         include "../view/adminAddEvent.php";
         break;
-    case 'checkout':
-        $pageTitle = "checkout";
-        include "../view/checkout.php";
-        break;
+
     case 'adminEditProducts':
         $pageTitle = "Admin Edit Products";
         include "../view/adminEditProduct.php";
@@ -248,6 +248,15 @@ switch ($action) {
     case 'adminEditEvent':
         $pageTitle = "Admin Edit Events";
         include "../view/adminEditEvent.php";
+        break;
+    /*case 'checkout':
+        $pageTitle = "checkout";
+        include "../view/checkout.php";
+        break;*/
+    case 'checkout':
+        $pageTitle = "checkout";
+
+        include "../view/checkout_2.php";
         break;
     //case 'payment':
     case 'pay':
