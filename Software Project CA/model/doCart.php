@@ -33,6 +33,5 @@ if (isset($_SESSION['userId'])) {
     } else {
     }
 } else {
-    echo "You must be logged in to add products to the cart";
-}
+echo "<div class='text-center'>You must be logged in to add products to the cart</div>"; }
 ?>
