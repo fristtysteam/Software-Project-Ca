@@ -40,11 +40,7 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=events"><strong>Events</strong></a>
                 </li>
-                <?php if (!$_SESSION): ?>
-                    <li class="nav-item navbar-small-links">
-                        <a class="nav-link" href="../controller/index.php?action=showRegister"><strong>Register</strong></a>
-                    </li>
-                <?php endif; ?>
+
                 <?php if ($_SESSION): ?>
                     <div class="col-auto">
                             <li class="nav-item">
