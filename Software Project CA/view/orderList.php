@@ -12,13 +12,13 @@ include "nav2.php";
         </ol>
         <div class="row">
             <div class="col-md-12">
-                <?php //if (isset($_SESSION["success"])) : ?>
+                <?php if (isset($_SESSION["success"])) : ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?php //echo $_SESSION["success"]; ?>
+                        <?php echo $_SESSION["success"]; ?>
                         <button  type="button" class="btn-close" data-bs-dismiss="alert"  area-label="close" ></button>
                     </div>
-                    <?php //unset($_SESSION["success"]); ?>
-                <?php //endif; ?>
+                    <?php unset($_SESSION["success"]); ?>
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-header">
                         <h4>List of Orders</h4>

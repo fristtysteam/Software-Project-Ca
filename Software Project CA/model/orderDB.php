@@ -33,8 +33,8 @@ function getAllOrders() {
      ***********************************************************/
 
     global $db;
-    $query = "SELECT * FROM order2 ORDER BY order_id";
-
+    //$query = "SELECT * FROM order2 ORDER BY order_id";
+    $query = "SELECT * FROM order2 ";
     $statement =$db->prepare($query);
 
     try{
@@ -45,6 +45,7 @@ function getAllOrders() {
     }
     // Retrieve user record from db
     $orders = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //$orders = $statement->fetchAll();
     $statement->closeCursor();
     return $orders;
 
