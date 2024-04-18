@@ -2,6 +2,8 @@
 include "../view/nav2.php";
 include '../view/header.php';
 
+require_once '../model/doCart.php';
+
 function getCartItems() {
     global $cartModel;
     return isset($_SESSION['userId']) ? $cartModel->getCartItems($_SESSION['userId']) : [];
@@ -27,6 +29,8 @@ function getCartItems() {
     <div class="container">
         <div class="card">
             <div class="card-body">
+                <form method="post" name="" action="../controller/index.php">
+                    <input type="hidden" value="place_order" name="action">
                 <div class="row">
                     <div class="col-md-6">
                         <h5>Basic Details:</h5>
@@ -48,13 +52,13 @@ function getCartItems() {
 
                             </div>
                             <div class="col-md-5 mb-3">
-                                <label class="fw-bold">Pin Code</label>
-                                <input type="text" name="pincode" placeholder="Enter your pin code" class="form-control"/>
+                                <label class="fw-bold">AirCode</label>
+                                <input type="text" name="aircode" placeholder="Enter your pin code" class="form-control"/>
 
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label class="fw-bold">Address</label>
-                                <textarea type="text" name="name" placeholder="Enter full name" class="form-control" rows="5"></textarea>
+                                <textarea type="text" name="address" placeholder="Enter full name" class="form-control" rows="5"></textarea>
 
                             </div>
 
@@ -110,12 +114,18 @@ function getCartItems() {
                         <hr>
                         <h5>Total Price: <span class="float-end fw-bold"><?php echo"€". $totalPrice ?></span></h5>
                         <div class="">
-                            <button class="btn btn-primary mt-3 w-100">Confirm and Place Order</button>
-<!-- Video Link:    https://www.youtube.com/watch?v=J57UB6nT4UU -->
+                            <button class="btn btn-primary mt-3 w-100"
+                                    type="submit" name="place_order">Confirm and Place Order</button>
+
+<!-- Video Link:    https://www.youtube.com/watch?v=J57UB6nT4UU
+
+Sharma Coder
+-->
                         </div>
                     </div>
 
                 </div>
+                </form>
             </div>
         </div>
 
