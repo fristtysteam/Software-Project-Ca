@@ -39,14 +39,14 @@ include "nav2.php";
                             </thead>
                             <tbody>
                             <?php $orders =getAllOrders() ;
-                            foreach ($orders as $user): ?>
+                            foreach ($orders as $order): ?>
                                 <tr>
-                                    <td><?php echo $orders["order_id"] ?></td>
-                                    <td><?php echo $orders["username"] ?></td>
-                                    <td><?php echo $orders["email"] ?></td>
-                                    <td><?php echo $orders["phone"] ?></td>
-                                    <td><?php echo $orders["address"] ?></td>
-                                    <td><?php echo $orders["aircode"] ?></td>
+                                    <td><?php echo $order["order_id"] ?></td>
+                                    <td><?php echo $order["username"] ?></td>
+                                    <td><?php echo $order["email"] ?></td>
+                                    <td><?php echo $order["phone"] ?></td>
+                                    <td><?php echo $order["address"] ?></td>
+                                    <td><?php echo $order["aircode"] ?></td>
                                     <td>
                                         <!--<button class="btn-success" type="submit" name="update_user" value="$user['id']"><a class='text-light' href="?action=show_adminEditUser&id=<?php //echo $user['id']; ?>">Update </a></button>-->
                                         <button class="btn-success" type="submit" name="" value=" "><a class='text-light' href="?action=show_adminEditUser&id=<?php echo $user['id']; ?>">Update </a></button>

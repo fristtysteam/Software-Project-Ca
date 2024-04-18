@@ -33,7 +33,7 @@ function getAllOrders() {
      ***********************************************************/
 
     global $db;
-    $query = "SELECT * FROM orders ORDER BY id";
+    $query = "SELECT * FROM order2 ORDER BY order_id";
 
     $statement =$db->prepare($query);
 
