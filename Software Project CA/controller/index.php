@@ -1,8 +1,12 @@
 <?php
 require('../model/databaseConnection.php');
 require ('../model/userDB.php');
+require ('../model/orderDB.php');
 require_once '../model/language.php';
 require_once '../model/membershipRoles.php';
+require_once '../model/cartModel.php';
+//require_once '../model/doCart.php';
+require_once '../model/orderModel.php';
 
 
 // Variables
@@ -42,7 +46,7 @@ if ($action == Null) {
         $action = filter_input(INPUT_GET, 'action');
         if ($action == NULL) {
 
-            //$action = "login2";
+            //$action = "login";
             $action = "login2";
         }
     }
@@ -237,10 +241,7 @@ switch ($action) {
         $pageTitle = "Admin Add Events";
         include "../view/adminAddEvent.php";
         break;
-    case 'checkout':
-        $pageTitle = "checkout";
-        include "../view/checkout.php";
-        break;
+
     case 'adminEditProducts':
         $pageTitle = "Admin Edit Products";
         include "../view/adminEditProduct.php";
@@ -248,6 +249,15 @@ switch ($action) {
     case 'adminEditEvent':
         $pageTitle = "Admin Edit Events";
         include "../view/adminEditEvent.php";
+        break;
+    /*case 'checkout':
+        $pageTitle = "checkout";
+        include "../view/checkout.php";
+        break;*/
+    case 'checkout':
+        $pageTitle = "checkout";
+
+        include "../view/checkout_2.php";
         break;
     //case 'payment':
     case 'pay':
@@ -349,8 +359,33 @@ switch ($action) {
         $pageTitle = "Cart Page";
         include "../view/cart.php";
         break;
-    /*case 'add_item_toCart':
+    /*case 'add_item_toCart': place_order
         break;*/
+    case 'place_order';
+        if(isset($_POST['place_order'])){
+            $name = filter_input(INPUT_POST, 'name');
+            $email = filter_input(INPUT_POST, 'email');
+            $phone = filter_input(INPUT_POST, 'phone');
+            $aircode = filter_input(INPUT_POST, 'aircode');
+            $address = filter_input(INPUT_POST, 'address');
+
+            if(($name !=null) || ($email != null) || ($phone != null) || ($aircode != null)|| ($address != null)){
+
+               if( addToOrders($name, $email, $phone, $address, $aircode)===true){
+                   header("Location:index.php?action=view_list_of_orders");
+               }
+            }else{
+                header("Location:index.php?action=checkout");
+            }
+
+
+        }
+
+        break;
+    case 'view_list_of_orders';
+            include '../view/orderList.php';
+        break;
+
     case 'set_language_english':
         // Logic for setting language to English
         break;

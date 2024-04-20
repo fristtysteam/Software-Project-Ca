@@ -25,7 +25,7 @@
                 <!--</div>-->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-user"></i></span> Username:
-                    <input class="form-control" id="username" name="username" value="" type="text"  required >
+                    <input class="form-control" id="name" name="name" value="" type="text"  required >
                 </div>
                 <!--<div class="input-group mb-3">-->
                 <!--   <span class="input-group-text"><i class="fa fa-user"></i></span> Name:-->
@@ -34,11 +34,16 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-envelope"></i></span> Email:
-                    <input class="form-control" id="email" name="email"value=""  type="text"  required>
+                    <input class="form-control" id="email" name="email"value=""  type="email"  required>
 
                 </div>
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <textarea
+                            class="form-control"
+                            id="message"
+                            row="5";
+                            placeholder="Type message here">
+                    </textarea>
                     <label for="floatingTextarea">Meassage:</label>
                 </div>
                 <div class="input-group mt-3 mb-4 ">
@@ -46,6 +51,7 @@
                              id=""
                              type="submit"
                              name ="email_user"
+                             onclick="sendEmail()"
 
                     >
                         Send
@@ -69,7 +75,22 @@
 </div>
 </div>
 
+<!-- Youtube Email video link:    https://www.youtube.com/watch?v=dgcYOm8n8ME   -->
 
+
+<!-- LOCAL EMAIL.js  SCRIPT LINK -->
+<script src="../js/email.js"></script>
+<!--EMAILjs LINK  & SCRIPT -->
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script >
+<script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "KLwUe0hzzj5QH_WEB",
+        });
+    })();
+</script>
 
 <?php include'../view/footer.php' ?>
 

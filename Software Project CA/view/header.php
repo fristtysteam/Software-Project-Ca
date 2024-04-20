@@ -50,6 +50,20 @@
     <script src=
             "https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js">
     </script>
+    <!-- LOCAL EMAIL.js  SCRIPT LINK -->
+    <script src="../js/email.js"></script>
+    <!--EMAILjs LINK  & SCRIPT -->
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script >
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "KLwUe0hzzj5QH_WEB",
+            });
+        })();
+    </script>
+
 </head>
 <body>
 <div class="container align-content:center">
