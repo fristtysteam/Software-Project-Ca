@@ -40,11 +40,7 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=events"><strong>Events</strong></a>
                 </li>
-                <?php if (!$_SESSION): ?>
-                    <li class="nav-item navbar-small-links">
-                        <a class="nav-link" href="../controller/index.php?action=showRegister"><strong>Register</strong></a>
-                    </li>
-                <?php endif; ?>
+
                 <?php if ($_SESSION): ?>
                     <div class="col-auto">
                             <li class="nav-item">
@@ -61,10 +57,12 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 $currentURL = $_SERVER['REQUEST_URI'];
 
 $homePageIdentifier = 'action=show_home';
+$shopPageIdentifier = 'action=shop';
 
 $isHomePage = (strpos($currentURL, $homePageIdentifier) !== false);
+$isShopPage = (strpos($currentURL, $shopPageIdentifier) !== false);
 
-if ($isHomePage && isset($_SESSION['username'])):
+if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
     $username = $_SESSION['username'];
     $usertype = $_SESSION['userType'];
     ?>
@@ -94,6 +92,7 @@ if ($isHomePage && isset($_SESSION['username'])):
     </div>
 
 <?php endif; ?>
+
 
 
 
