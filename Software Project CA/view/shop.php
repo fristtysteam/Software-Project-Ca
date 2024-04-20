@@ -34,8 +34,30 @@ $cartItems = getCartItems();
 <body>
 <div class="container mt-5">
     <div class="lead text-center text-black-50 py-1 fs-3">
-        <h1 class="text-center mb-4">Shop Page</h1>
-    </div>
+        <style>
+            .artistic-background {
+                background-image: url('../back.jpg');
+                background-size: cover;
+                background-position: center;
+                color: white;
+                padding: 40px;
+                text-align: center;
+                font-size: 104px;
+
+
+            }
+            .artistic-background h1 {
+                font-weight: bold;
+                font-weight: normal;
+
+            }
+        </style>
+        </head>
+        <body>
+
+        <div class="artistic-background">
+            <h1 class="text-center mb-4">Shop Page</h1>
+        </div>  </div>
     <div class="row mb-5 g-2">
         <div class="col-md-8 g-lg-3">
             <?php
