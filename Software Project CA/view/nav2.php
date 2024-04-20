@@ -57,10 +57,12 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 $currentURL = $_SERVER['REQUEST_URI'];
 
 $homePageIdentifier = 'action=show_home';
+$shopPageIdentifier = 'action=shop';
 
 $isHomePage = (strpos($currentURL, $homePageIdentifier) !== false);
+$isShopPage = (strpos($currentURL, $shopPageIdentifier) !== false);
 
-if ($isHomePage && isset($_SESSION['username'])):
+if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
     $username = $_SESSION['username'];
     $usertype = $_SESSION['userType'];
     ?>
@@ -90,6 +92,7 @@ if ($isHomePage && isset($_SESSION['username'])):
     </div>
 
 <?php endif; ?>
+
 
 
 
