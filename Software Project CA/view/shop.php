@@ -9,7 +9,7 @@ include "../view/nav2.php";
 include '../view/header.php';
 
 $currentLanguage = getLanguage();
-$isLoggedIn = isset($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['username']);
 
 function getCartItems() {
     return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
