@@ -82,7 +82,7 @@ $cartItems = getCartItems();
                                             <?php if ($isLoggedIn): ?>
                                                 <button type="submit" class="btn btn-primary btn-lg">Add to Cart</button>
                                             <?php else: ?>
-                                                <p>Please <a href="login.php">login</a> to add items to cart.</p>
+                                                <p>Please <a href="?action=login">login</a> to add items to cart.</p>
                                             <?php endif; ?>
                                         </form>
                                     </div>
