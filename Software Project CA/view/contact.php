@@ -1,5 +1,5 @@
 <?php include'../view/header.php' ?>
-<?php include'../view/nav.php' ?>
+<?php include'../view/nav2.php' ?>
 <div class="container">
 <div class= "row  d-flex justify-content-between mt-5 mb-5">
     <div class="col-md-6 ">
@@ -10,20 +10,22 @@
         <!--</div>-->
 
         <div class="card-body">
-            <form id="Email_user-Form" method="POST" action="../controller/index.php">
+           <!-- <form id="Email_user-Form" method="POST" action="../controller/index.php">-->
+           <!-- <form id="Email_user-Form" method="POST" action="">-->
                 <!-- IN CASE OF ERROR FORM DATA ENTRY AND PROCCESSING -->
                <!-- <?php// if( isset($_SESSION["error"]))
                     //echo '<div class=" lead text-center text-danger py-1">'.$_SESSION["error"].'</div>'; ?>-->
 
-                <input type="hidden" value="email_user" name="action">
+                <!--<input type="hidden" value="email_user" name="action">-->
                 <!--<input type="hidden"  value="<?php //echo $user['id'] ; ?>-->
-                <input type="hidden"  value="">
+                <!--<input type="hidden"  value="">-->
                 <!--<div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>ID:
                     <!--<input class="form-control" id="userId" name="id" value=""  type="hidden"  required>-->
                     <!--<input class="form-control" id="userId" name="id" value=""  type=""  required>-->
                 <!--</div>-->
-                <div class="input-group mb-3">
+                <!--<div class="input-group mb-3">-->
+                <div class="form-group mt-3 mb-4 ">
                     <span class="input-group-text"><i class="fa fa-user"></i></span> Username:
                     <input class="form-control" id="name" name="name" value="" type="text"  required >
                 </div>
@@ -32,12 +34,14 @@
                <!-- <input class="form-control" id="lastname" name="name"  value="" type="text"  required>-->
                 <!--</div>-->
 
-                <div class="input-group mb-3">
+               <!-- <div class="input-group mb-3">-->
+                <div class="form-group mt-3 mb-3 ">
                     <span class="input-group-text"><i class="fa fa-envelope"></i></span> Email:
                     <input class="form-control" id="email" name="email"value=""  type="email"  required>
 
                 </div>
-                <div class="form-floating">
+                <!--<div class="form-floating">-->
+                <div class="form-group mt-3 mb-3 ">
                     <textarea
                             class="form-control"
                             id="message"
@@ -46,7 +50,7 @@
                     </textarea>
                     <label for="floatingTextarea">Meassage:</label>
                 </div>
-                <div class="input-group mt-3 mb-4 ">
+                <div class="form-group mt-3 mb-4 ">
                     <button  class="form-control bg-dark fs-4 text-white"
                              id=""
                              type="submit"
