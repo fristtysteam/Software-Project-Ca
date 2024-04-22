@@ -3,59 +3,29 @@ require_once '../model/databaseConnection.php';
 require_once '../model/cartModel.php';
 require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
+require_once '../model/getProducts.php';
 
 include "nav.php";
 include 'header.php';
 
-function getCartItems() {
-    global $cartModel;
-    return isset($_SESSION['userId']) ? $cartModel->getCartItems($_SESSION['userId']) : [];
+$pageTitle = "checkout";
+$userId = $_SESSION['userId'];
+$items = getCartItems($userId);
+$id = addOrder2($_SESSION['userId']);
+echo $id . "<br/>";
+var_dump($items);
+echo "<br/>";
+$currentDate = date('Y-m-d');
+
+foreach ($items as $item) {
+    addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
 }
-
-$cartItems = getCartItems();
-
-$totalPrice = 0;
-foreach ($cartItems as $item) {
-    $totalPrice += $item['price'] * $item['quantity'];
-}
-
-if (isset($_POST['pay'])) {
-    global $cartModel;
-
-    $success = true;
-
-    foreach ($cartItems as $item) {
-        $product_id = $item['product_id'];
-        $quantity = $item['quantity'];
-        $cart_id = $item['id'];
-        $price = $item['price'];
-        $user_id = $_SESSION['userId'];
-        $order_date = date('Y-m-d');
-
-        if (!addOrder($cart_id, $product_id, $price, $user_id, $quantity, $order_date)) {
-            $success = false;
-            break;
-        }
-
-        if (!$cartModel->updateProductQuantity($product_id, $quantity)) {
-            $success = false;
-            break;
-        }
-    }
-
-    if ($success) {
-        if ($cartModel->clearCart($_SESSION['userId'])) {
-            echo "Orders placed successfully. Cart cleared successfully.";
-        } else {
-            echo "Failed to clear cart.";
-        }
-    } else {
-        echo "Failed to place orders.";
-    }
-
-    exit();
-}
+$products = getOrdersByOrderId($id);
+var_dump($products);
+echo "<br/>";
+$_SESSION["products"] = $products;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,22 +54,37 @@ if (isset($_POST['pay'])) {
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($cartItems as $item): ?>
+            <?php
+            $totalPrice = 0;
+            foreach ($products as $product):
+              $details=  getProductById($product['product_Id']);
+                        $singleP= $product['quantity'] * $details['price'];
+              $totalPrice =  $totalPrice + $singleP;
+
+                ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($item['name']); ?></td>
-                    <td>$<?php echo htmlspecialchars($item['price']); ?></td>
-                    <td><?php echo htmlspecialchars($item['quantity']); ?></td>
-                    <td>$<?php echo htmlspecialchars($item['price'] * $item['quantity']); ?></td>
+                    <td><?php echo  $details['name']; ?></td>
+                    <td>$<?php echo $details['price']; ?></td>
+                    <td><?php echo $product['quantity']; ?></td>
+                    <td>$<?php echo $singleP; ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
     </div>
     <div class="text-end">
-    <p>Total: $<?php echo htmlspecialchars($totalPrice); ?></p>
-    <a href="index.php?action=pay&totalPrice=<?php echo $totalPrice; ?>" class="btn btn-primary">Pay</a>
+        <p>Total: $<?php
+//            $totalPrice = 0;
+//            foreach ($products as $product) {
+//                $totalPrice += $product['price'] * $product['quantity'];
+//            }
+            echo $totalPrice;
+            ?></p>
+        <!-- Form to simulate payment -->
+        <form method="post">
+            <button type="submit" name="pay" class="btn btn-primary">Pay</button>
+        </form>
+    </div>
 </div>
-</div>
-
 </body>
 </html>

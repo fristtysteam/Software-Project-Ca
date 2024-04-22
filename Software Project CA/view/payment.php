@@ -20,7 +20,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                 <div class="card-body">
                     <h4>Checkout</h4>
                     <p>Total to pay: $<?php echo number_format($totalPrice, 2); ?></p>
-                    <form id="paymentForm" action="processPayment.php" method="post">
+                    <form id="paymentForm" action="checkout.php" method="post">
                         <div class="form-group">
                             <label for="nameOnCard">Name on Card</label>
                             <input type="text" id="nameOnCard" name="nameOnCard" required>

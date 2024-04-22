@@ -11,11 +11,11 @@ include '../view/header.php';
 $currentLanguage = getLanguage();
 $isLoggedIn = isset($_SESSION['username']);
 
-function getCartItems() {
-    return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
-}
+//function getCartItems() {
+ //   return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+//}
 
-$cartItems = getCartItems();
+//$cartItems = getCartItems();
 ?>
 
 <!DOCTYPE html>
