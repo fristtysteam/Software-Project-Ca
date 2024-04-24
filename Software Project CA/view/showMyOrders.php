@@ -2,9 +2,8 @@
 require_once '../model/databaseConnection.php';
 require_once '../model/orderModel.php';
 require_once '../model/purchaseTicket.php';
+require_once '../model/getProducts.php';
 
-
-//include "../view/nav.php";
 include "../view/nav2.php";
 include '../view/header.php';
 
@@ -17,19 +16,17 @@ if (isset($_SESSION['userId'])) {
     $orders = [];
     $tickets = [];
 }
-
 ?>
 
-    <div class="container">
-        <?php if (isset($_SESSION['userId'])) {
-
-        echo"<h1 class='text-center mt-5'>View Your Orders</h1>";
-        }?>
-        <div class="row mt-5">
-
+<div class="container mt-5">
+    <?php if (isset($_SESSION['userId'])): ?>
+        <h1 class='text-center'>View Your Orders</h1>
+        <div class="row">
             <?php foreach ($orders as $order): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
+                        <?php $product = getProductById($order['product_id']); ?>
+                        <img src="<?php echo $product['url']; ?>" class="card-img-top img-fluid" style="height: 400px;" alt="<?php echo $product['name']; ?>"> <!-- Added img-fluid class and fixed height -->
                         <div class="card-body">
                             <h5 class="card-title">Order ID: <?php echo $order['cart_id']; ?></h5>
                             <p class="card-text">Product ID: <?php echo $order['product_id']; ?></p>
@@ -41,11 +38,11 @@ if (isset($_SESSION['userId'])) {
                 </div>
             <?php endforeach; ?>
         </div>
-        <?php if (isset($_SESSION['userId'])) {
+    <?php endif; ?>
 
-            echo"<h1 class='text-center mt-5'>View Your Tickets</h1>";
-        }?>
-        <div class="row mt-5">
+    <?php if (isset($_SESSION['userId'])): ?>
+        <h1 class='text-center mt-5'>View Your Tickets</h1>
+        <div class="row mt-3">
             <?php foreach ($tickets as $ticket): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
@@ -53,16 +50,11 @@ if (isset($_SESSION['userId'])) {
                             <p class="card-text">Title: <?php echo $ticket['event_title']; ?></p>
                             <p class="card-text">Venue: <?php echo $ticket['event_venue']; ?></p>
                             <p class="card-text">Purchase Date: <?php echo $ticket['purchase_date']; ?></p>
-
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-
-
-
-<?php
-include '../view/footer.php';
-?>
+    <?php endif; ?>
+</div>
+<?php include '../view/footer.php'; ?>

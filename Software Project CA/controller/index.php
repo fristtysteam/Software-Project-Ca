@@ -5,8 +5,9 @@ require ('../model/orderDB.php');
 require_once '../model/language.php';
 require_once '../model/membershipRoles.php';
 require_once '../model/cartModel.php';
-//require_once '../model/doCart.php';
+require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
+
 
 
 // Variables
@@ -19,7 +20,7 @@ $loggedInAt = "";
 $loggedOutAt = "";
 global $users;
 // Start session
-session_start();
+//session_start();
 
 if (isset($_SESSION['userId'])) {
     // Session is active
@@ -256,8 +257,20 @@ switch ($action) {
         break;*/
     case 'checkout':
         $pageTitle = "checkout";
+        $userId = $_SESSION['userId'];
+       $items= getCartItems($userId);
+       $id= addOrder2($_SESSION['userId']);
+       echo $id . "<br/>";
+       echo "<br/>";
+        $currentDate = date('Y-m-d');
 
-        include "../view/checkout_2.php";
+        foreach ($items as $item){
+        addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
+       }
+       $products = getOrdersByOrderId($id);
+        echo "<br/>";
+        $_SESSION["products"] = $products;
+       include "../view/checkout.php";
         break;
     //case 'payment':
     case 'pay':

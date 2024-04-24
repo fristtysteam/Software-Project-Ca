@@ -5,6 +5,7 @@ include "header.php";
 include "../model/language.php";
 
 $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
+$user_id = $_SESSION['userId'];
 
 ?>
 
@@ -41,7 +42,7 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                     <a class="nav-link" href="../controller/index.php?action=events"><strong>Events</strong></a>
                 </li>
 
-                <?php if ($_SESSION): ?>
+                <?php if (isset($_SESSION['userId'])): ?>
                     <div class="col-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
