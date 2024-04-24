@@ -6,16 +6,17 @@ require_once '../model/cartModel.php';
 //include "nav.php";
 include "nav2.php";
 include 'header.php';
+$userId = $_SESSION['userId'];
 
 global $cartModel;
 
-function getCartItems() {
-    global $cartModel;
+//function getCartItems() {
+ //   global $cartModel;
 
-    return isset($_SESSION['userId']) ? $cartModel->getCartItems($_SESSION['userId']) : [];
-}
+  //  return isset($_SESSION['userId']) ? $cartModel->getCartItems($_SESSION['userId']) : [];
+//}
 
-$cartItems = getCartItems();
+$cartItems = getCartItems($userId);
 
 if (isset($_POST['remove_from_cart'])) {
     $cart_id = $_POST['cart_id'];

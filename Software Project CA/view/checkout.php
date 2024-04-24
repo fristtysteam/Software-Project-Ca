@@ -12,17 +12,15 @@ $pageTitle = "checkout";
 $userId = $_SESSION['userId'];
 $items = getCartItems($userId);
 $id = addOrder2($_SESSION['userId']);
-echo $id . "<br/>";
-var_dump($items);
-echo "<br/>";
+
 $currentDate = date('Y-m-d');
 
 foreach ($items as $item) {
     addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
 }
 $products = getOrdersByOrderId($id);
-var_dump($products);
-echo "<br/>";
+
+
 $_SESSION["products"] = $products;
 ?>
 

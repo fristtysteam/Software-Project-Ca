@@ -5,9 +5,9 @@ require ('../model/orderDB.php');
 require_once '../model/language.php';
 require_once '../model/membershipRoles.php';
 require_once '../model/cartModel.php';
-//require_once '../model/doCart.php';
+require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
-require_once '../view/checkout.php';
+
 
 
 // Variables
@@ -261,7 +261,6 @@ switch ($action) {
        $items= getCartItems($userId);
        $id= addOrder2($_SESSION['userId']);
        echo $id . "<br/>";
-       var_dump($items);
        echo "<br/>";
         $currentDate = date('Y-m-d');
 
@@ -269,7 +268,6 @@ switch ($action) {
         addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
        }
        $products = getOrdersByOrderId($id);
-        var_dump($products);
         echo "<br/>";
         $_SESSION["products"] = $products;
        include "../view/checkout.php";
