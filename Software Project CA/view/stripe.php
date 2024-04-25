@@ -1,9 +1,14 @@
 <?php
-include "../view/nav2.php";
+include "../view/nav.php";
 include '../view/header.php';
 
-$currentLanguage = getLanguage();
+require_once '../model/databaseConnection.php';
+require_once '../model/doCart.php';
+require_once '../model/cartModel.php';
+
 $isLoggedIn = isset($_SESSION['username']);
+
+$totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +25,7 @@ $isLoggedIn = isset($_SESSION['username']);
 <section class="newform">
     <div id="payment-stripe" class="container">
         <h2>Payment details</h2>
+        <p>Total to pay: €<?php echo number_format($totalPrice, 2); ?></p>
         <div class="flex">
             <div class="list full">
                 <section class="form-group">
@@ -61,3 +67,4 @@ $isLoggedIn = isset($_SESSION['username']);
 
 </body>
 </html>
+<?php include 'footer.php'; ?>

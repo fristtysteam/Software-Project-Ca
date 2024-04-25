@@ -28,7 +28,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                         <div class="payment-integration">
                             <div class="form-group">
                                 <label for="cardNumber">Card Number:</label>
-                                <input type="text" id="cardNumber" name="cardNumber" placeholder="4111 1111 1111 1111" required>
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="4319 0000 1111 1234" required>
                             </div>
                             <div class="form-group">
                                 <label for="expiryDate">Expiry Date:</label>

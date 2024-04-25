@@ -80,7 +80,7 @@ $_SESSION["products"] = $products;
             ?></p>
         <!-- Form to simulate payment -->
         <form method="post">
-            <button type="submit" name="pay" class="btn btn-primary">Pay</button>
+            <button type="submit" name="pay" a href="stripe.php" class="btn btn-primary">Pay</button>
         </form>
     </div>
 </div>

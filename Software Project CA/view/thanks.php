@@ -1,8 +1,9 @@
 <?php
-include "../view/nav2.php";
+require_once '../model/databaseConnection.php';
+
+include "../view/nav.php";
 include '../view/header.php';
 
-$currentLanguage = getLanguage();
 $isLoggedIn = isset($_SESSION['username']);
 ?>
 <!DOCTYPE html>
@@ -22,3 +23,4 @@ $isLoggedIn = isset($_SESSION['username']);
 </div>
 </body>
 </html>
+<?php include 'footer.php'; ?>
