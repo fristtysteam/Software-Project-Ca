@@ -260,35 +260,29 @@ switch ($action) {
 
        include "../view/checkout.php";
         break;
+    case 'stripe':
+        $pageTitle = "checkout";
+
+        include "../view/stripe.php";
+        break;
     //case 'payment':
     case 'pay':
         $pageTitle = "Payment page";
         $userId = $_SESSION['userId'];
-        /*$items= getCartItems($userId);
-        $id= addOrder2($_SESSION['userId']);
-        echo $id . "<br/>";
-        echo "<br/>";
-        $currentDate = date('Y-m-d');
 
-        foreach ($items as $item){
-            addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
-        }
-
-        $products = getOrdersByOrderId($id);
-        echo "<br/>";
-        $_SESSION["products"] = $products;*/
+        // Process the payment and add order
         $id = addOrder2($_SESSION['userId']);
         $items = getCartItems($userId);
         $currentDate = date('Y-m-d');
+
         foreach ($items as $item) {
             addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
             removeFromCartByCartId($item['id']);
         }
 
-
-        //include "../view/payment.php";
-        include "../view/stripe.php";
-
+        // Redirect to thanks.php after payment
+        header("Location: ../view/thanks.php");
+        exit();
         break;
 
     case 'admin_Edit_Users_Records';

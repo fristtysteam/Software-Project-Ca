@@ -6,11 +6,10 @@ require_once '../model/cartModel.php';
 include "../view/nav2.php";
 include '../view/header.php';
 
-$isLoggedIn = isset($_SESSION['username']);
+$isLoggedIn = isset($_SESSION['userId']);
 
 $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
     <link rel="stylesheet" href="../css/paymentDetailsStripe.css">
     <script src="../js/paymentDetailsStripe.js"></script>
 </head>
-<body>
+<br>
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
 <section class="newform">
@@ -60,11 +59,14 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                 extra for purchases outside of Europe.
             </div>
         </div>
-        <a href="../view/thanks.php" class="nbtn rbtn" id="validate">Complete Purchase</a>
+        <a href="../controller/index.php?action=pay"   name="pay" class="btn btn-primary">Pay</a>
 
     </div>
-</section>
 
+
+</section>
+<br/>
+</br>
 </body>
 </html>
 <?php include 'footer.php'; ?>

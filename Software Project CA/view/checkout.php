@@ -86,7 +86,7 @@ foreach ($items as $item) {
             echo $totalPrice;
             ?></p>
         <!-- Form to simulate payment -->
-         <a href="../controller/index.php?action=pay"   name="pay" class="btn btn-primary">Pay</a>
+         <a href="../controller/index.php?action=stripe"   name="pay" class="btn btn-primary">Pay</a>
         <!--<a href="../view/stripe.php"   name="pay" class="btn btn-primary">Pay</a> -->
 
 
