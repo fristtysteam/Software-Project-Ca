@@ -5,23 +5,24 @@ require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
 require_once '../model/getProducts.php';
 
-include "nav.php";
+include "nav2.php";
 include 'header.php';
 
 $pageTitle = "checkout";
 $userId = $_SESSION['userId'];
 $items = getCartItems($userId);
-$id = addOrder2($_SESSION['userId']);
+//$id = addOrder2($_SESSION['userId']);
 
 $currentDate = date('Y-m-d');
-
+/*
 foreach ($items as $item) {
-    addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
-}
-$products = getOrdersByOrderId($id);
+    //addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
+}*/
+//$products = getOrdersByOrderId($id);
 
 
-$_SESSION["products"] = $products;
+
+//$_SESSION["products"] = $products;
 ?>
 
 <!DOCTYPE html>
@@ -53,17 +54,23 @@ $_SESSION["products"] = $products;
             </thead>
             <tbody>
             <?php
-            $totalPrice = 0;
-            foreach ($products as $product):
+           $totalPrice = 0;
+           /*foreach ($products as $product):
               $details=  getProductById($product['product_Id']);
                         $singleP= $product['quantity'] * $details['price'];
-              $totalPrice =  $totalPrice + $singleP;
+              $totalPrice =  $totalPrice + $singleP;*/
+
+            foreach ($items as $item):
+                $details=  getProductById($item['product_id']);
+                $singleP= $item['quantity'] * $details['price'];
+                $totalPrice =  $totalPrice + $singleP;
+
 
                 ?>
                 <tr>
                     <td><?php echo  $details['name']; ?></td>
                     <td>$<?php echo $details['price']; ?></td>
-                    <td><?php echo $product['quantity']; ?></td>
+                    <td><?php echo $item['quantity']; ?></td>
                     <td>$<?php echo $singleP; ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -79,9 +86,8 @@ $_SESSION["products"] = $products;
             echo $totalPrice;
             ?></p>
         <!-- Form to simulate payment -->
-        <form method="post">
-            <button type="submit" name="pay" class="btn btn-primary">Pay</button>
-        </form>
+            <a href="../controller/index.php?action=pay"   name="pay" class="btn btn-primary">Pay</a>
+
     </div>
 </div>
 </body>
