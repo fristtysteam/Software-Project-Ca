@@ -187,4 +187,31 @@ function addOrderItem($orderId, $product_id, $quantity, $order_date)
         echo "Error: " . $e->getMessage();
         return false;
     }
+
+}
+
+
+function  removeFromCartByCartId($id) {
+    global $db;
+    $sql = "DELETE FROM cart WHERE id = :id";
+
+    try {
+        $stmt = $db->prepare($sql);
+
+        // Bind parameter
+        $stmt->bindParam(':id', $id); // Change ':user_id' to ':id'
+
+        // Execute the statement
+        $stmt->execute();
+
+        // Check if the deletion was successful
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+    }
 }

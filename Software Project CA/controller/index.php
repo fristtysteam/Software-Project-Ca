@@ -264,7 +264,7 @@ switch ($action) {
     case 'pay':
         $pageTitle = "Payment page";
         $userId = $_SESSION['userId'];
-        $items= getCartItems($userId);
+        /*$items= getCartItems($userId);
         $id= addOrder2($_SESSION['userId']);
         echo $id . "<br/>";
         echo "<br/>";
@@ -273,9 +273,19 @@ switch ($action) {
         foreach ($items as $item){
             addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
         }
+
         $products = getOrdersByOrderId($id);
         echo "<br/>";
-        $_SESSION["products"] = $products;
+        $_SESSION["products"] = $products;*/
+        $id = addOrder2($_SESSION['userId']);
+        $items = getCartItems($userId);
+        $currentDate = date('Y-m-d');
+        foreach ($items as $item) {
+            addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
+            removeFromCartByCartId($item['id']);
+        }
+
+
         include "../view/payment.php";
         break;
 
