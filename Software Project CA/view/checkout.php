@@ -69,16 +69,16 @@ foreach ($items as $item) {
                 ?>
                 <tr>
                     <td><?php echo  $details['name']; ?></td>
-                    <td>$<?php echo $details['price']; ?></td>
+                    <td>€<?php echo $details['price']; ?></td>
                     <td><?php echo $item['quantity']; ?></td>
-                    <td>$<?php echo $singleP; ?></td>
+                    <td>€<?php echo $singleP; ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
     </div>
     <div class="text-end">
-        <p>Total: $<?php
+        <p>Total: €<?php
 //            $totalPrice = 0;
 //            foreach ($products as $product) {
 //                $totalPrice += $product['price'] * $product['quantity'];
@@ -86,7 +86,9 @@ foreach ($items as $item) {
             echo $totalPrice;
             ?></p>
         <!-- Form to simulate payment -->
-            <a href="../controller/index.php?action=pay"   name="pay" class="btn btn-primary">Pay</a>
+         <a href="../controller/index.php?action=pay"   name="pay" class="btn btn-primary">Pay</a>
+        <!--<a href="../view/stripe.php"   name="pay" class="btn btn-primary">Pay</a> -->
+
 
     </div>
 </div>

@@ -1,10 +1,10 @@
 <?php
-include "../view/nav.php";
-include '../view/header.php';
-
 require_once '../model/databaseConnection.php';
 require_once '../model/doCart.php';
 require_once '../model/cartModel.php';
+
+include "../view/nav2.php";
+include '../view/header.php';
 
 $isLoggedIn = isset($_SESSION['username']);
 
@@ -32,7 +32,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                     <label for="cc-number" class="control-label">Credit Card Number </label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                        <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="• • • •  • • • •  • • • •  • • • •" data-payment='cc-number' required>
+                        <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="4319 0000 1111 1234" data-payment='cc-number' required>
                     </div>
                     <section>
             </div>
@@ -60,7 +60,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                 extra for purchases outside of Europe.
             </div>
         </div>
-        <a href="thanks.php" class="nbtn rbtn" id="validate">Complete Purchase</a>
+        <a href="../view/thanks.php" class="nbtn rbtn" id="validate">Complete Purchase</a>
 
     </div>
 </section>

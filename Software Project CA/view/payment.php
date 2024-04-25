@@ -39,7 +39,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                                 <input type="text" id="cvv" name="cvv" placeholder="123" required>
                             </div>
                         </div>
-                        <button type="submit" id="payButton" class="btn mt-3">Pay $<?php echo number_format($totalPrice, 2); ?></button>
+                        <button type="submit" a href="../view/thanks.php" id="payButton"  class="btn mt-3">Pay $<?php echo number_format($totalPrice, 2); ?></button>
                     </form>
                 </div>
             </div>

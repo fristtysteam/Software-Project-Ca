@@ -1,7 +1,9 @@
 <?php
 require_once '../model/databaseConnection.php';
+require_once '../model/doCart.php';
+require_once '../model/cartModel.php';
 
-include "../view/nav.php";
+include "../view/nav2.php";
 include '../view/header.php';
 
 $isLoggedIn = isset($_SESSION['username']);
