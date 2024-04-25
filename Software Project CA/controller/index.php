@@ -286,7 +286,9 @@ switch ($action) {
         }
 
 
-        include "../view/payment.php";
+        //include "../view/payment.php";
+        include "../view/stripe.php";
+
         break;
 
     case 'admin_Edit_Users_Records';
@@ -369,6 +371,9 @@ switch ($action) {
         break;
     case 'usergallery':
         $pageTitle = "User Gallery Page";
+
+
+
         include "../view/userGallery.php";
         break;
     case 'events':
