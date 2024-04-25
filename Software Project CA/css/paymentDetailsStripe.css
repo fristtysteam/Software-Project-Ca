@@ -1,0 +1,106 @@
+body { background-color: #f9fbfd; font-family: "canada-type-gibson",sans-serif;}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    opacity: 0.5;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    opacity: 0.5;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    opacity: 0.5;
+}
+:-moz-placeholder { /* Firefox 18- */
+    opacity: 0.5;
+}
+
+.newform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newform h2 {color: #506175; font-weight: 500; font-size: 28px; margin: 0 0 .4em;}
+
+.newform .container {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    padding: 50px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.flex {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    border-top: solid 3px #f5f7f8;
+    padding-top: 25px;
+    margin: 0;
+    margin-bottom: 10px;
+    flex-flow: row wrap;
+    align-items: stretch;
+    margin-bottom: 1.8em;
+}
+
+
+.newform .nbtn {
+    font-size: 16px;
+    padding: 1em 2em;
+    right: 0;
+    right: initial;
+    margin: 0 auto;
+    min-width: auto !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 100px;
+}
+
+.rbtn {
+    background-color: #d32d27;
+    color: #FFF;
+    border-color: #af0806;
+}
+
+.flex .list {position: relative; margin-left: 10%; flex-basis: 45%; margin-bottom: 10px;}
+.flex .list:nth-child(1), .flex .list:nth-child(2) {
+    margin-left: 0;
+}
+
+.flex .list.full {
+    width: 100%;
+    flex-basis: 100%;
+    margin-bottom: 1.8em;
+}
+
+.flex .list label {
+    display: block;
+    margin: 8px 0;
+}
+
+input {
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    border: solid 1px #c3cbcb;
+    height: 50px;
+    padding: 0 .5em;
+    font-size: 18px;
+    width: 100%;
+    border: solid 1px #c3cbcb;
+    color: #333f48;
+}
+
+input:focus {
+    border-width: 2px;
+    outline: 0;
+    border-color: #129FEA;
+    height: 48px;
+}
+
+.dynamic-content {color: #506175; font-size: 16px; font-style: italic}
