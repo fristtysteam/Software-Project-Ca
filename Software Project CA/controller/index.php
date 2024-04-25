@@ -257,24 +257,25 @@ switch ($action) {
         break;*/
     case 'checkout':
         $pageTitle = "checkout";
-        $userId = $_SESSION['userId'];
-       $items= getCartItems($userId);
-       $id= addOrder2($_SESSION['userId']);
-       echo $id . "<br/>";
-       echo "<br/>";
-        $currentDate = date('Y-m-d');
 
-        foreach ($items as $item){
-        addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
-       }
-       $products = getOrdersByOrderId($id);
-        echo "<br/>";
-        $_SESSION["products"] = $products;
        include "../view/checkout.php";
         break;
     //case 'payment':
     case 'pay':
         $pageTitle = "Payment page";
+        $userId = $_SESSION['userId'];
+        $items= getCartItems($userId);
+        $id= addOrder2($_SESSION['userId']);
+        echo $id . "<br/>";
+        echo "<br/>";
+        $currentDate = date('Y-m-d');
+
+        foreach ($items as $item){
+            addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
+        }
+        $products = getOrdersByOrderId($id);
+        echo "<br/>";
+        $_SESSION["products"] = $products;
         include "../view/payment.php";
         break;
 
