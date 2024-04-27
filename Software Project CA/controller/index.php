@@ -7,9 +7,11 @@ require_once '../model/membershipRoles.php';
 require_once '../model/cartModel.php';
 require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
+require_once('../model/HarvardApi.php');
 
 
-
+$api_key = '6fb07081-3451-4b44-8df0-488d0d4c5844';
+$harvard_api = new HarvardApi($api_key);
 // Variables
 $error = "";
 $userId = "";
@@ -415,6 +417,17 @@ switch ($action) {
     case 'set_language_irish':
         // Logic for setting language to Irish
         break;
+    case 'makeApiRequest':
+        $endpoint = 'object';
+
+        $api_key = '6fb07081-3451-4b44-8df0-488d0d4c5844';
+        $harvard_api = new HarvardApi($api_key);
+
+        $api_response = $harvard_api->makeRequest($endpoint);
+
+        include('../view/apiResponse.php');
+        break;
+
 
     case 'deleteProduct':
         if(isset($_GET['id'])) {
