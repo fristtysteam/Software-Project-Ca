@@ -389,6 +389,7 @@ switch ($action) {
                }
             }else{
                 header("Location:index.php?action=checkout");
+                exit();
             }
 
 

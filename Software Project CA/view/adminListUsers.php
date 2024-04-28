@@ -60,11 +60,11 @@
                                     <button class="btn-danger" type="submit" name="delete_user"><a class='text-light' href="?action=delete_user&id=<?php echo $user['id']; ?>">delete </a></button>
                                 </td>
                             </tr>
-
-
-
-
                         <?php endforeach ?>
+
+
+
+
 
 
                         </tbody>

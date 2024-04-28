@@ -55,14 +55,18 @@ $_SESSION["products"] = $products;
             <?php
             $totalPrice = 0;
             foreach ($products as $product):
-              $details=  getProductById($product['product_Id']);
-                        $singleP= $product['quantity'] * $details['price'];
+              //$details=  getProductById($product['product_Id']);
+                        //$singleP= $product['quantity'] * $details['price'];
+                //$details=  getProductById($product['product_Id']);
+                $singleP= $product['quantity'] * $product['price'];
               $totalPrice =  $totalPrice + $singleP;
 
                 ?>
                 <tr>
-                    <td><?php echo  $details['name']; ?></td>
-                    <td>$<?php echo $details['price']; ?></td>
+                    <!--<td><?php //echo  $details['name']; ?></td>
+                    <td>$<?php// echo $details['price']; ?></td>-->
+                    <td><?php echo $product['name']; ?></td>
+                    <td><?php echo $product['price']; ?></td>
                     <td><?php echo $product['quantity']; ?></td>
                     <td>$<?php echo $singleP; ?></td>
                 </tr>

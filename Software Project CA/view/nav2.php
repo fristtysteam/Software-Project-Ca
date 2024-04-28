@@ -1,11 +1,11 @@
 <?php
-require_once '../model/databaseConnection.php';
+//require_once '../model/databaseConnection.php';
 
 include "header.php";
-include "../model/language.php";
+//include "../model/language.php";
 
 $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
-$user_id = $_SESSION['userId'];
+//$user_id = $_SESSION['userId'];
 
 ?>
 

@@ -86,9 +86,10 @@ function getCartItems() {
                         </div>
                             <?php $cartItems = getCartItems();
                             $totalPrice = 0;
-                            foreach ($cartItems as $item) {
+                            $totalProductPrice =0;
+                            foreach ($cartItems as $item) ;?>
 
-                            }
+                            //}
                              ?>
                             <div class="card product_data shadow-sm mb-3">
                                 <div class="row align-items-center">
@@ -109,7 +110,11 @@ function getCartItems() {
 
                             </div>
                         <?php
-                        $totalPrice += $item['price'] * $item['quantity'];
+                            $totalProductPrice += $item['price'] * $item['quantity'];
+                            $totalPrice += $totalProductPrice;
+                        ?>
+                        <?php
+                          endforeach
                         ?>
                         <hr>
                         <h5>Total Price: <span class="float-end fw-bold"><?php echo"€". $totalPrice ?></span></h5>
