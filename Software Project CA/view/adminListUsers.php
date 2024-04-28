@@ -1,7 +1,3 @@
-<!------------------------------
-    CREATED: January 2024
-    AUTHOR:  Julie Olamijuwon
--------------------------------->
 
 
 <?php include'../view/header.php' ?>

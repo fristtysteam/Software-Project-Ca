@@ -210,21 +210,17 @@ $isLoggedIn = isset($_SESSION['username']);
 
 <script>
     $(document).ready(function(){
-        // Initialize carousels
         $('#carouselExampleIndicators, #carouselExampleIndicatorsOutOfStock').carousel({
             interval: 5000,
             pause: 'hover'
         });
 
-        // Add animation classes to carousel items
         $('#carouselExampleIndicators .carousel-item, #carouselExampleIndicatorsOutOfStock .carousel-item').addClass('animate__animated animate__fadeIn');
 
-        // Fade out inactive carousel items before sliding
         $('#carouselExampleIndicators, #carouselExampleIndicatorsOutOfStock').on('slide.bs.carousel', function () {
             $(this).find('.carousel-item.active').addClass('animate__fadeOut');
         });
 
-        // Remove fadeOut class after sliding
         $('#carouselExampleIndicators, #carouselExampleIndicatorsOutOfStock').on('slid.bs.carousel', function () {
             $(this).find('.carousel-item.active').removeClass('animate__fadeOut');
         });
