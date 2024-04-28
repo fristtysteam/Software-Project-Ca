@@ -41,12 +41,15 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=events"><strong>Events</strong></a>
                 </li>
-
+                <li class="nav-item navbar-small-links">
+                    <a class="nav-link" href="../controller/index.php?action=makeApiRequest"><strong>Harvard Api</strong></a>
+                </li>
                 <?php if (isset($_SESSION['userId'])): ?>
                     <div class="col-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
                             </li>
+
                     </div>
                 <?php endif; ?>
             </ul>

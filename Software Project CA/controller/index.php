@@ -7,9 +7,11 @@ require_once '../model/membershipRoles.php';
 require_once '../model/cartModel.php';
 require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
+require_once('../model/HarvardApi.php');
 
 
-
+$api_key = '6fb07081-3451-4b44-8df0-488d0d4c5844';
+$harvard_api = new HarvardApi($api_key);
 // Variables
 $error = "";
 $userId = "";
@@ -257,25 +259,32 @@ switch ($action) {
         break;*/
     case 'checkout':
         $pageTitle = "checkout";
-        $userId = $_SESSION['userId'];
-       $items= getCartItems($userId);
-       $id= addOrder2($_SESSION['userId']);
-       echo $id . "<br/>";
-       echo "<br/>";
-        $currentDate = date('Y-m-d');
 
-        foreach ($items as $item){
-        addOrderItem($id,$item['product_id'],$item['quantity'],$currentDate);
-       }
-       $products = getOrdersByOrderId($id);
-        echo "<br/>";
-        $_SESSION["products"] = $products;
        include "../view/checkout.php";
+        break;
+    case 'stripe':
+        $pageTitle = "checkout";
+
+        include "../view/stripe.php";
         break;
     //case 'payment':
     case 'pay':
         $pageTitle = "Payment page";
-        include "../view/payment.php";
+        $userId = $_SESSION['userId'];
+
+        // Process the payment and add order
+        $id = addOrder2($_SESSION['userId']);
+        $items = getCartItems($userId);
+        $currentDate = date('Y-m-d');
+
+        foreach ($items as $item) {
+            addOrderItem($id, $item['product_id'], $item['quantity'], $currentDate);
+            removeFromCartByCartId($item['id']);
+        }
+
+        // Redirect to thanks.php after payment
+        header("Location: ../view/thanks.php");
+        exit();
         break;
 
     case 'admin_Edit_Users_Records';
@@ -358,6 +367,9 @@ switch ($action) {
         break;
     case 'usergallery':
         $pageTitle = "User Gallery Page";
+
+
+
         include "../view/userGallery.php";
         break;
     case 'events':
@@ -406,6 +418,17 @@ switch ($action) {
     case 'set_language_irish':
         // Logic for setting language to Irish
         break;
+    case 'makeApiRequest':
+        $endpoint = 'object';
+
+        $api_key = '6fb07081-3451-4b44-8df0-488d0d4c5844';
+        $harvard_api = new HarvardApi($api_key);
+
+        $api_response = $harvard_api->makeRequest($endpoint);
+
+        include('../view/apiResponse.php');
+        break;
+
 
     case 'deleteProduct':
         if(isset($_GET['id'])) {

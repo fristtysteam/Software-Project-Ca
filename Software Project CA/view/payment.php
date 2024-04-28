@@ -28,7 +28,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                         <div class="payment-integration">
                             <div class="form-group">
                                 <label for="cardNumber">Card Number:</label>
-                                <input type="text" id="cardNumber" name="cardNumber" placeholder="4111 1111 1111 1111" required>
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="4319 0000 1111 1234" required>
                             </div>
                             <div class="form-group">
                                 <label for="expiryDate">Expiry Date:</label>
@@ -39,7 +39,7 @@ $totalPrice = isset($_GET['totalPrice']) ? $_GET['totalPrice'] : 0;
                                 <input type="text" id="cvv" name="cvv" placeholder="123" required>
                             </div>
                         </div>
-                        <button type="submit" id="payButton" class="btn mt-3">Pay $<?php echo number_format($totalPrice, 2); ?></button>
+                        <button type="submit" a href="../view/thanks.php" id="payButton"  class="btn mt-3">Pay $<?php echo number_format($totalPrice, 2); ?></button>
                     </form>
                 </div>
             </div>

@@ -40,7 +40,7 @@ class CartModelDaoTest extends TestCase {
         $this->pdo->exec("INSERT INTO product (name, price, quantity) VALUES ('Test Product', 10.00, 5)");
 
         // Add to cart
-        $this->assertTrue($this->dao->addToCart(1, 1, 3));
+        $this->assertTrue($this->dao->addToCart(1, 2, 3));
         $this->assertTrue($this->dao->addToCart(1, 1, 2));
 
         // Check if the quantities are updated correctly
