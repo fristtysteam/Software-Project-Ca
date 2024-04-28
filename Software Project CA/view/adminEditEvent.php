@@ -6,9 +6,7 @@ require_once '../model/getEvents.php';
 $pageTitle = "Admin Edit Event";
 $events = getEvents();
 
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if the keys are set before accessing them
     $eventId = isset($_POST['eventId']) ? $_POST['eventId'] : null;
     $title = isset($_POST['title']) ? $_POST['title'] : null;
     $venue = isset($_POST['venue']) ? $_POST['venue'] : null;
@@ -16,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : null;
     $month = isset($_POST['month']) ? $_POST['month'] : null;
 
-    // Update event
     if ($eventId && $title && $venue && $startDate && $endDate && $month) {
         if (updateEvent($eventId, $title, $venue, $startDate, $endDate, $month)) {
             header("Location: index.php?action=adminViewEvents");

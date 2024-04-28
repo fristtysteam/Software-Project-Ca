@@ -107,5 +107,7 @@ include "../view/nav2.php";
             </form>
         </div>
     </div>
+<br>
+</br>
 
 <?php include'../view/footer.php' ?>

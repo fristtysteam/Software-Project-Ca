@@ -9,13 +9,11 @@ include '../view/header.php';
 
 $currentLanguage = getLanguage();
 
-// Handle the delete action separately
 if(isset($_GET['action']) && $_GET['action'] === 'deleteProduct' && isset($_GET['deleteProduct'])) {
     require_once '../model/deleteProduct.php';
     $productId = $_GET['deleteProduct'];
     deleteProduct($productId);
 
-    // Redirect back to the admin view after deletion
     header("Location: index.php?action=adminViewProducts");
     exit();
 }

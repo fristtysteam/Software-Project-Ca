@@ -18,8 +18,8 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
         <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link active" href="../controller/index.php?action=show_home">Home</a>
                 </li>
@@ -28,17 +28,17 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                         <a class="nav-link" href="../controller/index.php?action=membership"><strong>Membership</strong></a>
                     </li>
                 <?php endif; ?>
-                <?php if (!isset($_SESSION['userId'])): ?>
-                    <li class="nav-item navbar-small-links">
-                        <a href="../controller/index.php?action=login" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item navbar-small-links">
-                        <a href="../controller/index.php?action=showRegister" class="nav-link">Register</a>
-                    </li>
-                <?php endif; ?>
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link text-primary" href="../controller/index.php?action=shop"><strong>Shop</strong></a>
                 </li>
+                <!-- Move Login and Register to the right -->
+                <li class="nav-item navbar-small-links ms-auto">
+                    <a href="../controller/index.php?action=login" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item navbar-small-links">
+                    <a href="../controller/index.php?action=showRegister" class="nav-link">Register</a>
+                </li>
+                <!-- End of Login and Register -->
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=gallery"><strong>Gallery</strong></a>
                 </li>

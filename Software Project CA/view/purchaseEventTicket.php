@@ -1,5 +1,5 @@
 <?php
-require_once '../model/purchaseTicket.php'; // Include purchaseTicket.php file
+require_once '../model/purchaseTicket.php';
 require_once '../model/getEvents.php';
 require_once '../model/databaseConnection.php';
 require_once '../model/language.php';
