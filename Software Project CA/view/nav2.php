@@ -9,7 +9,6 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 
 ?>
 
-
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom bg-img">
     <div class="container-fluid">
         <a class="navbar-brand text-primary fw-bolder" href="#">
@@ -27,6 +26,14 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <?php if (isset($_SESSION['username'])): ?>
                     <li class="nav-item navbar-small-links">
                         <a class="nav-link" href="../controller/index.php?action=membership"><strong>Membership</strong></a>
+                    </li>
+                <?php endif; ?>
+                <?php if (!isset($_SESSION['userId'])): ?>
+                    <li class="nav-item navbar-small-links">
+                        <a href="../controller/index.php?action=login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item navbar-small-links">
+                        <a href="../controller/index.php?action=showRegister" class="nav-link">Register</a>
                     </li>
                 <?php endif; ?>
                 <li class="nav-item navbar-small-links">
@@ -49,10 +56,9 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 </li>
                 <?php if (isset($_SESSION['userId'])): ?>
                     <div class="col-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
-                            </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+                        </li>
                     </div>
                 <?php endif; ?>
             </ul>
@@ -97,15 +103,7 @@ if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
             <button type="button" class="btn-close" aria-label="Close"></button>
         </div>
     </div>
-
 <?php endif; ?>
-
-
-
-
-
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iQFZK3d6PJKzutOz9w8a/+LXRvM5Ae0iYTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></script>

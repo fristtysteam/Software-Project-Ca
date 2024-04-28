@@ -87,23 +87,19 @@ function cancelOrder($orderId) {
     $db->beginTransaction();
 
     try {
-        // Delete entries from orderitemlog table for the given order ID
         $query1 = "DELETE FROM orderitemlog WHERE orderId = :orderId";
         $stmt1 = $db->prepare($query1);
         $stmt1->bindParam(':orderId', $orderId);
         $stmt1->execute();
 
-        // Delete entry from order2 table for the given order ID
         $query2 = "DELETE FROM order2 WHERE orderId = :orderId";
         $stmt2 = $db->prepare($query2);
         $stmt2->bindParam(':orderId', $orderId);
         $stmt2->execute();
 
-        // If both deletions are successful, commit the transaction
         $db->commit();
         return true;
     } catch (PDOException $e) {
-        // If an error occurs, rollback the transaction
         $db->rollBack();
         echo "Error: " . $e->getMessage();
         file_put_contents('error.log', $e->getMessage(), FILE_APPEND);
@@ -118,7 +114,7 @@ function getOrderItemLogsByOrderId($orderId)
 
     if ($db) {
         try {
-            $query = "SELECT * FROM `orderitemlog` WHERE orderId = :orderId"; // Check that 'orderId' matches the column name in your table
+            $query = "SELECT * FROM `orderitemlog` WHERE orderId = :orderId";
 
             $stmt = $db->prepare($query);
             $stmt->bindParam(':orderId', $orderId);
@@ -143,7 +139,7 @@ function getOrderItemLogsByUserId2($user_id)
 
     if ($db) {
         try {
-            $query = "SELECT * FROM `orderitemlog` WHERE orderId = :user_id"; // Check that 'orderId' matches the column name in your table
+            $query = "SELECT * FROM `orderitemlog` WHERE orderId = :user_id";
 
             $stmt = $db->prepare($query);
             $stmt->bindParam(':user_id', $user_id);
@@ -264,7 +260,7 @@ function addOrder2($user_id)
 
     try {
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(':user_id', $user_id); // Corrected parameter name
+        $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
 
         return $db->lastInsertId();
@@ -333,13 +329,10 @@ function  removeFromCartByCartId($id) {
     try {
         $stmt = $db->prepare($sql);
 
-        // Bind parameter
-        $stmt->bindParam(':id', $id); // Change ':user_id' to ':id'
+        $stmt->bindParam(':id', $id);
 
-        // Execute the statement
         $stmt->execute();
 
-        // Check if the deletion was successful
         if ($stmt->rowCount() > 0) {
             return true;
         } else {
