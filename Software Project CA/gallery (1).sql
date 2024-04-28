@@ -524,6 +524,31 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `DateOfBirth
 (34, 'p p', 'p', 'p@g', '$2y$10$LTBWQuE..GmXQUhzuY6lguVhFitqnhmvV4YZZbPJ5x0XavnV59CSC', '2024-03-08', 'admin'),
 (35, 'q q', 'q', 'q@g', '$2y$10$I40qXIBN4trPei0vh7GIK.wBzK5tttYxQ/2RIIv.ReX52yC994voe', '2024-03-23', 'basic');
 
+-- --------------------------------------------------------
+--
+-- Table structure for table `chatlog`
+--
+
+CREATE TABLE `chatlog` (
+                           `id` int(11) NOT NULL,
+                           `name` varchar(50) NOT NULL,
+                           `message` varchar(255) NOT NULL,
+                           `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chatlog`
+--
+
+INSERT INTO `chatlog` (`id`, `name`, `message`, `date`) VALUES
+                                                            (1, 'Kate Bush', 'Hi ! how can we be of help', '2024-04-28 09:37:29'),
+                                                            (2, 'Fela Anu', 'I\'m having trouble deciding on gift iterm to buy', '2024-04-28 09:43:15'),
+                                                            (3, 'Kate Bush', 'Ok Fela,  is the gift for a friend ?', '2024-04-28 10:03:17'),
+                                                            (4, 'Fela Anu', 'My Boss is retiring from active service', '2024-04-28 10:28:27'),
+                                                            (5, 'Kate Bush', 'What is your boss gender?', '2024-04-28 10:31:41'),
+                                                            (6, 'Fela Anu', 'Oh ! male gender', '2024-04-28 10:45:25');
+
+
 --
 -- Indexes for dumped tables
 --
@@ -599,6 +624,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `chatlog`
+--
+ALTER TABLE `chatlog`
+    ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -655,6 +686,12 @@ ALTER TABLE `userart`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `chatlog`
+--
+ALTER TABLE `chatlog`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
