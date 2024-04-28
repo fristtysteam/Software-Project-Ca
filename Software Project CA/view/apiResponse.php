@@ -41,7 +41,15 @@ $isLoggedIn = isset($_SESSION['username']);
             foreach ($response_array['records'] as $record) {
                 echo "<div class='artwork'>";
                 echo "<h2>Title: " . $record['title'] . "</h2>";
-                echo "<p><strong>Artist:</strong> " . $record['people'][0]['displayname'] . "</p>";
+                if (isset($record['people']) && is_array($record['people']) && count($record['people']) > 0) {
+                    if (isset($record['people'][0]['displayname'])) {
+                        echo "<p><strong>Artist:</strong> " . $record['people'][0]['displayname'] . "</p>";
+                    } else {
+                        echo "<p><strong>Artist:</strong> Unknown</p>";
+                    }
+                } else {
+                    echo "<p><strong>Artist:</strong> Unknown</p>";
+                }
                 echo "<p><strong>Date:</strong> " . $record['dated'] . "</p>";
                 echo "<p><strong>Medium:</strong> " . $record['technique'] . "</p>";
                 echo "<p><strong>Dimensions:</strong> " . $record['dimensions'] . "</p>";
