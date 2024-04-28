@@ -8,6 +8,8 @@ require_once '../model/cartModel.php';
 require_once '../model/doCart.php';
 require_once '../model/orderModel.php';
 require_once('../model/HarvardApi.php');
+//require('../model/log.php');
+require('../model/chatDB.php');
 
 
 $api_key = '6fb07081-3451-4b44-8df0-488d0d4c5844';
@@ -436,7 +438,27 @@ switch ($action) {
             deleteProduct($productId);
         }
         header("Location: index.php?action=adminViewProducts");
-        exit();
+        //exit();
+    break;
+    case 'liveChat':
+        // Live Chat Logic
+        include('../view/showLiveChat.php');
+        break;
+    case 'do_chat';
+        if(isset($_POST['do_chat'])) {
+            $name = filter_input(INPUT_POST, 'uname');
+            $msg = filter_input(INPUT_POST, 'msg');
+
+            $result = saveChat($name, $msg);
+            if($result == true){
+                $returnedChat = getAllChat();
+                header("Location: ../controller/index.php?action=liveChat");
+                exit();
+            }
+
+        }
+        //include '../view/startChat.php';
+        break;
     default:
         $error = "Unknown action value:" . $action;
         include '../view/error.php';

@@ -61,6 +61,9 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                     <li class="nav-item navbar-small-links">
                         <a class="nav-link" href="../controller/index.php?action=showRegister">Register</a>
                     </li>
+                    <li class="nav-item navbar-small-links">
+                        <a class="nav-link" href="../controller/index.php?action=liveChat">Live Chat</a>
+                    </li>
                 <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="../controller/index.php?action=cart">
