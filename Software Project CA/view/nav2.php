@@ -54,6 +54,10 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item navbar-small-links fw-bolder">
                     <a class="nav-link" href="../controller/index.php?action=liveChat">Live Chat</a>
                 </li>
+                </li>
+                <li class="nav-item navbar-small-links fw-bolder">
+                    <a class="nav-link" href="../view/imageGenerator.php">AI Image</a>
+                </li>
                 <?php if (isset($_SESSION['userId'])): ?>
                     <div class="col-auto">
                         <li class="nav-item">
