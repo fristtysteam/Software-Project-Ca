@@ -1,3 +1,7 @@
+<!--------------------------
+Created by: Julie Olamijuwon
+Date:       April 2024
+---------------------------->
 <!--<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +71,7 @@ include "nav2.php";
             <div class="card ">
                 <div class="card-header">
                     <h4 class="fw-bold">Live Chat</h4>
+                    <i class=" fa fa-solid fa-comments-question-check"></i>
                 </div>
                 <div class="card-body bg-secondary">
                     <form  name="form1" method="post" action="../controller/index.php">

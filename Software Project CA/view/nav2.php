@@ -1,13 +1,12 @@
 <?php
 //require_once '../model/databaseConnection.php';
-
 include "header.php";
 //include "../model/language.php";
-
 $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
 //$user_id = $_SESSION['userId'];
 
 ?>
+
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom bg-img">
     <div class="container-fluid">
@@ -18,8 +17,8 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
         <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-            <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link active" href="../controller/index.php?action=show_home">Home</a>
                 </li>
@@ -28,17 +27,17 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                         <a class="nav-link" href="../controller/index.php?action=membership"><strong>Membership</strong></a>
                     </li>
                 <?php endif; ?>
+                <?php if (!isset($_SESSION['userId'])): ?>
+                    <li class="nav-item navbar-small-links">
+                        <a href="../controller/index.php?action=login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item navbar-small-links">
+                        <a href="../controller/index.php?action=showRegister" class="nav-link">Register</a>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link text-primary" href="../controller/index.php?action=shop"><strong>Shop</strong></a>
                 </li>
-                <!-- Move Login and Register to the right -->
-                <li class="nav-item navbar-small-links ms-auto">
-                    <a href="../controller/index.php?action=login" class="nav-link">Login</a>
-                </li>
-                <li class="nav-item navbar-small-links">
-                    <a href="../controller/index.php?action=showRegister" class="nav-link">Register</a>
-                </li>
-                <!-- End of Login and Register -->
                 <li class="nav-item navbar-small-links">
                     <a class="nav-link" href="../controller/index.php?action=gallery"><strong>Gallery</strong></a>
                 </li>
@@ -54,12 +53,12 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
                 <li class="nav-item navbar-small-links fw-bolder">
                     <a class="nav-link" href="../controller/index.php?action=liveChat">Live Chat</a>
                 </li>
-                </li>
-                <li class="nav-item navbar-small-links fw-bolder">
-                    <a class="nav-link" href="../view/imageGenerator.php">AI Image</a>
-                </li>
                 <?php if (isset($_SESSION['userId'])): ?>
                     <div class="col-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="../controller/index.php?action=logout">Logout</a>
                         </li>
@@ -69,16 +68,12 @@ $isAdmin = isset($_SESSION['userType']) && $_SESSION['userType'] === 'admin';
         </div>
     </div>
 </nav>
-
 <?php
 $currentURL = $_SERVER['REQUEST_URI'];
-
 $homePageIdentifier = 'action=show_home';
 $shopPageIdentifier = 'action=shop';
-
 $isHomePage = (strpos($currentURL, $homePageIdentifier) !== false);
 $isShopPage = (strpos($currentURL, $shopPageIdentifier) !== false);
-
 if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
     $username = $_SESSION['username'];
     $usertype = $_SESSION['userType'];
@@ -93,7 +88,6 @@ if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
             <div class="col-auto">
                 <a href="../controller/index.php?action=orders" class="nav-link">My Orders</a>
             </div>
-
             <?php if($usertype === "admin"): ?>
                 <div class="col-auto">
                     <a href="../controller/index.php?action=show_admin" class="nav-link">Admin</a>
@@ -107,7 +101,15 @@ if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
             <button type="button" class="btn-close" aria-label="Close"></button>
         </div>
     </div>
+
 <?php endif; ?>
+
+
+
+
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iQFZK3d6PJKzutOz9w8a/+LXRvM5Ae0iYTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></script>
@@ -117,4 +119,3 @@ if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
             $(this).closest('.alert').hide();
         });
     });
-</script>
