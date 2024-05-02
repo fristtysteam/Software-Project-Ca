@@ -5,10 +5,8 @@ require_once '../model/cartModel.php';
 
 include "../view/nav2.php";
 include '../view/header.php';
-include '../view/footer.php';
 
 $isLoggedIn = isset($_SESSION['userId']);
-
 
 ?>
 <head>
@@ -53,3 +51,6 @@ $isLoggedIn = isset($_SESSION['userId']);
 </script>
 </body>
 </html>
+<?php
+include '../view/footer.php';
+?>

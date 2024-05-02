@@ -102,8 +102,8 @@ if (($isHomePage || $isShopPage) && isset($_SESSION['username'])):
         </div>
     </div>
     <div class="container mt-3">
-        <div class="alert custom-alert" role="alert">
-            <h5>Welcome, <?php echo $username; ?></h5>
+        <div class="alert custom-alert bg-primary " role="alert">
+            <h5 class="text-white">Welcome, <?php echo $username; ?></h5 class>
             <button type="button" class="btn-close" aria-label="Close"></button>
         </div>
     </div>
